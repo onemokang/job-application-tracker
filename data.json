@@ -1,0 +1,280 @@
+{
+  "defaultStatus": "Not Applied",
+  "lastUpdated": "2026-11-09T00:57:21.055101+00:00",
+  "jobs": [
+    {
+      "rank": 1,
+      "style": "ai",
+      "company": "Coinbase",
+      "role": "Senior Software Engineer",
+      "location": "Remote - USA",
+      "workMode": "Remote-first",
+      "comp": "$265K–$400K+ (IC4–IC5)",
+      "why": "Onsite: bug + design + log-diagnosis + code review, no algo leetcode",
+      "link": "https://www.coinbase.com/careers/positions/8304034?gh_jid=8304034",
+      "notes": "Remote-first but quarterly in-person 'surges'. Auto-refreshed from Greenhouse daily.",
+      "postingTitle": "Senior Software Engineer"
+    },
+    {
+      "rank": 1,
+      "style": "ai",
+      "company": "Atlassian",
+      "role": "Software Engineer II / Senior Fullstack",
+      "location": "Remote (US Pacific/Mountain tz)",
+      "workMode": "Remote (Team Anywhere)",
+      "comp": "$149K–$380K (P40–P50)",
+      "why": "One AI-assisted coding round: small app, add feature/fix bug, tests already exist",
+      "link": "https://www.atlassian.com/company/careers/all-jobs?team=Engineering&search=software%20engineer",
+      "notes": "Fully remote model, hire in most US states"
+    },
+    {
+      "rank": 1,
+      "style": "ai",
+      "company": "Shopify",
+      "role": "Senior Software Developer",
+      "location": "Remote",
+      "workMode": "Remote / \"digital by default\"",
+      "comp": "$192K–$269K (L5–L6)",
+      "why": "AI-assisted pair programming, screen-shared, own IDE/tools",
+      "link": "https://www.shopify.com/careers/search?query=software+developer",
+      "notes": "Search careers page by 'Software Developer'"
+    },
+    {
+      "rank": 1,
+      "style": "ai",
+      "company": "Snowflake",
+      "role": "Software Engineer",
+      "location": "Remote-friendly (multiple US hubs)",
+      "workMode": "Remote-friendly",
+      "comp": "$180K–$300K+ (est.)",
+      "why": "Phone screen in CoderPad with AI allowed; AI round for some roles",
+      "link": "https://careers.snowflake.com/us/en/search-results?keywords=software%20engineer",
+      "notes": "Search careers page by 'Software Engineer'"
+    },
+    {
+      "rank": 1,
+      "style": "ai",
+      "company": "GitLab",
+      "role": "Senior Software Engineer",
+      "location": "Remote (Global/US)",
+      "workMode": "All-remote",
+      "comp": "$170K–$280K+ (est.)",
+      "why": "Known all-remote devtool brand; practical/take-home-leaning interview reputation",
+      "link": "https://about.gitlab.com/jobs/all-jobs/?search=software+engineer",
+      "notes": "One of the original all-remote tech companies; fully documented handbook culture"
+    },
+    {
+      "rank": 1,
+      "style": "leetcode",
+      "company": "Amazon",
+      "role": "Software Development Engineer II/III",
+      "location": "Remote - USA",
+      "workMode": "Remote",
+      "comp": "$180K–$350K+ (L5–L6)",
+      "why": "Classic SDE loop: OA (algorithms) + bar-raiser + system design",
+      "link": "https://www.amazon.jobs/en/search?base_query=software+development+engineer&loc_query=Remote",
+      "notes": "Huge known name; genuine remote SDE reqs exist but rotate — use search"
+    },
+    {
+      "rank": 2,
+      "style": "ai",
+      "company": "Uber Freight",
+      "role": "Senior Software Engineer (Backend)",
+      "location": "Chicago, IL",
+      "workMode": "Hybrid (2 days/wk)",
+      "comp": "$185K–$212K base + bonus/equity",
+      "why": "Known Uber brand; practical backend role, not leetcode-screened per report",
+      "link": "https://job-boards.greenhouse.io/uberfreight/jobs/5467670008",
+      "notes": "Uber Freight HQ is in Chicago. Auto-refreshed from Greenhouse daily.",
+      "postingTitle": "Senior Software Engineer (Backend)"
+    },
+    {
+      "rank": 2,
+      "style": "leetcode",
+      "company": "Google",
+      "role": "Senior Software Engineer",
+      "location": "Chicago, IL",
+      "workMode": "Onsite/Hybrid",
+      "comp": "$174K–$253K base +15% bonus+equity (median total ~$246K)",
+      "why": "Mostly classic DSA+system design loop; piloting an AI code-comprehension round for some junior/mid reqs",
+      "link": "https://www.google.com/about/careers/applications/jobs/results?target_level=MID&target_level=EARLY&target_level=ADVANCED&q=%22software%20engineer%22&location=Chicago,%20IL",
+      "notes": "Confirm per-team interview format in recruiter screen"
+    },
+    {
+      "rank": 2,
+      "style": "ai",
+      "company": "Morningstar",
+      "role": "Senior Software Engineer",
+      "location": "Chicago, IL",
+      "workMode": "Hybrid",
+      "comp": "~$153K+ base (varies by team)",
+      "why": "Known Chicago finance-data brand; practical/system-heavy interview reputation",
+      "link": "https://morningstar.wd5.myworkdayjobs.com/en-US/americas?q=software%20engineer",
+      "notes": "Several open Chicago SWE reqs; check Workday board"
+    },
+    {
+      "rank": 2,
+      "style": "ai",
+      "company": "Discover Financial Services",
+      "role": "Software Engineer",
+      "location": "Chicago / Riverwoods, IL",
+      "workMode": "Hybrid",
+      "comp": "$160K–$230K (est.)",
+      "why": "Known big-name consumer finance brand headquartered near Chicago",
+      "link": "https://jobs.discover.com/search-jobs/software%20engineer",
+      "notes": "Large, stable, well-known name; verify interview format directly"
+    },
+    {
+      "rank": 2,
+      "style": "leetcode",
+      "company": "JPMorgan Chase",
+      "role": "Software Engineer II/III",
+      "location": "Chicago, IL",
+      "workMode": "Hybrid",
+      "comp": "$150K–$260K+ (est., incl. bonus)",
+      "why": "Mix of DSA + practical/OOD rounds depending on team",
+      "link": "https://careers.jpmorgan.com/us/en/search-jobs?keywords=software%20engineer&location=Chicago",
+      "notes": "Massive Chicago tech campus; huge known brand"
+    },
+    {
+      "rank": 3,
+      "style": "ai",
+      "company": "DoorDash",
+      "role": "Senior Software Engineer, Backend",
+      "location": "San Francisco / Sunnyvale / NYC / Seattle",
+      "workMode": "Onsite/Hybrid",
+      "comp": "$155K–$285K (est.)",
+      "why": "'AI Code Craft' onsite: own IDE/AI tools, realistic task, no algo leetcode",
+      "link": "https://job-boards.greenhouse.io/doordashusa/jobs/8136498",
+      "notes": "Fully replaced classic coding rounds org-wide. Auto-refreshed from Greenhouse daily.",
+      "postingTitle": "Senior Software Engineer, Backend (All Teams)"
+    },
+    {
+      "rank": 3,
+      "style": "ai",
+      "company": "Stripe",
+      "role": "Software Engineer",
+      "location": "San Francisco, CA",
+      "workMode": "Onsite/Hybrid",
+      "comp": "$200K–$350K+ (est.)",
+      "why": "Pair programming on real bugs inside HackerRank w/ AI assistant allowed",
+      "link": "https://stripe.com/jobs/search?query=software+engineer",
+      "notes": "Search careers page by 'Software Engineer'"
+    },
+    {
+      "rank": 3,
+      "style": "ai",
+      "company": "Anthropic",
+      "role": "Member of Technical Staff, Engineering",
+      "location": "San Francisco, CA",
+      "workMode": "Onsite",
+      "comp": "$300K–$450K+ (est.)",
+      "why": "Eng managers publicly dropped traditional coding interviews for agentic-skill signal",
+      "link": "https://www.anthropic.com/jobs",
+      "notes": "Very selective, but explicitly leetcode-skeptical culture"
+    },
+    {
+      "rank": 3,
+      "style": "leetcode",
+      "company": "Meta",
+      "role": "Software Engineer",
+      "location": "Menlo Park / SF Bay Area, CA",
+      "workMode": "Onsite/Hybrid",
+      "comp": "$190K–$380K+ (E4–E5)",
+      "why": "Classic 2x coding (DSA) + system design/behavioral loop; piloted an AI round for some teams since Oct 2025",
+      "link": "https://www.metacareers.com/jobs?q=software%20engineer",
+      "notes": "Huge known name; very selective"
+    },
+    {
+      "rank": 3,
+      "style": "leetcode",
+      "company": "Apple",
+      "role": "Software Engineer",
+      "location": "Cupertino / Bay Area, CA",
+      "workMode": "Onsite",
+      "comp": "$180K–$350K+ (est.)",
+      "why": "Traditional algorithm + domain-specific technical rounds",
+      "link": "https://jobs.apple.com/en-us/search?search=software%20engineer&location=santa-clara-valley-SCAL",
+      "notes": "Huge known name; interview format varies a lot by team"
+    },
+    {
+      "rank": 3,
+      "style": "ai",
+      "company": "Bloomberg",
+      "role": "Senior Software Engineer",
+      "location": "New York, NY",
+      "workMode": "Onsite/Hybrid",
+      "comp": "$160K–$240K + bonus",
+      "why": "Phone-screen AI round: given implementation, discuss refactor + OOD question",
+      "link": "https://careers.bloomberg.com/job/search?keywords=software+engineer&city=New+York",
+      "notes": "Iconic NYC name, strong brand recognition"
+    },
+    {
+      "rank": 3,
+      "style": "ai",
+      "company": "Datadog",
+      "role": "Staff Software Engineer, Frontend",
+      "location": "New York, NY",
+      "workMode": "Hybrid",
+      "comp": "$244K–$305K",
+      "why": "AI coding round since spring 2026: own agent/local tools, screen-shared, realistic task",
+      "link": "https://careers.datadoghq.com/detail/3851935/?gh_jid=3851935",
+      "notes": "NYC HQ; multiple open NY reqs on Greenhouse board. Auto-refreshed daily.",
+      "postingTitle": "Senior Software Engineer "
+    },
+    {
+      "rank": 3,
+      "style": "ai",
+      "company": "Ramp",
+      "role": "Software Engineer",
+      "location": "New York, NY",
+      "workMode": "Onsite/Hybrid",
+      "comp": "$200K–$350K+ (est.)",
+      "why": "AI live coding onsite: repo + product brief, any AI tools, stipend to set up",
+      "link": "https://ramp.com/careers",
+      "notes": "Fast-growing, very well-paying fintech; strong name recognition in tech"
+    },
+    {
+      "rank": 3,
+      "style": "leetcode",
+      "company": "Goldman Sachs",
+      "role": "Software Engineer",
+      "location": "New York, NY",
+      "workMode": "Onsite/Hybrid",
+      "comp": "$150K–$260K+ (est., incl. bonus)",
+      "why": "Traditional coding + OOD interview loop, some teams piloting AI-assisted rounds",
+      "link": "https://higher.gs.com/results?SEARCH_TEXT=software%20engineer&LOCATION=New%20York",
+      "notes": "Huge known Wall St name with a very large engineering org"
+    },
+    {
+      "rank": 3,
+      "style": "leetcode",
+      "company": "Microsoft",
+      "role": "Software Engineer",
+      "location": "New York, NY",
+      "workMode": "Hybrid",
+      "comp": "$160K–$300K+ (est.)",
+      "why": "Mostly classic DSA + design loop, varies significantly by org",
+      "link": "https://jobs.careers.microsoft.com/global/en/search?q=software%20engineer&lc=New%20York",
+      "notes": "Huge known name, large NYC presence"
+    }
+  ],
+  "autoRefreshBoards": {
+    "Coinbase": {
+      "board": "coinbase",
+      "rank": 1
+    },
+    "Uber Freight": {
+      "board": "uberfreight",
+      "rank": 2
+    },
+    "DoorDash": {
+      "board": "doordashusa",
+      "rank": 3
+    },
+    "Datadog": {
+      "board": "datadog",
+      "rank": 3
+    }
+  }
+}

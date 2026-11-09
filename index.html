@@ -141,6 +141,9 @@
   .tag.rank-1{background:#ecfdf5;color:#059669;}
   .tag.rank-2{background:#eff6ff;color:#2563eb;}
   .tag.rank-3{background:#fff7ed;color:#c2410c;}
+  .tag.style-ai{background:#f0fdfa;color:#0d9488;}
+  .tag.style-leetcode{background:#fdf2f8;color:#be185d;}
+  .tag.auto{background:#eef2ff;color:#4f46e5;font-weight:600;}
   .job-role{font-size:13.5px;color:var(--ink);font-weight:500;margin-bottom:3px;}
   .job-meta{font-size:12.5px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;}
   .job-meta b{color:var(--ink);font-weight:600;}
@@ -205,6 +208,7 @@
       <div class="stat-card green"><div class="num" id="statApplied">–</div><div class="label">Applied</div></div>
       <div class="stat-card"><div class="num" id="statRemaining">–</div><div class="label">Not applied yet</div></div>
       <div class="stat-card"><div class="num" id="statRemote">–</div><div class="label">Remote options</div></div>
+      <div class="stat-card"><div class="num" id="statAi">–</div><div class="label">AI-assisted (no leetcode)</div></div>
     </div>
 
     <div class="toolbar">
@@ -219,6 +223,11 @@
         <button class="pill" data-status="Applied">Applied</button>
         <button class="pill" data-status="Not Applied">Not applied</button>
       </div>
+      <div class="pillgroup" id="stylePills">
+        <button class="pill active" data-style="">Any interview</button>
+        <button class="pill" data-style="ai">🤖 AI-assisted</button>
+        <button class="pill" data-style="leetcode">📐 LeetCode-style</button>
+      </div>
       <div class="search-wrap">
         <span class="ic">🔍</span>
         <input id="search" type="text" placeholder="Search company, role, location…">
@@ -229,11 +238,13 @@
     <div class="empty" id="emptyState" style="display:none;">No roles match your filters.</div>
   </div>
 
-  <footer>Status syncs live to the GitHub repo — same list on every device. Edit <code>data.js</code> to add/remove roles.</footer>
+  <footer>
+    Status syncs live to the GitHub repo — same list on every device. Edit <code>data.json</code> to add/remove roles.
+    <div id="lastUpdated" style="margin-top:4px;"></div>
+  </footer>
 </div>
 
 <script src="config.js"></script>
-<script src="data.js"></script>
 <script src="sync.js"></script>
 <script>
 const GATE_HASH = "b56e59e3e3ea61711b844fd3410e00ee164ed39b78807a2ec6fc6ac136240940";
@@ -241,8 +252,23 @@ const GATE_KEY = "trackerUnlocked_v1";
 const RANK_LABEL = {1:"Remote", 2:"Chicago", 3:"SF / NYC"};
 const AVATAR_COLORS = ["#4f46e5","#0891b2","#059669","#c2410c","#9333ea","#dc2626","#0284c7","#65a30d"];
 
+const STYLE_LABEL = {ai:"🤖 AI-assisted", leetcode:"📐 LeetCode-style"};
+let JOBS = [];
+let DEFAULT_STATUS = "Not Applied";
+let AUTO_REFRESH_BOARDS = {};
+let DATA_LAST_UPDATED = null;
 let statusMap = {};
-let filters = { rank: "", status: "", q: "" };
+let filters = { rank: "", status: "", style: "", q: "" };
+
+async function loadJobData(){
+  const res = await fetch("data.json", { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load data.json: ${res.status}`);
+  const data = await res.json();
+  JOBS = data.jobs || [];
+  DEFAULT_STATUS = data.defaultStatus || "Not Applied";
+  AUTO_REFRESH_BOARDS = data.autoRefreshBoards || {};
+  DATA_LAST_UPDATED = data.lastUpdated || null;
+}
 
 async function sha256(text){
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
@@ -273,6 +299,7 @@ function renderStats(){
   document.getElementById('statApplied').textContent = applied;
   document.getElementById('statRemaining').textContent = total - applied;
   document.getElementById('statRemote').textContent = remote;
+  document.getElementById('statAi').textContent = JOBS.filter(j => j.style === "ai").length;
 }
 
 function renderList(){
@@ -281,6 +308,7 @@ function renderList(){
   const rows = JOBS.filter(j => {
     if (filters.rank && String(j.rank) !== filters.rank) return false;
     if (filters.status && statusOf(j.company) !== filters.status) return false;
+    if (filters.style && j.style !== filters.style) return false;
     if (q && !(j.company.toLowerCase().includes(q) || j.role.toLowerCase().includes(q) || j.location.toLowerCase().includes(q))) return false;
     return true;
   });
@@ -290,6 +318,7 @@ function renderList(){
     const st = statusOf(j.company);
     const applied = st === "Applied";
     const initial = j.company.trim()[0].toUpperCase();
+    const isAuto = AUTO_REFRESH_BOARDS[j.company];
     return `
       <div class="job-card">
         <div class="avatar" style="background:${colorFor(j.company)}">${initial}</div>
@@ -297,6 +326,8 @@ function renderList(){
           <div class="job-top">
             <span class="job-company">${j.company}</span>
             <span class="tag rank-${j.rank}">${RANK_LABEL[j.rank]}</span>
+            <span class="tag style-${j.style}">${STYLE_LABEL[j.style] || j.style}</span>
+            ${isAuto ? '<span class="tag auto" title="Link auto-refreshed daily from the live job board">🔄 auto-updated</span>' : ''}
           </div>
           <div class="job-role">${j.role}</div>
           <div class="job-meta"><span>📍 ${j.location}</span><span>💼 ${j.workMode}</span><span><b>${j.comp}</b></span></div>
@@ -304,6 +335,7 @@ function renderList(){
         </div>
         <div class="job-actions">
           <a class="linkbtn" href="${j.link}" target="_blank" rel="noopener">View posting ↗</a>
+          ${j.postingTitle ? `<div style="font-size:10.5px;color:var(--muted);text-align:right;max-width:160px;">Live: ${j.postingTitle}</div>` : ''}
           <button class="status-toggle ${applied ? 'applied':'not'}" data-company="${j.company.replace(/"/g,'&quot;')}">
             <span class="dot"></span>${applied ? 'Applied' : 'Not applied'}
           </button>
@@ -319,13 +351,17 @@ function renderList(){
 
 async function toggleStatus(btn){
   const company = btn.dataset.company;
-  const next = statusOf(company) === "Applied" ? "Not Applied" : "Applied";
 
   if (!hasToken()){
     const ok = await ensureToken(true);
     if (!ok) return; // user cancelled — don't change status without sync
+    // First time connecting on this device: pull current remote state (and
+    // its sha) before writing, otherwise the write below would be rejected
+    // by GitHub for missing/stale sha.
+    await syncFromRemote();
   }
 
+  const next = statusOf(company) === "Applied" ? "Not Applied" : "Applied";
   btn.classList.add('saving');
   setSyncState("syncing", "Saving…");
 
@@ -354,6 +390,12 @@ function wireFilters(){
     filters.status = p.dataset.status;
     renderList();
   }));
+  document.querySelectorAll('#stylePills .pill').forEach(p => p.addEventListener('click', () => {
+    document.querySelectorAll('#stylePills .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    filters.style = p.dataset.style;
+    renderList();
+  }));
   document.getElementById('search').addEventListener('input', e => {
     filters.q = e.target.value;
     renderList();
@@ -375,6 +417,23 @@ async function ensureToken(promptIfMissing){
 }
 
 async function initSite(){
+  setSyncState("syncing", "Loading job list…");
+  try {
+    await loadJobData();
+  } catch (e) {
+    console.error(e);
+    document.getElementById('list').innerHTML = '';
+    document.getElementById('emptyState').style.display = 'block';
+    document.getElementById('emptyState').textContent = "Couldn't load data.json — check the console.";
+    setSyncState("error", "Failed to load job data");
+    return;
+  }
+
+  if (DATA_LAST_UPDATED){
+    const d = new Date(DATA_LAST_UPDATED);
+    document.getElementById('lastUpdated').textContent = `Job list last auto-refreshed: ${d.toLocaleString()}`;
+  }
+
   wireFilters();
   renderList(); // render instantly with defaults, then reconcile with remote
 
