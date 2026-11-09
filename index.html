@@ -92,6 +92,44 @@
 
   .wrap{max-width:1180px;margin:-34px auto 40px;padding:0 20px;position:relative;z-index:2;}
 
+  .navtabs{display:flex;gap:8px;margin-bottom:18px;}
+  .navtab{
+    border:none;background:rgba(255,255,255,.75);color:var(--muted);padding:9px 16px;border-radius:12px 12px 0 0;
+    font-size:13.5px;font-weight:700;cursor:pointer;border:1px solid var(--line);border-bottom:none;
+  }
+  .navtab.active{background:var(--surface);color:var(--primary);}
+
+  /* ---------- Roadmap ---------- */
+  .roadmap-intro{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:18px 22px;margin-bottom:20px;font-size:13.5px;color:var(--ink);line-height:1.5;
+  }
+  .roadmap-progress{margin-top:10px;background:#eef0f6;border-radius:999px;height:8px;overflow:hidden;}
+  .roadmap-progress-bar{height:100%;background:var(--primary);border-radius:999px;transition:width .2s;}
+  .phase{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+    margin-bottom:14px;overflow:hidden;
+  }
+  .phase-head{
+    display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;
+  }
+  .phase-num{
+    width:30px;height:30px;border-radius:9px;background:var(--primary-ink);color:var(--primary);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;
+  }
+  .phase-title{font-weight:700;font-size:14.5px;flex:1;}
+  .phase-sub{font-size:12px;color:var(--muted);font-weight:500;}
+  .phase-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f6;color:var(--muted);white-space:nowrap;}
+  .phase-when{font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap;}
+  .phase-body{padding:0 20px 18px 62px;display:none;}
+  .phase.open .phase-body{display:block;}
+  .phase-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+  .phase-item{display:flex;align-items:flex-start;gap:9px;padding:7px 0;font-size:13px;line-height:1.45;border-bottom:1px dashed var(--line);}
+  .phase-item:last-child{border-bottom:none;}
+  .phase-item input{margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--primary);cursor:pointer;}
+  .phase-item label{cursor:pointer;flex:1;}
+  .phase-item.done label{color:var(--muted);text-decoration:line-through;}
+
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px;}
   .stat-card{
     background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);
@@ -205,41 +243,50 @@
   </header>
 
   <div class="wrap">
-    <div class="stats">
-      <div class="stat-card accent"><div class="num" id="statTotal">–</div><div class="label">Total roles</div></div>
-      <div class="stat-card green"><div class="num" id="statApplied">–</div><div class="label">Applied</div></div>
-      <div class="stat-card"><div class="num" id="statRemaining">–</div><div class="label">Not applied yet</div></div>
-      <div class="stat-card"><div class="num" id="statRemote">–</div><div class="label">Remote options</div></div>
-      <div class="stat-card"><div class="num" id="statAi">–</div><div class="label">AI-assisted (no leetcode)</div></div>
+    <div class="navtabs" id="navTabs">
+      <button class="navtab active" data-view="jobs">📋 Jobs</button>
+      <button class="navtab" data-view="roadmap">🗺️ Prep Roadmap</button>
     </div>
 
-    <div class="toolbar">
-      <div class="pillgroup" id="rankPills">
-        <button class="pill active" data-rank="">All</button>
-        <button class="pill" data-rank="1">Remote</button>
-        <button class="pill" data-rank="2">Chicago</button>
-        <button class="pill" data-rank="3">SF / NYC</button>
+    <div id="jobsView">
+      <div class="stats">
+        <div class="stat-card accent"><div class="num" id="statTotal">–</div><div class="label">Total roles</div></div>
+        <div class="stat-card green"><div class="num" id="statApplied">–</div><div class="label">Applied</div></div>
+        <div class="stat-card"><div class="num" id="statRemaining">–</div><div class="label">Not applied yet</div></div>
+        <div class="stat-card"><div class="num" id="statRemote">–</div><div class="label">Remote options</div></div>
+        <div class="stat-card"><div class="num" id="statAi">–</div><div class="label">AI-assisted (no leetcode)</div></div>
       </div>
-      <div class="pillgroup" id="statusPills">
-        <button class="pill active" data-status="">Any status</button>
-        <button class="pill" data-status="Applied">Applied</button>
-        <button class="pill" data-status="Not Applied">Not applied</button>
+
+      <div class="toolbar">
+        <div class="pillgroup" id="rankPills">
+          <button class="pill active" data-rank="">All</button>
+          <button class="pill" data-rank="1">Remote</button>
+          <button class="pill" data-rank="2">Chicago</button>
+          <button class="pill" data-rank="3">SF / NYC</button>
+        </div>
+        <div class="pillgroup" id="statusPills">
+          <button class="pill active" data-status="">Any status</button>
+          <button class="pill" data-status="Applied">Applied</button>
+          <button class="pill" data-status="Not Applied">Not applied</button>
+        </div>
+        <div class="pillgroup" id="stylePills">
+          <button class="pill active" data-style="">Any interview</button>
+          <button class="pill" data-style="ai">🤖 AI-assisted</button>
+          <button class="pill" data-style="leetcode">📐 LeetCode-style</button>
+          <button class="pill" data-style="mixed">🔀 Mixed</button>
+          <button class="pill" data-style="unclear">❔ Unclear</button>
+        </div>
+        <div class="search-wrap">
+          <span class="ic">🔍</span>
+          <input id="search" type="text" placeholder="Search company, role, location…">
+        </div>
       </div>
-      <div class="pillgroup" id="stylePills">
-        <button class="pill active" data-style="">Any interview</button>
-        <button class="pill" data-style="ai">🤖 AI-assisted</button>
-        <button class="pill" data-style="leetcode">📐 LeetCode-style</button>
-        <button class="pill" data-style="mixed">🔀 Mixed</button>
-        <button class="pill" data-style="unclear">❔ Unclear</button>
-      </div>
-      <div class="search-wrap">
-        <span class="ic">🔍</span>
-        <input id="search" type="text" placeholder="Search company, role, location…">
-      </div>
+
+      <div class="list" id="list"></div>
+      <div class="empty" id="emptyState" style="display:none;">No roles match your filters.</div>
     </div>
 
-    <div class="list" id="list"></div>
-    <div class="empty" id="emptyState" style="display:none;">No roles match your filters.</div>
+    <div id="roadmapView" style="display:none;"></div>
   </div>
 
   <footer>
@@ -264,6 +311,135 @@ let DATA_LAST_UPDATED = null;
 let STYLE_RESEARCH_DATE = null;
 let statusMap = {};
 let filters = { rank: "", status: "", style: "", q: "" };
+
+// ---------- Prep roadmap ----------
+const ROADMAP = [
+  { title: "Foundations: resume, stories, targets", when: "Before you apply", tags: [],
+    items: [
+      "Resume + LinkedIn fully updated and consistent with each other",
+      "6–8 STAR stories drafted (ownership, conflict, failure/mistake, incident, mentoring, leading under ambiguity)",
+      "A 60–90 second 'walk me through your background' answer, rehearsed out loud",
+      "Know your target comp number and your floor, so you don't improvise during a recruiter call",
+    ]},
+  { title: "Core algorithms & data structures", when: "~1–2 weeks", tags: ["leetcode","mixed"],
+    items: [
+      "Refresh arrays, hash maps, strings, stacks/queues, trees, graphs — the building blocks, not tricks",
+      "Do ~30–40 LeetCode easy/medium spread across: two pointers, sliding window, BFS/DFS, binary search, basic DP",
+      "Practice saying time/space complexity out loud for your own solution, unprompted",
+      "Timed reps: one problem, 25–30 min, no AI help — this is still asked even at 'AI-assisted' companies",
+    ]},
+  { title: "AI-assisted coding workflow", when: "~1 week", tags: ["ai","mixed"],
+    items: [
+      "Get fluent in one AI coding tool (Cursor, Claude Code, Copilot, or Codex) in your own repos daily",
+      "Practice orienting in an unfamiliar codebase fast: read structure, run tests first, form a hypothesis before prompting",
+      "Write bounded prompts (scope + constraints + acceptance criteria) instead of 'fix everything'",
+      "Review every AI diff like a PR: catch wrong assumptions, missing edge cases, hallucinated APIs/overconfident claims",
+      "Write your own tests to prove a fix — 'it ran once' is not evidence",
+      "Narrate out loud while you work — interviewers are grading how you direct and check the AI, not just the output",
+    ]},
+  { title: "System design", when: "~1–2 weeks", tags: ["ai","mixed","leetcode"],
+    items: [
+      "Learn the standard framework: requirements → scale estimate → high-level design → data model → deep dive → tradeoffs",
+      "Know the core building blocks cold: load balancing, caching, DB choice/sharding, queues, rate limiting, CAP tradeoffs",
+      "Drill 5–8 common prompts: URL shortener, rate limiter, chat/notification system, job scheduler, payments/ledger",
+      "At your level, emphasize reliability, idempotency, and observability over raw hyperscale — that's what gets asked",
+    ]},
+  { title: "Practical 'build it live' & code-review rounds", when: "~1 week", tags: ["ai","mixed"],
+    items: [
+      "Practice building a small, testable feature from scratch in ~45 min, in your strongest language, from an empty repo",
+      "Practice reviewing a PR/merge request and leaving structured feedback: correctness, edge cases, tests, architecture",
+      "Practice debugging an unfamiliar service with an injected bug under a timer (ask a friend or AI to break 2–3 lines)",
+    ]},
+  { title: "Behavioral, 'why us', and mock interviews", when: "Ongoing — finish before interview #1", tags: [],
+    items: [
+      "Tailor a 'why this company' answer per target, referencing their actual AI-interview stance (shows real research)",
+      "Rehearse 2–3 of your strongest Capital One stories until they're tight: FICO $50M unblock, security initiative, incident response",
+      "Run 2–3 full mock loops (screen + onsite style) before your first real interview",
+      "Prep 3–4 smart questions to ask every interviewer — shows engagement, not just answering",
+    ]},
+];
+
+function loadChecklist(){
+  try { return JSON.parse(localStorage.getItem('prepChecklist_v1') || '{}'); }
+  catch(e){ return {}; }
+}
+function saveChecklist(state){
+  localStorage.setItem('prepChecklist_v1', JSON.stringify(state));
+}
+
+function renderRoadmap(){
+  const el = document.getElementById('roadmapView');
+  const state = loadChecklist();
+  const styleTagHtml = tags => tags.length
+    ? `<div class="phase-tags">${tags.map(t => `<span class="tag style-${t}">${STYLE_LABEL[t]}</span>`).join('')}</div>`
+    : `<div class="phase-tags"><span class="tag" style="background:#eef0f6;color:var(--muted);">Applies to everyone</span></div>`;
+
+  let totalItems = 0, totalDone = 0;
+  const phasesHtml = ROADMAP.map((phase, pi) => {
+    const phaseDone = phase.items.filter((_, ii) => state[`${pi}-${ii}`]).length;
+    totalItems += phase.items.length; totalDone += phaseDone;
+    const complete = phaseDone === phase.items.length;
+    return `
+      <div class="phase ${pi===0 ? 'open' : ''}" data-phase="${pi}">
+        <div class="phase-head">
+          <div class="phase-num">${complete ? '✓' : pi+1}</div>
+          <div>
+            <div class="phase-title">${phase.title}</div>
+            <div class="phase-sub">${phaseDone}/${phase.items.length} done</div>
+          </div>
+          <div class="phase-when">${phase.when}</div>
+          <div class="phase-badge">${complete ? '✓ Complete' : 'In progress'}</div>
+        </div>
+        <div class="phase-body">
+          ${styleTagHtml(phase.tags)}
+          ${phase.items.map((item, ii) => {
+            const id = `${pi}-${ii}`;
+            const checked = !!state[id];
+            return `
+              <div class="phase-item ${checked ? 'done' : ''}">
+                <input type="checkbox" id="chk-${id}" data-id="${id}" ${checked ? 'checked' : ''}>
+                <label for="chk-${id}">${item}</label>
+              </div>`;
+          }).join('')}
+        </div>
+      </div>`;
+  }).join('');
+
+  const pct = totalItems ? Math.round(100 * totalDone / totalItems) : 0;
+
+  el.innerHTML = `
+    <div class="roadmap-intro">
+      Even for "AI-assisted" roles, interviewers expect you to know the algorithm yourself and still ask system design.
+      This roadmap covers everything across the list — check off items as you go, it's saved on this device.
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:10px;">
+        <span>Overall progress</span><span>${totalDone}/${totalItems} (${pct}%)</span>
+      </div>
+      <div class="roadmap-progress"><div class="roadmap-progress-bar" style="width:${pct}%"></div></div>
+    </div>
+    ${phasesHtml}`;
+
+  el.querySelectorAll('.phase-head').forEach(h => h.addEventListener('click', () => {
+    h.closest('.phase').classList.toggle('open');
+  }));
+  el.querySelectorAll('.phase-item input[type=checkbox]').forEach(cb => cb.addEventListener('click', e => {
+    e.stopPropagation();
+    const s = loadChecklist();
+    s[cb.dataset.id] = cb.checked;
+    saveChecklist(s);
+    renderRoadmap();
+  }));
+}
+
+function wireNavTabs(){
+  document.querySelectorAll('.navtab').forEach(tab => tab.addEventListener('click', () => {
+    document.querySelectorAll('.navtab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const view = tab.dataset.view;
+    document.getElementById('jobsView').style.display = view === 'jobs' ? '' : 'none';
+    document.getElementById('roadmapView').style.display = view === 'roadmap' ? '' : 'none';
+    if (view === 'roadmap') renderRoadmap();
+  }));
+}
 
 async function loadJobData(){
   const res = await fetch("data.json", { cache: "no-store" });
@@ -445,6 +621,7 @@ async function initSite(){
   }
 
   wireFilters();
+  wireNavTabs();
   renderList(); // render instantly with defaults, then reconcile with remote
 
   document.getElementById('syncPill').addEventListener('click', async () => {
