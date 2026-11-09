@@ -143,6 +143,8 @@
   .tag.rank-3{background:#fff7ed;color:#c2410c;}
   .tag.style-ai{background:#f0fdfa;color:#0d9488;}
   .tag.style-leetcode{background:#fdf2f8;color:#be185d;}
+  .tag.style-mixed{background:#fefce8;color:#a16207;}
+  .tag.style-unclear{background:#f1f5f9;color:#64748b;}
   .tag.auto{background:#eef2ff;color:#4f46e5;font-weight:600;}
   .job-role{font-size:13.5px;color:var(--ink);font-weight:500;margin-bottom:3px;}
   .job-meta{font-size:12.5px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;}
@@ -227,6 +229,8 @@
         <button class="pill active" data-style="">Any interview</button>
         <button class="pill" data-style="ai">🤖 AI-assisted</button>
         <button class="pill" data-style="leetcode">📐 LeetCode-style</button>
+        <button class="pill" data-style="mixed">🔀 Mixed</button>
+        <button class="pill" data-style="unclear">❔ Unclear</button>
       </div>
       <div class="search-wrap">
         <span class="ic">🔍</span>
@@ -252,11 +256,12 @@ const GATE_KEY = "trackerUnlocked_v1";
 const RANK_LABEL = {1:"Remote", 2:"Chicago", 3:"SF / NYC"};
 const AVATAR_COLORS = ["#4f46e5","#0891b2","#059669","#c2410c","#9333ea","#dc2626","#0284c7","#65a30d"];
 
-const STYLE_LABEL = {ai:"🤖 AI-assisted", leetcode:"📐 LeetCode-style"};
+const STYLE_LABEL = {ai:"🤖 AI-assisted", leetcode:"📐 LeetCode-style", mixed:"🔀 Mixed", unclear:"❔ Unclear"};
 let JOBS = [];
 let DEFAULT_STATUS = "Not Applied";
 let AUTO_REFRESH_BOARDS = {};
 let DATA_LAST_UPDATED = null;
+let STYLE_RESEARCH_DATE = null;
 let statusMap = {};
 let filters = { rank: "", status: "", style: "", q: "" };
 
@@ -268,6 +273,7 @@ async function loadJobData(){
   DEFAULT_STATUS = data.defaultStatus || "Not Applied";
   AUTO_REFRESH_BOARDS = data.autoRefreshBoards || {};
   DATA_LAST_UPDATED = data.lastUpdated || null;
+  STYLE_RESEARCH_DATE = data.styleResearchDate || null;
 }
 
 async function sha256(text){
@@ -326,7 +332,7 @@ function renderList(){
           <div class="job-top">
             <span class="job-company">${j.company}</span>
             <span class="tag rank-${j.rank}">${RANK_LABEL[j.rank]}</span>
-            <span class="tag style-${j.style}">${STYLE_LABEL[j.style] || j.style}</span>
+            <span class="tag style-${j.style}" title="${(j.styleNote || '').replace(/"/g,'&quot;')}">${STYLE_LABEL[j.style] || j.style}</span>
             ${isAuto ? '<span class="tag auto" title="Link auto-refreshed daily from the live job board">🔄 auto-updated</span>' : ''}
           </div>
           <div class="job-role">${j.role}</div>
@@ -432,6 +438,10 @@ async function initSite(){
   if (DATA_LAST_UPDATED){
     const d = new Date(DATA_LAST_UPDATED);
     document.getElementById('lastUpdated').textContent = `Job list last auto-refreshed: ${d.toLocaleString()}`;
+  }
+  if (STYLE_RESEARCH_DATE){
+    document.getElementById('lastUpdated').textContent +=
+      ` · Interview-style tags researched ${STYLE_RESEARCH_DATE} (hover a tag for source notes)`;
   }
 
   wireFilters();

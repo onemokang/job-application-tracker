@@ -10,46 +10,50 @@
       "location": "Remote - USA",
       "workMode": "Remote-first",
       "comp": "$265K–$400K+ (IC4–IC5)",
-      "why": "Onsite: bug + design + log-diagnosis + code review, no algo leetcode",
+      "why": "Official 2026 process: repo-based debug/review/PR task with AI, no algo leetcode",
       "link": "https://www.coinbase.com/careers/positions/8304034?gh_jid=8304034",
       "notes": "Remote-first but quarterly in-person 'surges'. Auto-refreshed from Greenhouse daily.",
-      "postingTitle": "Senior Software Engineer"
+      "postingTitle": "Senior Software Engineer",
+      "styleNote": "Company-wide AI-fluency interview rollout completed Mar 2026 (official eng blog)."
     },
     {
       "rank": 1,
-      "style": "ai",
+      "style": "mixed",
       "company": "Atlassian",
       "role": "Software Engineer II / Senior Fullstack",
       "location": "Remote (US Pacific/Mountain tz)",
       "workMode": "Remote (Team Anywhere)",
       "comp": "$149K–$380K (P40–P50)",
-      "why": "One AI-assisted coding round: small app, add feature/fix bug, tests already exist",
+      "why": "OA has DSA questions; separate round is AI-assisted repo debugging (reported)",
       "link": "https://www.atlassian.com/company/careers/all-jobs?team=Engineering&search=software%20engineer",
-      "notes": "Fully remote model, hire in most US states"
+      "notes": "Fully remote model, hire in most US states",
+      "styleNote": "AI-assisted repo/debug round reported, but OA still has separate DSA coding questions."
     },
     {
       "rank": 1,
-      "style": "ai",
+      "style": "mixed",
       "company": "Shopify",
       "role": "Senior Software Developer",
       "location": "Remote",
       "workMode": "Remote / \"digital by default\"",
       "comp": "$192K–$269K (L5–L6)",
-      "why": "AI-assisted pair programming, screen-shared, own IDE/tools",
+      "why": "OA reports conflict (practical vs 2 leetcode Qs); pairing round is AI-assisted & practical",
       "link": "https://www.shopify.com/careers/search?query=software+developer",
-      "notes": "Search careers page by 'Software Developer'"
+      "notes": "Search careers page by 'Software Developer'",
+      "styleNote": "Conflicting 2026 candidate reports: some OAs are 'not leetcode', others report 2 LeetCode-style OA questions. Pair-programming round is consistently AI-assisted/practical."
     },
     {
       "rank": 1,
-      "style": "ai",
+      "style": "mixed",
       "company": "Snowflake",
       "role": "Software Engineer",
       "location": "Remote-friendly (multiple US hubs)",
       "workMode": "Remote-friendly",
       "comp": "$180K–$300K+ (est.)",
-      "why": "Phone screen in CoderPad with AI allowed; AI round for some roles",
+      "why": "Confirmed dual-track: 1 classic LeetCode round + 1 AI-allowed round, same loop",
       "link": "https://careers.snowflake.com/us/en/search-results?keywords=software%20engineer",
-      "notes": "Search careers page by 'Software Engineer'"
+      "notes": "Search careers page by 'Software Engineer'",
+      "styleNote": "Candidates explicitly report one classic LeetCode round AND a separate AI-allowed round in the same loop."
     },
     {
       "rank": 1,
@@ -59,70 +63,76 @@
       "location": "Remote (Global/US)",
       "workMode": "All-remote",
       "comp": "$170K–$280K+ (est.)",
-      "why": "Known all-remote devtool brand; practical/take-home-leaning interview reputation",
+      "why": "Official: async MR review + practical pairing, explicitly 'no leetcode' per handbook",
       "link": "https://about.gitlab.com/jobs/all-jobs/?search=software+engineer",
-      "notes": "One of the original all-remote tech companies; fully documented handbook culture"
+      "notes": "One of the original all-remote tech companies; fully documented handbook culture",
+      "styleNote": "Official handbook: MR-review based process, no leetcode. Some basic DSA fundamentals possible for backend."
     },
     {
       "rank": 1,
-      "style": "leetcode",
+      "style": "mixed",
       "company": "Amazon",
       "role": "Software Development Engineer II/III",
       "location": "Remote - USA",
       "workMode": "Remote",
       "comp": "$180K–$350K+ (L5–L6)",
-      "why": "Classic SDE loop: OA (algorithms) + bar-raiser + system design",
+      "why": "OA = 1 algo + 1 AI task (official); onsite/Bar Raiser still classic LeetCode-heavy",
       "link": "https://www.amazon.jobs/en/search?base_query=software+development+engineer&loc_query=Remote",
-      "notes": "Huge known name; genuine remote SDE reqs exist but rotate — use search"
+      "notes": "Huge known name; genuine remote SDE reqs exist but rotate — use search",
+      "styleNote": "OA officially now includes 1 algorithm problem + 1 AI-assisted repo task (since Jan 2026), but onsite/Bar Raiser rounds still report classic medium-hard LeetCode problems."
     },
     {
       "rank": 2,
-      "style": "ai",
+      "style": "leetcode",
       "company": "Uber Freight",
       "role": "Senior Software Engineer (Backend)",
       "location": "Chicago, IL",
       "workMode": "Hybrid (2 days/wk)",
       "comp": "$185K–$212K base + bonus/equity",
-      "why": "Known Uber brand; practical backend role, not leetcode-screened per report",
+      "why": "Confirmed DSA + LLD + HLD loop; no AI round reported by any 2026 candidate",
       "link": "https://job-boards.greenhouse.io/uberfreight/jobs/5467670008",
       "notes": "Uber Freight HQ is in Chicago. Auto-refreshed from Greenhouse daily.",
-      "postingTitle": "Senior Software Engineer (Backend)"
+      "postingTitle": "Senior Software Engineer (Backend)",
+      "styleNote": "Multiple 2026 candidate reports: DSA -> LLD -> HLD loop, no AI-assisted round mentioned anywhere."
     },
     {
       "rank": 2,
-      "style": "leetcode",
+      "style": "mixed",
       "company": "Google",
       "role": "Senior Software Engineer",
       "location": "Chicago, IL",
       "workMode": "Onsite/Hybrid",
       "comp": "$174K–$253K base +15% bonus+equity (median total ~$246K)",
-      "why": "Mostly classic DSA+system design loop; piloting an AI code-comprehension round for some junior/mid reqs",
+      "why": "AI code-comprehension round added (select teams), but 1 classic DSA round still required",
       "link": "https://www.google.com/about/careers/applications/jobs/results?target_level=MID&target_level=EARLY&target_level=ADVANCED&q=%22software%20engineer%22&location=Chicago,%20IL",
-      "notes": "Confirm per-team interview format in recruiter screen"
+      "notes": "Confirm per-team interview format in recruiter screen",
+      "styleNote": "Official (per Business Insider/company confirm): new AI 'Code Comprehension' round added for L3/L4 on select teams, but it replaces only one of two coding rounds — a classic DSA round remains required."
     },
     {
       "rank": 2,
-      "style": "ai",
+      "style": "mixed",
       "company": "Morningstar",
       "role": "Senior Software Engineer",
       "location": "Chicago, IL",
       "workMode": "Hybrid",
       "comp": "~$153K+ base (varies by team)",
-      "why": "Known Chicago finance-data brand; practical/system-heavy interview reputation",
+      "why": "Reports split: some teams give 1 LeetCode medium, others skip leetcode entirely",
       "link": "https://morningstar.wd5.myworkdayjobs.com/en-US/americas?q=software%20engineer",
-      "notes": "Several open Chicago SWE reqs; check Workday board"
+      "notes": "Several open Chicago SWE reqs; check Workday board",
+      "styleNote": "Conflicting reports by location/team: some report 1 LeetCode medium, others report no-leetcode code review + API design."
     },
     {
       "rank": 2,
-      "style": "ai",
+      "style": "mixed",
       "company": "Discover Financial Services",
       "role": "Software Engineer",
       "location": "Chicago / Riverwoods, IL",
       "workMode": "Hybrid",
       "comp": "$160K–$230K (est.)",
-      "why": "Known big-name consumer finance brand headquartered near Chicago",
+      "why": "Reports vary: some get 2 LeetCode-style Qs, others get practical-only HackerRank OA",
       "link": "https://jobs.discover.com/search-jobs/software%20engineer",
-      "notes": "Large, stable, well-known name; verify interview format directly"
+      "notes": "Large, stable, well-known name; verify interview format directly",
+      "styleNote": "Reports vary: some candidates got 2 LeetCode-type questions in a 2-hour round, others got HackerRank practical assessments with no leetcode."
     },
     {
       "rank": 2,
@@ -132,9 +142,10 @@
       "location": "Chicago, IL",
       "workMode": "Hybrid",
       "comp": "$150K–$260K+ (est., incl. bonus)",
-      "why": "Mix of DSA + practical/OOD rounds depending on team",
+      "why": "OA + Superday both LeetCode easy-medium; AI only assists the interviewer, not you",
       "link": "https://careers.jpmorgan.com/us/en/search-jobs?keywords=software%20engineer&location=Chicago",
-      "notes": "Massive Chicago tech campus; huge known brand"
+      "notes": "Massive Chicago tech campus; huge known brand",
+      "styleNote": "Consistently reported: HackerRank OA (LeetCode easy-medium) + Superday live coding (LeetCode easy-medium) + separate PR-review round. AI is used only by interviewers to help grade, not by candidates."
     },
     {
       "rank": 3,
@@ -144,22 +155,24 @@
       "location": "San Francisco / Sunnyvale / NYC / Seattle",
       "workMode": "Onsite/Hybrid",
       "comp": "$155K–$285K (est.)",
-      "why": "'AI Code Craft' onsite: own IDE/AI tools, realistic task, no algo leetcode",
+      "why": "Official: AI Code Craft replaced trad. coding rounds; other rounds are explicitly non-leetcode",
       "link": "https://job-boards.greenhouse.io/doordashusa/jobs/8136498",
       "notes": "Fully replaced classic coding rounds org-wide. Auto-refreshed from Greenhouse daily.",
-      "postingTitle": "Senior Software Engineer, Backend (All Teams)"
+      "postingTitle": "Senior Software Engineer, Backend (All Teams)",
+      "styleNote": "Official company blog (Mar 2026): AI Code Craft now the primary onsite round, explicitly replacing traditional coding rounds company-wide. Other rounds explicitly marketed as 'not LeetCode-style' too."
     },
     {
       "rank": 3,
-      "style": "ai",
+      "style": "mixed",
       "company": "Stripe",
       "role": "Software Engineer",
       "location": "San Francisco, CA",
       "workMode": "Onsite/Hybrid",
       "comp": "$200K–$350K+ (est.)",
-      "why": "Pair programming on real bugs inside HackerRank w/ AI assistant allowed",
+      "why": "Has a dedicated AI-assisted round AND a separate LeetCode-medium coding round",
       "link": "https://stripe.com/jobs/search?query=software+engineer",
-      "notes": "Search careers page by 'Software Engineer'"
+      "notes": "Search careers page by 'Software Engineer'",
+      "styleNote": "Loop has both a dedicated 'AI-Assisted Coding' round (HackerRank + AI chat) AND a separate traditional 'Coding' round reported as LeetCode-medium."
     },
     {
       "rank": 3,
@@ -169,21 +182,23 @@
       "location": "San Francisco, CA",
       "workMode": "Onsite",
       "comp": "$300K–$450K+ (est.)",
-      "why": "Eng managers publicly dropped traditional coding interviews for agentic-skill signal",
+      "why": "OA + phone screen + onsite all practical/progressive-build; recruiters say 'no leetcode puzzles'",
       "link": "https://www.anthropic.com/jobs",
-      "notes": "Very selective, but explicitly leetcode-skeptical culture"
+      "notes": "Very selective, but explicitly leetcode-skeptical culture",
+      "styleNote": "Consistently reported across OA, phone screen, and onsite: progressive practical build tasks, explicitly 'not LeetCode' per multiple 2026 sources."
     },
     {
       "rank": 3,
-      "style": "leetcode",
+      "style": "mixed",
       "company": "Meta",
       "role": "Software Engineer",
       "location": "Menlo Park / SF Bay Area, CA",
       "workMode": "Onsite/Hybrid",
       "comp": "$190K–$380K+ (E4–E5)",
-      "why": "Classic 2x coding (DSA) + system design/behavioral loop; piloted an AI round for some teams since Oct 2025",
+      "why": "AI round replaces only 1 of 2 coding slots (E3-E6); other slot still classic LeetCode",
       "link": "https://www.metacareers.com/jobs?q=software%20engineer",
-      "notes": "Huge known name; very selective"
+      "notes": "Huge known name; very selective",
+      "styleNote": "Official company confirmation: AI-enabled round replaces only 1 of 2 coding rounds for most levels (E3-E6); classic 2x-LeetCode-in-45-min round remains for the other slot. Only E7+ is AI-only."
     },
     {
       "rank": 3,
@@ -193,21 +208,23 @@
       "location": "Cupertino / Bay Area, CA",
       "workMode": "Onsite",
       "comp": "$180K–$350K+ (est.)",
-      "why": "Traditional algorithm + domain-specific technical rounds",
+      "why": "Every level's reports show classic LeetCode medium-hard; no AI round found anywhere",
       "link": "https://jobs.apple.com/en-us/search?search=software%20engineer&location=santa-clara-valley-SCAL",
-      "notes": "Huge known name; interview format varies a lot by team"
+      "notes": "Huge known name; interview format varies a lot by team",
+      "styleNote": "Every 2026 report (ICT2 through Staff) describes classic LeetCode medium-hard problems on a plain shared editor; no AI-assisted round found in any report."
     },
     {
       "rank": 3,
-      "style": "ai",
+      "style": "mixed",
       "company": "Bloomberg",
       "role": "Senior Software Engineer",
       "location": "New York, NY",
       "workMode": "Onsite/Hybrid",
       "comp": "$160K–$240K + bonus",
-      "why": "Phone-screen AI round: given implementation, discuss refactor + OOD question",
+      "why": "New format = 2 AI-debugging rounds (trending), but some loops still report plain LeetCode medium",
       "link": "https://careers.bloomberg.com/job/search?keywords=software+engineer&city=New+York",
-      "notes": "Iconic NYC name, strong brand recognition"
+      "notes": "Iconic NYC name, strong brand recognition",
+      "styleNote": "New-grad/intern loop is shifting hard to 2 AI-assisted debugging rounds (2026), but some parallel/older reports still show a plain LeetCode-medium first round."
     },
     {
       "rank": 3,
@@ -217,22 +234,24 @@
       "location": "New York, NY",
       "workMode": "Hybrid",
       "comp": "$244K–$305K",
-      "why": "AI coding round since spring 2026: own agent/local tools, screen-shared, realistic task",
+      "why": "Official policy page: dedicated AI-coding round with your own AI tools, clearly flagged in advance",
       "link": "https://careers.datadoghq.com/detail/3851935/?gh_jid=3851935",
       "notes": "NYC HQ; multiple open NY reqs on Greenhouse board. Auto-refreshed daily.",
-      "postingTitle": "Senior Software Engineer "
+      "postingTitle": "Senior Software Engineer ",
+      "styleNote": "Official company AI-interview policy page confirms a dedicated, clearly-flagged AI-assisted coding round using your own tools (Claude Code/Codex) for eligible roles."
     },
     {
       "rank": 3,
-      "style": "ai",
+      "style": "mixed",
       "company": "Ramp",
       "role": "Software Engineer",
       "location": "New York, NY",
       "workMode": "Onsite/Hybrid",
       "comp": "$200K–$350K+ (est.)",
-      "why": "AI live coding onsite: repo + product brief, any AI tools, stipend to set up",
+      "why": "Has 1 classic coding round (algo-based) PLUS 1 separate dedicated AI-coding round",
       "link": "https://ramp.com/careers",
-      "notes": "Fast-growing, very well-paying fintech; strong name recognition in tech"
+      "notes": "Fast-growing, very well-paying fintech; strong name recognition in tech",
+      "styleNote": "Loop includes one classic/algorithmic coding round (e.g. a binary-search problem reported) PLUS a separate dedicated AI-coding round with a stipend for AI tools."
     },
     {
       "rank": 3,
@@ -242,21 +261,23 @@
       "location": "New York, NY",
       "workMode": "Onsite/Hybrid",
       "comp": "$150K–$260K+ (est., incl. bonus)",
-      "why": "Traditional coding + OOD interview loop, some teams piloting AI-assisted rounds",
+      "why": "CoderPad + Superday are classic LeetCode; official 'AI assistant' is nav/syntax-only, external AI banned",
       "link": "https://higher.gs.com/results?SEARCH_TEXT=software%20engineer&LOCATION=New%20York",
-      "notes": "Huge known Wall St name with a very large engineering org"
+      "notes": "Huge known Wall St name with a very large engineering org",
+      "styleNote": "Consistently reported: CoderPad screen (2 easy-medium LeetCode problems) + Superday with more LeetCode-style graph/tree problems. The 'AI assistant' is officially described as 'limited' — syntax/navigation help only, not real AI-assisted problem solving — and outside AI is explicitly banned."
     },
     {
       "rank": 3,
-      "style": "leetcode",
+      "style": "mixed",
       "company": "Microsoft",
       "role": "Software Engineer",
       "location": "New York, NY",
       "workMode": "Hybrid",
       "comp": "$160K–$300K+ (est.)",
-      "why": "Mostly classic DSA + design loop, varies significantly by org",
+      "why": "AI-assisted rounds exist but are org-specific; underlying problem is often still classic LeetCode",
       "link": "https://jobs.careers.microsoft.com/global/en/search?q=software%20engineer&lc=New%20York",
-      "notes": "Huge known name, large NYC presence"
+      "notes": "Huge known name, large NYC presence",
+      "styleNote": "AI-assisted rounds are real but team/org-specific (confirmed for some SDE2/CoreAI loops), and even in those rounds the underlying problem is often still a classic LeetCode-style question with AI tool access layered on top."
     }
   ],
   "autoRefreshBoards": {
@@ -276,5 +297,6 @@
       "board": "datadog",
       "rank": 3
     }
-  }
+  },
+  "styleResearchDate": "2026-11-08"
 }

@@ -11,6 +11,12 @@ Greenhouse), pull the live public Job Board API and point that company's
 This keeps those 4 links from ever going stale/404, without needing any
 auth or scraping — Greenhouse's board API is public.
 
+NOTE on the `style` field (ai / leetcode / mixed / unclear): this script
+never touches it. Interview style requires reading real candidate reports
+(Glassdoor/Blind/Reddit/company blogs), which isn't something a link-check
+script can verify. When a new company is added, set its `style` by hand
+after research, and record a short `styleNote` with your source/reasoning.
+
 Run by .github/workflows/refresh-jobs.yml on a daily cron.
 """
 from __future__ import annotations
