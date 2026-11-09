@@ -3,88 +3,409 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onemo Kang — Job Application Tracker</title>
+<title>Job Application Tracker — Onemo Kang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#1F3B57;--bg:#f6f7f9;--card:#fff;--line:#e3e6ea;--green:#1b8a4c;--gray:#6b7280;}
+  :root{
+    --bg:#f3f4f8;
+    --surface:#ffffff;
+    --ink:#0f172a;
+    --muted:#64748b;
+    --line:#e7e9f0;
+    --primary:#4f46e5;
+    --primary-ink:#eef2ff;
+    --green:#16a34a;
+    --green-bg:#ecfdf3;
+    --amber:#d97706;
+    --amber-bg:#fff7ed;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.12);
+  }
   *{box-sizing:border-box;}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);margin:0;color:#111;}
-  header{background:var(--navy);color:#fff;padding:24px 28px;}
-  header h1{margin:0 0 4px;font-size:22px;}
-  header p{margin:0;opacity:.85;font-size:14px;}
-  .wrap{max-width:1200px;margin:24px auto;padding:0 20px;}
-  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:center;}
-  select,input{padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;background:#fff;}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--gray);}
-  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);}
-  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top;}
-  th{background:var(--navy);color:#fff;cursor:pointer;user-select:none;white-space:nowrap;}
-  th:hover{background:#163049;}
-  tr:hover td{background:#fafbfc;}
-  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:600;}
-  .rank-1{background:#e7f6ec;color:var(--green);}
-  .rank-2{background:#eaf1fb;color:#1d4ed8;}
-  .rank-3{background:#fdeee0;color:#c2550a;}
-  select.status-select{font-size:12.5px;padding:5px 7px;border-radius:6px;}
-  .status-applied{background:#e7f6ec;color:var(--green);font-weight:600;}
-  .status-not{background:#f1f2f4;color:var(--gray);}
-  a.joblink{color:#1d4ed8;text-decoration:none;font-weight:600;}
-  a.joblink:hover{text-decoration:underline;}
-  footer{text-align:center;color:var(--gray);font-size:12px;padding:30px 0;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:
+      radial-gradient(1200px 500px at 10% -10%, rgba(99,102,241,.14), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(16,185,129,.10), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  /* ---------- Password gate ---------- */
+  #gate{
+    position:fixed; inset:0; z-index:999; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,#312e81 0%,#4f46e5 45%,#6366f1 100%);
+  }
+  #gate .card{
+    background:rgba(255,255,255,.97); padding:40px 36px; border-radius:20px; width:min(360px,90vw);
+    text-align:center; box-shadow:0 30px 60px -20px rgba(0,0,0,.4);
+    animation:pop .35s ease;
+  }
+  @keyframes pop{ from{opacity:0; transform:translateY(8px) scale(.98);} to{opacity:1; transform:none;} }
+  @keyframes shake{ 10%,90%{transform:translateX(-1px);} 20%,80%{transform:translateX(2px);} 30%,50%,70%{transform:translateX(-4px);} 40%,60%{transform:translateX(4px);} }
+  .shake{ animation:shake .4s; }
+  #gate .lock{width:48px;height:48px;border-radius:14px;background:var(--primary-ink);color:var(--primary);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;}
+  #gate h2{margin:0 0 4px;font-size:19px;font-weight:700;}
+  #gate p{margin:0 0 20px;color:var(--muted);font-size:13.5px;}
+  #gate input{
+    width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;
+    font-size:15px;margin-bottom:12px;outline:none;transition:border-color .15s;font-family:inherit;
+    letter-spacing:2px; text-align:center;
+  }
+  #gate input:focus{border-color:var(--primary);}
+  #gateErr{color:#dc2626;font-size:12.5px;height:16px;margin-bottom:8px;font-weight:500;}
+  #gateBtn{
+    width:100%;padding:12px;border:none;border-radius:12px;font-size:14.5px;font-weight:600;
+    background:var(--primary);color:#fff;cursor:pointer;transition:transform .1s, box-shadow .15s;
+  }
+  #gateBtn:hover{box-shadow:0 8px 20px -6px rgba(79,70,229,.6);}
+  #gateBtn:active{transform:scale(.98);}
+
+  /* ---------- Layout ---------- */
+  #siteContent{display:none;}
+  header.hero{
+    background:linear-gradient(120deg,#1e1b4b 0%,#312e81 45%,#4338ca 100%);
+    color:#fff; padding:36px 28px 52px; position:relative; overflow:hidden;
+  }
+  header.hero::after{
+    content:""; position:absolute; right:-80px; top:-80px; width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+  }
+  .hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;}
+  header.hero h1{margin:0 0 6px;font-size:26px;font-weight:800;letter-spacing:-0.02em;}
+  header.hero p{margin:0;opacity:.8;font-size:14px;font-weight:400;}
+  .sync-pill{
+    display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2); padding:7px 13px;border-radius:999px;font-size:12.5px;font-weight:500;
+    backdrop-filter:blur(6px);
+  }
+  .sync-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.25);}
+  .sync-dot.syncing{background:#fbbf24;animation:blink 1s infinite;}
+  .sync-dot.error{background:#f87171;}
+  @keyframes blink{50%{opacity:.3;}}
+
+  .wrap{max-width:1180px;margin:-34px auto 40px;padding:0 20px;position:relative;z-index:2;}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px;}
+  .stat-card{
+    background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:18px 20px;border:1px solid var(--line);
+  }
+  .stat-card .num{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1;}
+  .stat-card .label{font-size:12.5px;color:var(--muted);font-weight:500;margin-top:4px;}
+  .stat-card.accent .num{color:var(--primary);}
+  .stat-card.green .num{color:var(--green);}
+
+  .toolbar{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:14px 16px;margin-bottom:18px;
+    display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  }
+  .pillgroup{display:flex;gap:6px;flex-wrap:wrap;}
+  .pill{
+    border:1px solid var(--line);background:#fff;color:var(--muted);padding:7px 13px;border-radius:999px;
+    font-size:12.5px;font-weight:600;cursor:pointer;transition:.15s;white-space:nowrap;
+  }
+  .pill:hover{border-color:var(--primary);color:var(--primary);}
+  .pill.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+  .search-wrap{position:relative;flex:1;min-width:180px;}
+  .search-wrap input{
+    width:100%;padding:9px 14px 9px 32px;border:1px solid var(--line);border-radius:999px;
+    font-size:13.5px;outline:none;font-family:inherit;transition:border-color .15s;
+  }
+  .search-wrap input:focus{border-color:var(--primary);}
+  .search-wrap .ic{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;}
+
+  .list{display:flex;flex-direction:column;gap:10px;}
+  .job-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:16px 18px; display:grid;
+    grid-template-columns:auto 1fr auto; gap:14px; align-items:center;
+    transition:transform .12s, box-shadow .12s;
+  }
+  .job-card:hover{transform:translateY(-2px); box-shadow:0 4px 10px rgba(15,23,42,.06), 0 14px 30px -14px rgba(15,23,42,.18);}
+  .avatar{
+    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:700;font-size:16px;flex-shrink:0;
+  }
+  .job-main{min-width:0;}
+  .job-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+  .job-company{font-weight:700;font-size:15px;}
+  .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em;}
+  .tag.rank-1{background:#ecfdf5;color:#059669;}
+  .tag.rank-2{background:#eff6ff;color:#2563eb;}
+  .tag.rank-3{background:#fff7ed;color:#c2410c;}
+  .job-role{font-size:13.5px;color:var(--ink);font-weight:500;margin-bottom:3px;}
+  .job-meta{font-size:12.5px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;}
+  .job-meta b{color:var(--ink);font-weight:600;}
+  .job-why{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4;max-width:560px;}
+  .job-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+  .linkbtn{
+    font-size:12.5px;font-weight:600;color:var(--primary);background:var(--primary-ink);
+    padding:6px 12px;border-radius:8px;text-decoration:none;white-space:nowrap;transition:.15s;
+  }
+  .linkbtn:hover{background:var(--primary);color:#fff;}
+  .status-toggle{
+    border:none;border-radius:999px;padding:6px 14px 6px 10px;font-size:12px;font-weight:700;
+    cursor:pointer;display:flex;align-items:center;gap:5px;transition:.15s;white-space:nowrap;
+  }
+  .status-toggle.applied{background:var(--green-bg);color:var(--green);}
+  .status-toggle.not{background:#f1f3f8;color:var(--muted);}
+  .status-toggle:hover{filter:brightness(.97);}
+  .status-toggle .dot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+  .status-toggle.saving{opacity:.55;cursor:wait;}
+
+  .empty{text-align:center;padding:50px 20px;color:var(--muted);font-size:14px;}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 36px;}
+  footer code{background:#eef0f6;padding:2px 6px;border-radius:5px;}
+
+  @media (max-width:640px){
+    .job-card{grid-template-columns:auto 1fr;}
+    .job-actions{grid-column:1 / -1;flex-direction:row;justify-content:space-between;margin-top:6px;}
+  }
 </style>
 </head>
 <body>
-<div id="gate" style="position:fixed;inset:0;background:#1F3B57;display:flex;align-items:center;justify-content:center;z-index:999;">
-  <div style="background:#fff;padding:32px 36px;border-radius:12px;max-width:320px;width:90%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);">
-    <h2 style="margin:0 0 14px;font-size:18px;color:#1F3B57;">Enter Password</h2>
-    <input id="gatePw" type="password" style="width:100%;padding:10px;border:1px solid #e3e6ea;border-radius:8px;font-size:15px;margin-bottom:10px;" autofocus>
-    <div id="gateErr" style="color:#c2550a;font-size:12.5px;height:16px;margin-bottom:6px;"></div>
-    <button id="gateBtn" style="width:100%;padding:10px;border:none;background:#1F3B57;color:#fff;border-radius:8px;font-size:15px;cursor:pointer;">Unlock</button>
+
+<div id="gate">
+  <div class="card">
+    <div class="lock">🔒</div>
+    <h2>Private Tracker</h2>
+    <p>Enter the password to continue</p>
+    <input id="gatePw" type="password" maxlength="12" autofocus placeholder="••••">
+    <div id="gateErr"></div>
+    <button id="gateBtn">Unlock</button>
   </div>
-</div>
-<div id="siteContent" style="display:none;">
-<header>
-  <h1>Job Application Tracker</h1>
-  <p>Onemo Kang · Software Engineer · Target: ≥ $185.5K total comp · Preference: Remote &gt; Chicago &gt; SF = NYC</p>
-</header>
-<div class="wrap">
-  <div class="controls">
-    <div class="stat" id="countStat">Loading…</div>
-    <select id="filterRank">
-      <option value="">All locations</option>
-      <option value="1">Remote</option>
-      <option value="2">Chicago</option>
-      <option value="3">SF / NYC</option>
-    </select>
-    <select id="filterStatus">
-      <option value="">All statuses</option>
-      <option value="Applied">Applied</option>
-      <option value="Not Applied">Not Applied</option>
-    </select>
-    <input id="search" type="text" placeholder="Search company or role…">
-  </div>
-  <table id="tbl">
-    <thead>
-      <tr id="headRow"></tr>
-    </thead>
-    <tbody id="tbody"></tbody>
-  </table>
-</div>
-<footer>Data stored locally in your browser. Edit <code>data.js</code> to update rows, or click Status to toggle.</footer>
 </div>
 
+<div id="siteContent">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <div>
+          <h1>Job Application Tracker</h1>
+          <p>Onemo Kang · Software Engineer · Target ≥ $185.5K total comp · Remote &gt; Chicago &gt; SF = NYC</p>
+        </div>
+        <div class="sync-pill" id="syncPill" style="cursor:pointer;" title="Click to update sync token">
+          <span class="sync-dot" id="syncDot"></span><span id="syncText">Syncing…</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat-card accent"><div class="num" id="statTotal">–</div><div class="label">Total roles</div></div>
+      <div class="stat-card green"><div class="num" id="statApplied">–</div><div class="label">Applied</div></div>
+      <div class="stat-card"><div class="num" id="statRemaining">–</div><div class="label">Not applied yet</div></div>
+      <div class="stat-card"><div class="num" id="statRemote">–</div><div class="label">Remote options</div></div>
+    </div>
+
+    <div class="toolbar">
+      <div class="pillgroup" id="rankPills">
+        <button class="pill active" data-rank="">All</button>
+        <button class="pill" data-rank="1">Remote</button>
+        <button class="pill" data-rank="2">Chicago</button>
+        <button class="pill" data-rank="3">SF / NYC</button>
+      </div>
+      <div class="pillgroup" id="statusPills">
+        <button class="pill active" data-status="">Any status</button>
+        <button class="pill" data-status="Applied">Applied</button>
+        <button class="pill" data-status="Not Applied">Not applied</button>
+      </div>
+      <div class="search-wrap">
+        <span class="ic">🔍</span>
+        <input id="search" type="text" placeholder="Search company, role, location…">
+      </div>
+    </div>
+
+    <div class="list" id="list"></div>
+    <div class="empty" id="emptyState" style="display:none;">No roles match your filters.</div>
+  </div>
+
+  <footer>Status syncs live to the GitHub repo — same list on every device. Edit <code>data.js</code> to add/remove roles.</footer>
+</div>
+
+<script src="config.js"></script>
 <script src="data.js"></script>
+<script src="sync.js"></script>
 <script>
 const GATE_HASH = "b56e59e3e3ea61711b844fd3410e00ee164ed39b78807a2ec6fc6ac136240940";
 const GATE_KEY = "trackerUnlocked_v1";
+const RANK_LABEL = {1:"Remote", 2:"Chicago", 3:"SF / NYC"};
+const AVATAR_COLORS = ["#4f46e5","#0891b2","#059669","#c2410c","#9333ea","#dc2626","#0284c7","#65a30d"];
+
+let statusMap = {};
+let filters = { rank: "", status: "", q: "" };
 
 async function sha256(text){
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
+function colorFor(name){
+  let h = 0;
+  for (let i=0;i<name.length;i++) h = name.charCodeAt(i) + ((h<<5)-h);
+  return AVATAR_COLORS[Math.abs(h) % AVATAR_COLORS.length];
+}
+
+function setSyncState(state, text){
+  const dot = document.getElementById('syncDot');
+  dot.className = "sync-dot" + (state ? " " + state : "");
+  document.getElementById('syncText').textContent = text;
+}
+
+function statusOf(company){
+  return statusMap[company] || DEFAULT_STATUS;
+}
+
+function renderStats(){
+  const total = JOBS.length;
+  const applied = JOBS.filter(j => statusOf(j.company) === "Applied").length;
+  const remote = JOBS.filter(j => j.rank === 1).length;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statApplied').textContent = applied;
+  document.getElementById('statRemaining').textContent = total - applied;
+  document.getElementById('statRemote').textContent = remote;
+}
+
+function renderList(){
+  const list = document.getElementById('list');
+  const q = filters.q.toLowerCase();
+  const rows = JOBS.filter(j => {
+    if (filters.rank && String(j.rank) !== filters.rank) return false;
+    if (filters.status && statusOf(j.company) !== filters.status) return false;
+    if (q && !(j.company.toLowerCase().includes(q) || j.role.toLowerCase().includes(q) || j.location.toLowerCase().includes(q))) return false;
+    return true;
+  });
+
+  document.getElementById('emptyState').style.display = rows.length ? "none" : "block";
+  list.innerHTML = rows.map(j => {
+    const st = statusOf(j.company);
+    const applied = st === "Applied";
+    const initial = j.company.trim()[0].toUpperCase();
+    return `
+      <div class="job-card">
+        <div class="avatar" style="background:${colorFor(j.company)}">${initial}</div>
+        <div class="job-main">
+          <div class="job-top">
+            <span class="job-company">${j.company}</span>
+            <span class="tag rank-${j.rank}">${RANK_LABEL[j.rank]}</span>
+          </div>
+          <div class="job-role">${j.role}</div>
+          <div class="job-meta"><span>📍 ${j.location}</span><span>💼 ${j.workMode}</span><span><b>${j.comp}</b></span></div>
+          <div class="job-why">${j.why} <span style="opacity:.7">— ${j.notes}</span></div>
+        </div>
+        <div class="job-actions">
+          <a class="linkbtn" href="${j.link}" target="_blank" rel="noopener">View posting ↗</a>
+          <button class="status-toggle ${applied ? 'applied':'not'}" data-company="${j.company.replace(/"/g,'&quot;')}">
+            <span class="dot"></span>${applied ? 'Applied' : 'Not applied'}
+          </button>
+        </div>
+      </div>`;
+  }).join("");
+
+  list.querySelectorAll('.status-toggle').forEach(btn => {
+    btn.addEventListener('click', () => toggleStatus(btn));
+  });
+  renderStats();
+}
+
+async function toggleStatus(btn){
+  const company = btn.dataset.company;
+  const next = statusOf(company) === "Applied" ? "Not Applied" : "Applied";
+
+  if (!hasToken()){
+    const ok = await ensureToken(true);
+    if (!ok) return; // user cancelled — don't change status without sync
+  }
+
+  btn.classList.add('saving');
+  setSyncState("syncing", "Saving…");
+
+  statusMap[company] = next;
+  renderList();
+
+  try {
+    await pushStatusMap(statusMap);
+    setSyncState("", "Synced");
+  } catch (e) {
+    console.error(e);
+    setSyncState("error", "Sync failed — saved locally only");
+  }
+}
+
+function wireFilters(){
+  document.querySelectorAll('#rankPills .pill').forEach(p => p.addEventListener('click', () => {
+    document.querySelectorAll('#rankPills .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    filters.rank = p.dataset.rank;
+    renderList();
+  }));
+  document.querySelectorAll('#statusPills .pill').forEach(p => p.addEventListener('click', () => {
+    document.querySelectorAll('#statusPills .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    filters.status = p.dataset.status;
+    renderList();
+  }));
+  document.getElementById('search').addEventListener('input', e => {
+    filters.q = e.target.value;
+    renderList();
+  });
+}
+
+async function ensureToken(promptIfMissing){
+  if (hasToken()) return true;
+  if (!promptIfMissing) return false;
+  const tok = window.prompt(
+    "Paste your GitHub sync token (scoped only to the job-application-tracker repo).\n" +
+    "Stored only in this browser's localStorage — never uploaded anywhere but GitHub's API."
+  );
+  if (tok && tok.trim()){
+    setToken(tok);
+    return true;
+  }
+  return false;
+}
+
+async function initSite(){
+  wireFilters();
+  renderList(); // render instantly with defaults, then reconcile with remote
+
+  document.getElementById('syncPill').addEventListener('click', async () => {
+    const ok = await ensureToken(true);
+    if (ok) await syncFromRemote();
+  });
+
+  if (!hasToken()){
+    setSyncState("error", "Not synced — click to connect");
+    return;
+  }
+  await syncFromRemote();
+}
+
+async function syncFromRemote(){
+  setSyncState("syncing", "Syncing…");
+  const remote = await fetchStatusMap();
+  if (remote === null){
+    setSyncState("error", "Sync failed — click to reconnect");
+  } else {
+    statusMap = remote;
+    setSyncState("", "Synced");
+    renderList();
+  }
+}
+
 function showSite(){
   document.getElementById('gate').style.display = 'none';
   document.getElementById('siteContent').style.display = 'block';
+  initSite();
 }
 
 async function tryUnlock(){
@@ -94,6 +415,8 @@ async function tryUnlock(){
     localStorage.setItem(GATE_KEY, "1");
     showSite();
   } else {
+    const card = document.querySelector('#gate .card');
+    card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
     document.getElementById('gateErr').textContent = "Incorrect password";
   }
 }
@@ -104,105 +427,6 @@ if (localStorage.getItem(GATE_KEY) === "1"){
   document.getElementById('gateBtn').addEventListener('click', tryUnlock);
   document.getElementById('gatePw').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
 }
-
-const RANK_LABEL = {1:"Remote", 2:"Chicago", 3:"SF / NYC"};
-const STORAGE_KEY = "jobTrackerStatus_v1";
-
-function loadStatusOverrides(){
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ return {}; }
-}
-function saveStatusOverrides(obj){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
-}
-let overrides = loadStatusOverrides();
-
-let sortKey = "rank", sortDir = 1;
-
-function currentStatus(row){
-  return overrides[row.company] || row.status;
-}
-
-function render(){
-  const rankFilter = document.getElementById('filterRank').value;
-  const statusFilter = document.getElementById('filterStatus').value;
-  const q = document.getElementById('search').value.toLowerCase();
-
-  let rows = JOBS.filter(r => {
-    if (rankFilter && String(r.rank) !== rankFilter) return false;
-    const st = currentStatus(r);
-    if (statusFilter && st !== statusFilter) return false;
-    if (q && !(r.company.toLowerCase().includes(q) || r.role.toLowerCase().includes(q) || r.location.toLowerCase().includes(q))) return false;
-    return true;
-  });
-
-  rows.sort((a,b) => {
-    let av = sortKey === 'status' ? currentStatus(a) : a[sortKey];
-    let bv = sortKey === 'status' ? currentStatus(b) : b[sortKey];
-    if (typeof av === 'number') return (av-bv)*sortDir;
-    return String(av).localeCompare(String(bv)) * sortDir;
-  });
-
-  const appliedCount = JOBS.filter(r => currentStatus(r) === 'Applied').length;
-  document.getElementById('countStat').textContent =
-    `${rows.length} shown · ${appliedCount} applied / ${JOBS.length} total`;
-
-  const tbody = document.getElementById('tbody');
-  tbody.innerHTML = '';
-  rows.forEach(r => {
-    const tr = document.createElement('tr');
-    const st = currentStatus(r);
-    tr.innerHTML = `
-      <td><span class="badge rank-${r.rank}">${RANK_LABEL[r.rank]}</span></td>
-      <td><strong>${r.company}</strong></td>
-      <td>${r.role}</td>
-      <td>${r.location}</td>
-      <td>${r.workMode}</td>
-      <td>${r.comp}</td>
-      <td>${r.why}</td>
-      <td><a class="joblink" href="${r.link}" target="_blank" rel="noopener">View posting →</a></td>
-      <td>
-        <select class="status-select ${st==='Applied' ? 'status-applied' : 'status-not'}" data-company="${r.company}">
-          <option ${st==='Not Applied'?'selected':''}>Not Applied</option>
-          <option ${st==='Applied'?'selected':''}>Applied</option>
-        </select>
-      </td>
-      <td>${r.notes}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  document.querySelectorAll('.status-select').forEach(sel => {
-    sel.addEventListener('change', (e) => {
-      overrides[e.target.dataset.company] = e.target.value;
-      saveStatusOverrides(overrides);
-      render();
-    });
-  });
-}
-
-function buildHeader(){
-  const cols = [
-    ["rank","Pref"], ["company","Company"], ["role","Role"], ["location","Location"],
-    ["workMode","Work Mode"], ["comp","Est. Comp"], ["why","Why Low/No-LeetCode"],
-    ["link","Link"], ["status","Status"], ["notes","Notes"]
-  ];
-  const headRow = document.getElementById('headRow');
-  cols.forEach(([key,label]) => {
-    const th = document.createElement('th');
-    th.textContent = label;
-    th.addEventListener('click', () => {
-      if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
-      render();
-    });
-    headRow.appendChild(th);
-  });
-}
-
-buildHeader();
-document.getElementById('filterRank').addEventListener('change', render);
-document.getElementById('filterStatus').addEventListener('change', render);
-document.getElementById('search').addEventListener('input', render);
-render();
 </script>
 </body>
 </html>
