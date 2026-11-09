@@ -194,6 +194,14 @@
   .tag.chance-high{background:#ecfdf5;color:#059669;}
   .tag.chance-likely{background:#eff6ff;color:#2563eb;}
   .tag.chance-medium{background:#fff7ed;color:#c2410c;}
+  .tag.gre-none{background:#ecfdf5;color:#059669;}
+  .tag.gre-optional{background:#fefce8;color:#a16207;}
+  .tag.gre-required{background:#fdf2f8;color:#be185d;}
+  .school-section{
+    font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--muted);margin:18px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line);
+  }
+  .school-section:first-child{margin-top:4px;}
   .tag.auto{background:#eef2ff;color:#4f46e5;font-weight:600;}
   .job-role{font-size:13.5px;color:var(--ink);font-weight:500;margin-bottom:3px;}
   .job-meta{font-size:12.5px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;}
@@ -301,6 +309,12 @@
     <div id="schoolsView" style="display:none;">
       <div class="roadmap-intro" id="schoolsIntro"></div>
       <div class="toolbar">
+        <div class="pillgroup" id="grePills">
+          <button class="pill active" data-gre="">Any GRE policy</button>
+          <button class="pill" data-gre="none">No GRE</button>
+          <button class="pill" data-gre="optional">GRE optional</button>
+          <button class="pill" data-gre="required">GRE required</button>
+        </div>
         <div class="pillgroup" id="chancePills">
           <button class="pill active" data-chance="">Any chance</button>
           <button class="pill" data-chance="high">High chance</button>
@@ -344,7 +358,12 @@ let AUTO_REFRESH_BOARDS = {};
 let DATA_LAST_UPDATED = null;
 let STYLE_RESEARCH_DATE = null;
 const CHANCE_LABEL = {high:"High chance", likely:"Likely", medium:"Medium"};
-let schoolFilters = { chance: "", status: "" };
+let schoolFilters = { chance: "", status: "", gre: "" };
+const GRE_SECTION = {
+  none: "No GRE needed",
+  optional: "GRE optional — not required, a score can help",
+  required: "GRE required",
+};
 let statusMap = {};
 let filters = { rank: "", status: "", style: "", q: "" };
 
@@ -485,6 +504,34 @@ function renderRoadmap(){
   }));
 }
 
+function schoolCardHtml(s){
+  const key = schoolKey(s);
+  const applied = statusOf(key) === "Applied";
+  const initial = s.school.trim()[0].toUpperCase();
+  return `
+    <div class="job-card">
+      <div class="avatar" style="background:${colorFor(s.school)}">${initial}</div>
+      <div class="job-main">
+        <div class="job-top">
+          <span class="job-company">${s.school}</span>
+          <span class="tag chance-${s.chance}">${CHANCE_LABEL[s.chance] || s.chance}</span>
+          <span class="tag gre-${s.greGroup}">${s.gre}</span>
+        </div>
+        <div class="job-role">${s.program} · ${s.degree}</div>
+        <div class="job-meta"><span>💻 ${s.format}</span></div>
+        <div class="job-why"><b>Deadline:</b> ${s.deadline}</div>
+        <div class="job-why">${s.why} <span style="opacity:.7">— ${s.fitNote}</span></div>
+        <div class="job-why" style="margin-top:4px;">${s.notes}</div>
+      </div>
+      <div class="job-actions">
+        <a class="linkbtn" href="${s.link}" target="_blank" rel="noopener">Admissions page ↗</a>
+        <button class="status-toggle ${applied ? 'applied':'not'}" data-company="${key.replace(/"/g,'&quot;')}">
+          <span class="dot"></span>${applied ? 'Applied' : 'Not applied'}
+        </button>
+      </div>
+    </div>`;
+}
+
 function renderSchools(){
   const list = document.getElementById('schoolList');
   const intro = document.getElementById('schoolsIntro');
@@ -492,37 +539,27 @@ function renderSchools(){
 
   const rows = SCHOOLS.filter(s => {
     if (schoolFilters.chance && s.chance !== schoolFilters.chance) return false;
+    if (schoolFilters.gre && s.greGroup !== schoolFilters.gre) return false;
     if (schoolFilters.status && statusOf(schoolKey(s)) !== schoolFilters.status) return false;
     return true;
   });
 
   document.getElementById('schoolEmpty').style.display = rows.length ? "none" : "block";
-  list.innerHTML = rows.map(s => {
-    const key = schoolKey(s);
-    const applied = statusOf(key) === "Applied";
-    const initial = s.school.trim()[0].toUpperCase();
-    return `
-      <div class="job-card">
-        <div class="avatar" style="background:${colorFor(s.school)}">${initial}</div>
-        <div class="job-main">
-          <div class="job-top">
-            <span class="job-company">${s.school}</span>
-            <span class="tag chance-${s.chance}">${CHANCE_LABEL[s.chance] || s.chance}</span>
-            <span class="tag" style="background:#eef0f6;color:var(--muted);">${s.gre}</span>
-          </div>
-          <div class="job-role">${s.program} · ${s.degree}</div>
-          <div class="job-meta"><span>💻 ${s.format}</span></div>
-          <div class="job-why">${s.why} <span style="opacity:.7">— ${s.fitNote}</span></div>
-          <div class="job-why" style="margin-top:4px;">${s.notes}</div>
-        </div>
-        <div class="job-actions">
-          <a class="linkbtn" href="${s.link}" target="_blank" rel="noopener">Admissions page ↗</a>
-          <button class="status-toggle ${applied ? 'applied':'not'}" data-company="${key.replace(/"/g,'&quot;')}">
-            <span class="dot"></span>${applied ? 'Applied' : 'Not applied'}
-          </button>
-        </div>
-      </div>`;
-  }).join("");
+
+  const groups = ["none", "optional", "required"];
+  let html = "";
+  groups.forEach(g => {
+    const subset = rows.filter(s => s.greGroup === g);
+    if (!subset.length){
+      if (g === "required" && !schoolFilters.gre){
+        html += `<div class="school-section">${GRE_SECTION.required}</div>
+          <div class="roadmap-intro" style="margin-bottom:12px;">None of these Ivy / top-20 <b>online</b> CS programs currently require the GRE. MIT, Princeton, Yale, Stanford, and Caltech do not offer a fully online CS master's.</div>`;
+      }
+      return;
+    }
+    html += `<div class="school-section">${GRE_SECTION[g]}</div>` + subset.map(schoolCardHtml).join("");
+  });
+  list.innerHTML = html;
 
   list.querySelectorAll('.status-toggle').forEach(btn => {
     btn.addEventListener('click', () => toggleStatus(btn));
@@ -530,6 +567,12 @@ function renderSchools(){
 }
 
 function wireSchoolFilters(){
+  document.querySelectorAll('#grePills .pill').forEach(p => p.addEventListener('click', () => {
+    document.querySelectorAll('#grePills .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    schoolFilters.gre = p.dataset.gre;
+    renderSchools();
+  }));
   document.querySelectorAll('#chancePills .pill').forEach(p => p.addEventListener('click', () => {
     document.querySelectorAll('#chancePills .pill').forEach(x => x.classList.remove('active'));
     p.classList.add('active');
