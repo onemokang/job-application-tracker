@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onemo Kang — Job Application Tracker</title>
+<style>
+  :root{--navy:#1F3B57;--bg:#f6f7f9;--card:#fff;--line:#e3e6ea;--green:#1b8a4c;--gray:#6b7280;}
+  *{box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);margin:0;color:#111;}
+  header{background:var(--navy);color:#fff;padding:24px 28px;}
+  header h1{margin:0 0 4px;font-size:22px;}
+  header p{margin:0;opacity:.85;font-size:14px;}
+  .wrap{max-width:1200px;margin:24px auto;padding:0 20px;}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:center;}
+  select,input{padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;background:#fff;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--gray);}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top;}
+  th{background:var(--navy);color:#fff;cursor:pointer;user-select:none;white-space:nowrap;}
+  th:hover{background:#163049;}
+  tr:hover td{background:#fafbfc;}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:600;}
+  .rank-1{background:#e7f6ec;color:var(--green);}
+  .rank-2{background:#eaf1fb;color:#1d4ed8;}
+  .rank-3{background:#fdeee0;color:#c2550a;}
+  select.status-select{font-size:12.5px;padding:5px 7px;border-radius:6px;}
+  .status-applied{background:#e7f6ec;color:var(--green);font-weight:600;}
+  .status-not{background:#f1f2f4;color:var(--gray);}
+  a.joblink{color:#1d4ed8;text-decoration:none;font-weight:600;}
+  a.joblink:hover{text-decoration:underline;}
+  footer{text-align:center;color:var(--gray);font-size:12px;padding:30px 0;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Job Application Tracker</h1>
+  <p>Onemo Kang · Software Engineer · Target: ≥ $185.5K total comp · Preference: Remote &gt; Chicago &gt; SF = NYC</p>
+</header>
+<div class="wrap">
+  <div class="controls">
+    <div class="stat" id="countStat">Loading…</div>
+    <select id="filterRank">
+      <option value="">All locations</option>
+      <option value="1">Remote</option>
+      <option value="2">Chicago</option>
+      <option value="3">SF / NYC</option>
+    </select>
+    <select id="filterStatus">
+      <option value="">All statuses</option>
+      <option value="Applied">Applied</option>
+      <option value="Not Applied">Not Applied</option>
+    </select>
+    <input id="search" type="text" placeholder="Search company or role…">
+  </div>
+  <table id="tbl">
+    <thead>
+      <tr id="headRow"></tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+<footer>Data stored locally in your browser. Edit <code>data.js</code> to update rows, or click Status to toggle.</footer>
+
+<script src="data.js"></script>
+<script>
+const RANK_LABEL = {1:"Remote", 2:"Chicago", 3:"SF / NYC"};
+const STORAGE_KEY = "jobTrackerStatus_v1";
+
+function loadStatusOverrides(){
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ return {}; }
+}
+function saveStatusOverrides(obj){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+}
+let overrides = loadStatusOverrides();
+
+let sortKey = "rank", sortDir = 1;
+
+function currentStatus(row){
+  return overrides[row.company] || row.status;
+}
+
+function render(){
+  const rankFilter = document.getElementById('filterRank').value;
+  const statusFilter = document.getElementById('filterStatus').value;
+  const q = document.getElementById('search').value.toLowerCase();
+
+  let rows = JOBS.filter(r => {
+    if (rankFilter && String(r.rank) !== rankFilter) return false;
+    const st = currentStatus(r);
+    if (statusFilter && st !== statusFilter) return false;
+    if (q && !(r.company.toLowerCase().includes(q) || r.role.toLowerCase().includes(q) || r.location.toLowerCase().includes(q))) return false;
+    return true;
+  });
+
+  rows.sort((a,b) => {
+    let av = sortKey === 'status' ? currentStatus(a) : a[sortKey];
+    let bv = sortKey === 'status' ? currentStatus(b) : b[sortKey];
+    if (typeof av === 'number') return (av-bv)*sortDir;
+    return String(av).localeCompare(String(bv)) * sortDir;
+  });
+
+  const appliedCount = JOBS.filter(r => currentStatus(r) === 'Applied').length;
+  document.getElementById('countStat').textContent =
+    `${rows.length} shown · ${appliedCount} applied / ${JOBS.length} total`;
+
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    const st = currentStatus(r);
+    tr.innerHTML = `
+      <td><span class="badge rank-${r.rank}">${RANK_LABEL[r.rank]}</span></td>
+      <td><strong>${r.company}</strong></td>
+      <td>${r.role}</td>
+      <td>${r.location}</td>
+      <td>${r.workMode}</td>
+      <td>${r.comp}</td>
+      <td>${r.why}</td>
+      <td><a class="joblink" href="${r.link}" target="_blank" rel="noopener">View posting →</a></td>
+      <td>
+        <select class="status-select ${st==='Applied' ? 'status-applied' : 'status-not'}" data-company="${r.company}">
+          <option ${st==='Not Applied'?'selected':''}>Not Applied</option>
+          <option ${st==='Applied'?'selected':''}>Applied</option>
+        </select>
+      </td>
+      <td>${r.notes}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.querySelectorAll('.status-select').forEach(sel => {
+    sel.addEventListener('change', (e) => {
+      overrides[e.target.dataset.company] = e.target.value;
+      saveStatusOverrides(overrides);
+      render();
+    });
+  });
+}
+
+function buildHeader(){
+  const cols = [
+    ["rank","Pref"], ["company","Company"], ["role","Role"], ["location","Location"],
+    ["workMode","Work Mode"], ["comp","Est. Comp"], ["why","Why Low/No-LeetCode"],
+    ["link","Link"], ["status","Status"], ["notes","Notes"]
+  ];
+  const headRow = document.getElementById('headRow');
+  cols.forEach(([key,label]) => {
+    const th = document.createElement('th');
+    th.textContent = label;
+    th.addEventListener('click', () => {
+      if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+      render();
+    });
+    headRow.appendChild(th);
+  });
+}
+
+buildHeader();
+document.getElementById('filterRank').addEventListener('change', render);
+document.getElementById('filterStatus').addEventListener('change', render);
+document.getElementById('search').addEventListener('input', render);
+render();
+</script>
+</body>
+</html>
