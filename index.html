@@ -129,6 +129,14 @@
   .phase-item input{margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--primary);cursor:pointer;}
   .phase-item label{cursor:pointer;flex:1;}
   .phase-item.done label{color:var(--muted);text-decoration:line-through;}
+  .resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:14px 0 4px;}
+  .resource-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);}
+  .resource-card .verdict{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;}
+  .resource-card .verdict.keep{color:#059669;}
+  .resource-card .verdict.partial{color:#a16207;}
+  .resource-card .verdict.skip{color:#be185d;}
+  .resource-card h3{margin:0 0 6px;font-size:14px;}
+  .resource-card p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.45;}
 
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px;}
   .stat-card{
@@ -313,6 +321,18 @@ let statusMap = {};
 let filters = { rank: "", status: "", style: "", q: "" };
 
 // ---------- Prep roadmap ----------
+// Verdicts from 2026 interview reports for THIS tracker (Coinbase, DoorDash,
+// Datadog, Shopify, Stripe, GitLab, Anthropic, Amazon, Google, Meta, Apple,
+// Uber Freight, JPM, Goldman, Microsoft, etc.) — not generic "grind everything".
+const RESOURCES = [
+  { verdict: "partial", title: "NeetCode package",
+    body: "Keep it for pattern videos + Blind 75 / first ~75 problems. Do not finish all 150 before applying — mixed/leetcode companies still ask DSA, but AI rounds grade verification, not grinding. If the package includes NeetCode's AI coding practice (bug-fix → implement → optimize), that part is more useful than extra problems." },
+  { verdict: "keep", title: "System Design Interview (Alex Xu Vol 1)",
+    body: "This is the one that matches the actual 45-min HLD round (framework + worked prompts). Use it as drills out loud, not as a book to finish. Vol 2 is optional later (payments/queues/metrics) if Stripe/Ramp/Datadog loops appear." },
+  { verdict: "partial", title: "Designing Data-Intensive Applications",
+    body: "Do not read cover to cover before interviews — it isn't an interview book (~670 pages). After Xu, skim only: replication, partitioning/sharding, transactions, consistency. Skip encoding, batch processing, consensus proofs. Highest payoff at Snowflake, Datadog, Stripe, Coinbase, Bloomberg." },
+];
+
 const ROADMAP = [
   { title: "Foundations: resume, stories, targets", when: "Before you apply", tags: [],
     items: [
@@ -321,51 +341,50 @@ const ROADMAP = [
       "A 60–90 second 'walk me through your background' answer, rehearsed out loud",
       "Know your target comp number and your floor, so you don't improvise during a recruiter call",
     ]},
-  { title: "Core algorithms & data structures", when: "~1–2 weeks", tags: ["leetcode","mixed"],
+  { title: "DSA — enough to diagnose, not grind", when: "~1–2 weeks", tags: ["leetcode","mixed"],
     items: [
-      "Use your NeetCode package: work through the NeetCode 150/Roadmap in order rather than random LeetCode — it's already structured for this",
-      "Refresh arrays, hash maps, strings, stacks/queues, trees, graphs — the building blocks, not tricks",
-      "Do ~30–40 easy/medium problems spread across: two pointers, sliding window, BFS/DFS, binary search, basic DP",
-      "Practice saying time/space complexity out loud for your own solution, unprompted",
-      "Timed reps: one problem, 25–30 min, no AI help — this is still asked even at 'AI-assisted' companies",
+      "NeetCode: do Blind 75 (or the first ~75 on the roadmap). Stop. 150 is overkill for this list and delays applying",
+      "Patterns that still show up: hash maps, two pointers, sliding window, BFS/DFS, heaps, binary search. Skip deep hard-DP grind",
+      "Timed reps with AI off: 25–30 min, say complexity out loud. Amazon/Google/Meta/Apple/JPM/Goldman/Uber Freight still ask this",
+      "Use DSA as a checker for AI rounds: when the model writes a loop, you should know if it's O(n²) before you accept it",
     ]},
-  { title: "AI-assisted coding workflow", when: "~1 week", tags: ["ai","mixed"],
+  { title: "AI-assisted coding (the new skill)", when: "~1–2 weeks", tags: ["ai","mixed"],
     items: [
-      "Get fluent in one AI coding tool (Cursor, Claude Code, Copilot, or Codex) in your own repos daily",
-      "Practice orienting in an unfamiliar codebase fast: read structure, run tests first, form a hypothesis before prompting",
-      "Write bounded prompts (scope + constraints + acceptance criteria) instead of 'fix everything'",
-      "Review every AI diff like a PR: catch wrong assumptions, missing edge cases, hallucinated APIs/overconfident claims",
-      "Write your own tests to prove a fix — 'it ran once' is not evidence",
-      "Narrate out loud while you work — interviewers are grading how you direct and check the AI, not just the output",
+      "Pick one tool you already use (Cursor/Claude Code/Copilot) and practice in it daily — switching tools the night before is a common fail",
+      "3× 60-min sessions on code you didn't write: README → run tests → form a hypothesis → then prompt. This is Coinbase/DoorDash/Datadog/Atlassian",
+      "Shopify-style: 45 min from an empty repo (task manager, rover, small HTTP service). Design first, AI implements, you test",
+      "Stripe-style: multi-part spec. Prompt one piece at a time. Read every diff. Write a test the AI didn't suggest",
+      "Ask every recruiter, in writing, per round: AI allowed / expected / banned? Own editor or theirs? Agent mode ok?",
     ]},
-  { title: "System design", when: "~1–2 weeks", tags: ["ai","mixed","leetcode"],
+  { title: "High-level system design", when: "~1–2 weeks", tags: ["ai","mixed","leetcode"],
     items: [
-      "Read 'System Design Interview — An Insider's Guide' (Vol 1) cover to cover — do the framework in ch.1 on paper, not just reading",
-      "Know the core building blocks cold: load balancing, caching, DB choice/sharding, queues, rate limiting, CAP tradeoffs",
-      "Drill 5–8 of the book's common prompts: URL shortener, rate limiter, chat/notification system, job scheduler, payments/ledger",
-      "At your level, emphasize reliability, idempotency, and observability over raw hyperscale — that's what gets asked",
+      "Xu Vol 1, chapter 1 framework on paper until it's automatic: requirements → numbers → API → boxes → 1–2 deep dives → failures",
+      "Drill 5–8 of Xu's prompts out loud (URL shortener, rate limiter, chat, news feed, job scheduler). Reading ≠ the round",
+      "At senior level they push reliability: retries, idempotency, hot keys, cache stampede, what you monitor — not 'I would use Kafka'",
+      "DDIA only after the above: replication + partitioning + transactions + consistency. That's the follow-up vocabulary, not the framework",
     ]},
-  { title: "Practical 'build it live' & code-review rounds", when: "~1 week", tags: ["ai","mixed"],
+  { title: "LLD, code review, live-build (Xu/DDIA don't cover this)", when: "~1 week", tags: ["ai","mixed","leetcode"],
     items: [
-      "Practice building a small, testable feature from scratch in ~45 min, in your strongest language, from an empty repo",
-      "Practice reviewing a PR/merge request and leaving structured feedback: correctness, edge cases, tests, architecture",
-      "Practice debugging an unfamiliar service with an injected bug under a timer (ask a friend or AI to break 2–3 lines)",
+      "Uber Freight / JPM / Goldman still run class-design or PR-review rounds. Practice: LRU, rate limiter class, file system mkdir/ls, parking-lot OOP",
+      "GitLab: review a real merge request like a teammate (bugs, tests, architecture) then talk through it",
+      "DoorDash Code Craft / Anthropic OA: build a small business module from a messy spec, with tests, no algorithm trick",
+      "None of your three books train this — use your own repos + timed builds, not more reading",
     ]},
-  { title: "Behavioral, 'why us', and mock interviews", when: "Ongoing — finish before interview #1", tags: [],
+  { title: "Behavioral, mocks, then apply", when: "Ongoing — don't wait to finish everything", tags: [],
     items: [
-      "Tailor a 'why this company' answer per target, referencing their actual AI-interview stance (shows real research)",
-      "Rehearse 2–3 of your strongest Capital One stories until they're tight: FICO $50M unblock, security initiative, incident response",
-      "Run 2–3 full mock loops (screen + onsite style) before your first real interview",
-      "Prep 3–4 smart questions to ask every interviewer — shows engagement, not just answering",
+      "Rehearse 2–3 Capital One stories until tight: FICO $50M unblock, security initiative, incident response",
+      "Add one story about how you use AI at work — several 2026 loops now grade this",
+      "2–3 mocks (one classic coding, one AI-assisted, one HLD) before interview #1. Mocks beat more book chapters",
+      "Apply while prepping. Foundations + DSA 75 + one AI mock is enough to start AI/mixed companies; don't wait for DDIA",
     ]},
 ];
 
 function loadChecklist(){
-  try { return JSON.parse(localStorage.getItem('prepChecklist_v1') || '{}'); }
+  try { return JSON.parse(localStorage.getItem('prepChecklist_v2') || '{}'); }
   catch(e){ return {}; }
 }
 function saveChecklist(state){
-  localStorage.setItem('prepChecklist_v1', JSON.stringify(state));
+  localStorage.setItem('prepChecklist_v2', JSON.stringify(state));
 }
 
 function renderRoadmap(){
@@ -408,10 +427,17 @@ function renderRoadmap(){
 
   const pct = totalItems ? Math.round(100 * totalDone / totalItems) : 0;
 
+  const resourceHtml = RESOURCES.map(r => `
+    <div class="resource-card">
+      <div class="verdict ${r.verdict}">${r.verdict === "keep" ? "Use this" : r.verdict === "partial" ? "Use parts only" : "Skip for now"}</div>
+      <h3>${r.title}</h3>
+      <p>${r.body}</p>
+    </div>`).join("");
+
   el.innerHTML = `
     <div class="roadmap-intro">
-      Even for "AI-assisted" roles, interviewers expect you to know the algorithm yourself and still ask system design.
-      This roadmap covers everything across the list — check off items as you go, it's saved on this device.
+      Researched against the companies on this tracker (2026 reports). AI-assisted loops still ask system design and still fail people who can't check AI output. DSA is not dead — it's just not the whole job.
+      <div class="resource-grid">${resourceHtml}</div>
       <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:10px;">
         <span>Overall progress</span><span>${totalDone}/${totalItems} (${pct}%)</span>
       </div>
