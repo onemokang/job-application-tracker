@@ -33,6 +33,15 @@
 </style>
 </head>
 <body>
+<div id="gate" style="position:fixed;inset:0;background:#1F3B57;display:flex;align-items:center;justify-content:center;z-index:999;">
+  <div style="background:#fff;padding:32px 36px;border-radius:12px;max-width:320px;width:90%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);">
+    <h2 style="margin:0 0 14px;font-size:18px;color:#1F3B57;">Enter Password</h2>
+    <input id="gatePw" type="password" style="width:100%;padding:10px;border:1px solid #e3e6ea;border-radius:8px;font-size:15px;margin-bottom:10px;" autofocus>
+    <div id="gateErr" style="color:#c2550a;font-size:12.5px;height:16px;margin-bottom:6px;"></div>
+    <button id="gateBtn" style="width:100%;padding:10px;border:none;background:#1F3B57;color:#fff;border-radius:8px;font-size:15px;cursor:pointer;">Unlock</button>
+  </div>
+</div>
+<div id="siteContent" style="display:none;">
 <header>
   <h1>Job Application Tracker</h1>
   <p>Onemo Kang · Software Engineer · Target: ≥ $185.5K total comp · Preference: Remote &gt; Chicago &gt; SF = NYC</p>
@@ -61,9 +70,41 @@
   </table>
 </div>
 <footer>Data stored locally in your browser. Edit <code>data.js</code> to update rows, or click Status to toggle.</footer>
+</div>
 
 <script src="data.js"></script>
 <script>
+const GATE_HASH = "b56e59e3e3ea61711b844fd3410e00ee164ed39b78807a2ec6fc6ac136240940";
+const GATE_KEY = "trackerUnlocked_v1";
+
+async function sha256(text){
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function showSite(){
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('siteContent').style.display = 'block';
+}
+
+async function tryUnlock(){
+  const pw = document.getElementById('gatePw').value;
+  const hash = await sha256(pw);
+  if (hash === GATE_HASH){
+    localStorage.setItem(GATE_KEY, "1");
+    showSite();
+  } else {
+    document.getElementById('gateErr').textContent = "Incorrect password";
+  }
+}
+
+if (localStorage.getItem(GATE_KEY) === "1"){
+  showSite();
+} else {
+  document.getElementById('gateBtn').addEventListener('click', tryUnlock);
+  document.getElementById('gatePw').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+}
+
 const RANK_LABEL = {1:"Remote", 2:"Chicago", 3:"SF / NYC"};
 const STORAGE_KEY = "jobTrackerStatus_v1";
 
