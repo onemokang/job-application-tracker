@@ -1,0 +1,102 @@
+{
+  "researchDate": "2026-11-08",
+  "note": "All listed programs are online, GRE not required (optional at most). Fit assumes Boston College physics undergrad + ~4 years Capital One SWE. UChicago MPCS (true CS master's) is campus-only, so it is not listed.",
+  "schools": [
+    {
+      "chance": "high",
+      "school": "UPenn Engineering Online",
+      "program": "MAS-CS (formerly MCIT Online)",
+      "degree": "Computer Science (applied)",
+      "gre": "Not required (optional)",
+      "format": "100% online",
+      "why": "Built for people who did not major in CS. Physics counts as the quantitative proof they want. Your SWE job is extra, not required.",
+      "fitNote": "Easiest Ivy admit on this list — but the coursework starts at CS foundations. May feel basic after 4 years at Capital One.",
+      "link": "https://online.engineering.upenn.edu/degrees/mas-cs/admissions/",
+      "notes": "Spring 2027: opens May 22, 2026; final deadline Oct 26, 2026."
+    },
+    {
+      "chance": "likely",
+      "school": "UPenn Engineering Online",
+      "program": "MSE in Data Science (MSE-DS)",
+      "degree": "Data Science (engineering master's)",
+      "gre": "Not required (optional)",
+      "format": "100% online",
+      "why": "Official path for physics majors with 2+ years as a software engineer. Better academic match than MAS-CS given your job.",
+      "fitNote": "This is the Penn program I would actually apply to. MSE-AI is a worse bet — they want a CS/CE undergrad degree, which you don't have.",
+      "link": "https://online.engineering.upenn.edu/degrees/mse-ds/mse-ds-admissions/",
+      "notes": "Same cycle as MAS-CS. Need 2 recommenders + personal statement."
+    },
+    {
+      "chance": "likely",
+      "school": "University of Chicago",
+      "program": "MS in Applied Data Science (Online)",
+      "degree": "Applied Data Science (not CS)",
+      "gre": "Not required",
+      "format": "Online, live classes evenings/Sat (Central time)",
+      "why": "No GRE. Physics + SWE is a normal profile here. Live evening classes work if you stay in Chicago.",
+      "fitNote": "This is UChicago's actual online master's — MPCS (CS) is in-person only. Diploma is Applied Data Science, not Computer Science.",
+      "link": "https://datascience.uchicago.edu/education/masters-programs/online-program/",
+      "notes": "Autumn 2027 online deadline June 23, 2027. Portal can close early if the cohort fills."
+    },
+    {
+      "chance": "likely",
+      "school": "UIUC (Illinois)",
+      "program": "MCS Online",
+      "degree": "Computer Science",
+      "gre": "Not required",
+      "format": "100% online",
+      "why": "Non-CS undergrads can apply if they have OOP, data structures, algorithms — your Capital One work covers that.",
+      "fitNote": "Real CS master's, well-known, designed for working engineers. Strong middle of this list.",
+      "link": "https://siebelschool.illinois.edu/academics/graduate/professional-mcs/app-info",
+      "notes": "Letters of rec not required. Recommended GPA 3.2+."
+    },
+    {
+      "chance": "likely",
+      "school": "Rice University",
+      "program": "Online MCS",
+      "degree": "Computer Science",
+      "gre": "Not required if GPA ≥ 3.0",
+      "format": "100% online",
+      "why": "They want a science/engineering bachelor's + real programming. Physics + Java/backend work matches.",
+      "fitNote": "US News has ranked this online IT/CS program very highly. Rolling-ish decisions, 3 starts a year.",
+      "link": "https://csweb.rice.edu/academics/graduate-programs/online-mcs/admissions",
+      "notes": "Spring 2027 deadline Nov 1, 2026. Need 3 letters of recommendation."
+    },
+    {
+      "chance": "high",
+      "school": "Johns Hopkins (Engineering for Professionals)",
+      "program": "MS Computer Science",
+      "degree": "Computer Science",
+      "gre": "Not required (no app fee)",
+      "format": "100% online, rolling",
+      "why": "Built for working engineers/scientists. Physics undergrad + SWE is a standard admit profile. Rolling, ~2–3 week decisions.",
+      "fitNote": "High chance, real CS master's, less 'brand heat' than Penn/UChicago/GT for some employers — still a strong name.",
+      "link": "https://ep.jhu.edu/programs/computer-science/",
+      "notes": "3 starts (fall/spring/summer). Missing undergrad CS prereqs can be filled after a provisional admit."
+    },
+    {
+      "chance": "medium",
+      "school": "Georgia Tech",
+      "program": "OMSCS",
+      "degree": "Computer Science",
+      "gre": "Not required",
+      "format": "100% online, ~$7–10K total",
+      "why": "Physics is STEM (preferred). No GRE. Best cost/reputation on the list. They officially say work experience rarely replaces CS coursework.",
+      "fitNote": "You can get in, not a lock. Spell out data structures/algorithms from Capital One in the application. Hardest coursework of this list.",
+      "link": "https://omscs.gatech.edu/prospective-student-faqs",
+      "notes": "Need 3 recommenders. Admitted students start conditionally (must pass 2 foundation courses with B or better)."
+    },
+    {
+      "chance": "medium",
+      "school": "UT Austin",
+      "program": "MSCS Online (CDSO)",
+      "degree": "Computer Science",
+      "gre": "Not required (optional)",
+      "format": "100% online",
+      "why": "They want discrete math, data structures, algorithms, computer systems. Your job helps; missing undergrad CS theory is the risk.",
+      "fitNote": "Reach-er than UIUC/Rice for a physics major. Still worth a shot if you want a CS (not DS) degree from a big name.",
+      "link": "https://cdso.utexas.edu/faq",
+      "notes": "No one is auto-admitted. GRE optional if you want extra proof of quant."
+    }
+  ]
+}

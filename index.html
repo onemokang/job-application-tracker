@@ -191,6 +191,9 @@
   .tag.style-leetcode{background:#fdf2f8;color:#be185d;}
   .tag.style-mixed{background:#fefce8;color:#a16207;}
   .tag.style-unclear{background:#f1f5f9;color:#64748b;}
+  .tag.chance-high{background:#ecfdf5;color:#059669;}
+  .tag.chance-likely{background:#eff6ff;color:#2563eb;}
+  .tag.chance-medium{background:#fff7ed;color:#c2410c;}
   .tag.auto{background:#eef2ff;color:#4f46e5;font-weight:600;}
   .job-role{font-size:13.5px;color:var(--ink);font-weight:500;margin-bottom:3px;}
   .job-meta{font-size:12.5px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;}
@@ -253,6 +256,7 @@
   <div class="wrap">
     <div class="navtabs" id="navTabs">
       <button class="navtab active" data-view="jobs">📋 Jobs</button>
+      <button class="navtab" data-view="schools">🎓 Grad Schools</button>
       <button class="navtab" data-view="roadmap">🗺️ Prep Roadmap</button>
     </div>
 
@@ -294,6 +298,25 @@
       <div class="empty" id="emptyState" style="display:none;">No roles match your filters.</div>
     </div>
 
+    <div id="schoolsView" style="display:none;">
+      <div class="roadmap-intro" id="schoolsIntro"></div>
+      <div class="toolbar">
+        <div class="pillgroup" id="chancePills">
+          <button class="pill active" data-chance="">Any chance</button>
+          <button class="pill" data-chance="high">High chance</button>
+          <button class="pill" data-chance="likely">Likely</button>
+          <button class="pill" data-chance="medium">Medium</button>
+        </div>
+        <div class="pillgroup" id="schoolStatusPills">
+          <button class="pill active" data-status="">Any status</button>
+          <button class="pill" data-status="Applied">Applied</button>
+          <button class="pill" data-status="Not Applied">Not applied</button>
+        </div>
+      </div>
+      <div class="list" id="schoolList"></div>
+      <div class="empty" id="schoolEmpty" style="display:none;">No programs match your filters.</div>
+    </div>
+
     <div id="roadmapView" style="display:none;"></div>
   </div>
 
@@ -313,10 +336,15 @@ const AVATAR_COLORS = ["#4f46e5","#0891b2","#059669","#c2410c","#9333ea","#dc262
 
 const STYLE_LABEL = {ai:"🤖 AI-assisted", leetcode:"📐 LeetCode-style", mixed:"🔀 Mixed", unclear:"❔ Unclear"};
 let JOBS = [];
+let SCHOOLS = [];
+let SCHOOLS_NOTE = "";
+let SCHOOLS_RESEARCH_DATE = null;
 let DEFAULT_STATUS = "Not Applied";
 let AUTO_REFRESH_BOARDS = {};
 let DATA_LAST_UPDATED = null;
 let STYLE_RESEARCH_DATE = null;
+const CHANCE_LABEL = {high:"High chance", likely:"Likely", medium:"Medium"};
+let schoolFilters = { chance: "", status: "" };
 let statusMap = {};
 let filters = { rank: "", status: "", style: "", q: "" };
 
@@ -457,14 +485,75 @@ function renderRoadmap(){
   }));
 }
 
+function renderSchools(){
+  const list = document.getElementById('schoolList');
+  const intro = document.getElementById('schoolsIntro');
+  intro.innerHTML = `${SCHOOLS_NOTE}${SCHOOLS_RESEARCH_DATE ? ` <span style="color:var(--muted)">Researched ${SCHOOLS_RESEARCH_DATE}.</span>` : ""}`;
+
+  const rows = SCHOOLS.filter(s => {
+    if (schoolFilters.chance && s.chance !== schoolFilters.chance) return false;
+    if (schoolFilters.status && statusOf(schoolKey(s)) !== schoolFilters.status) return false;
+    return true;
+  });
+
+  document.getElementById('schoolEmpty').style.display = rows.length ? "none" : "block";
+  list.innerHTML = rows.map(s => {
+    const key = schoolKey(s);
+    const applied = statusOf(key) === "Applied";
+    const initial = s.school.trim()[0].toUpperCase();
+    return `
+      <div class="job-card">
+        <div class="avatar" style="background:${colorFor(s.school)}">${initial}</div>
+        <div class="job-main">
+          <div class="job-top">
+            <span class="job-company">${s.school}</span>
+            <span class="tag chance-${s.chance}">${CHANCE_LABEL[s.chance] || s.chance}</span>
+            <span class="tag" style="background:#eef0f6;color:var(--muted);">${s.gre}</span>
+          </div>
+          <div class="job-role">${s.program} · ${s.degree}</div>
+          <div class="job-meta"><span>💻 ${s.format}</span></div>
+          <div class="job-why">${s.why} <span style="opacity:.7">— ${s.fitNote}</span></div>
+          <div class="job-why" style="margin-top:4px;">${s.notes}</div>
+        </div>
+        <div class="job-actions">
+          <a class="linkbtn" href="${s.link}" target="_blank" rel="noopener">Admissions page ↗</a>
+          <button class="status-toggle ${applied ? 'applied':'not'}" data-company="${key.replace(/"/g,'&quot;')}">
+            <span class="dot"></span>${applied ? 'Applied' : 'Not applied'}
+          </button>
+        </div>
+      </div>`;
+  }).join("");
+
+  list.querySelectorAll('.status-toggle').forEach(btn => {
+    btn.addEventListener('click', () => toggleStatus(btn));
+  });
+}
+
+function wireSchoolFilters(){
+  document.querySelectorAll('#chancePills .pill').forEach(p => p.addEventListener('click', () => {
+    document.querySelectorAll('#chancePills .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    schoolFilters.chance = p.dataset.chance;
+    renderSchools();
+  }));
+  document.querySelectorAll('#schoolStatusPills .pill').forEach(p => p.addEventListener('click', () => {
+    document.querySelectorAll('#schoolStatusPills .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    schoolFilters.status = p.dataset.status;
+    renderSchools();
+  }));
+}
+
 function wireNavTabs(){
   document.querySelectorAll('.navtab').forEach(tab => tab.addEventListener('click', () => {
     document.querySelectorAll('.navtab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     const view = tab.dataset.view;
     document.getElementById('jobsView').style.display = view === 'jobs' ? '' : 'none';
+    document.getElementById('schoolsView').style.display = view === 'schools' ? '' : 'none';
     document.getElementById('roadmapView').style.display = view === 'roadmap' ? '' : 'none';
     if (view === 'roadmap') renderRoadmap();
+    if (view === 'schools') renderSchools();
   }));
 }
 
@@ -477,6 +566,19 @@ async function loadJobData(){
   AUTO_REFRESH_BOARDS = data.autoRefreshBoards || {};
   DATA_LAST_UPDATED = data.lastUpdated || null;
   STYLE_RESEARCH_DATE = data.styleResearchDate || null;
+}
+
+function schoolKey(s){
+  return s.school + " · " + s.program;
+}
+
+async function loadSchoolData(){
+  const res = await fetch("schools.json", { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load schools.json: ${res.status}`);
+  const data = await res.json();
+  SCHOOLS = data.schools || [];
+  SCHOOLS_NOTE = data.note || "";
+  SCHOOLS_RESEARCH_DATE = data.researchDate || null;
 }
 
 async function sha256(text){
@@ -576,6 +678,7 @@ async function toggleStatus(btn){
 
   statusMap[company] = next;
   renderList();
+  if (SCHOOLS.length) renderSchools();
 
   try {
     await pushStatusMap(statusMap);
@@ -637,6 +740,11 @@ async function initSite(){
     setSyncState("error", "Failed to load job data");
     return;
   }
+  try {
+    await loadSchoolData();
+  } catch (e) {
+    console.error(e);
+  }
 
   if (DATA_LAST_UPDATED){
     const d = new Date(DATA_LAST_UPDATED);
@@ -648,6 +756,7 @@ async function initSite(){
   }
 
   wireFilters();
+  wireSchoolFilters();
   wireNavTabs();
   renderList(); // render instantly with defaults, then reconcile with remote
 
@@ -672,6 +781,7 @@ async function syncFromRemote(){
     statusMap = remote;
     setSyncState("", "Synced");
     renderList();
+    if (SCHOOLS.length) renderSchools();
   }
 }
 
