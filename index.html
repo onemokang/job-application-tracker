@@ -102,55 +102,61 @@
   /* ---------- Roadmap ---------- */
   .roadmap-intro{
     background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
-    padding:18px 22px;margin-bottom:20px;font-size:13.5px;color:var(--ink);line-height:1.5;
+    padding:16px 18px;margin-bottom:16px;font-size:13px;color:var(--ink);
   }
-  .roadmap-progress{margin-top:10px;background:#eef0f6;border-radius:999px;height:8px;overflow:hidden;}
+  .plan-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;}
+  .plan-cell{background:#f8f8fc;border-radius:12px;padding:10px 12px;}
+  .plan-cell .k{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .plan-cell .v{font-size:13.5px;font-weight:700;margin-top:3px;letter-spacing:-.01em;}
+  .do-skip{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+  .rule-col{border:1px solid var(--line);border-radius:12px;padding:10px 12px;}
+  .rule-col.use{background:#f0fdf4;border-color:#bbf7d0;}
+  .rule-col.skip{background:#fff1f2;border-color:#fecdd3;}
+  .rule-h{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
+  .rule-col.use .rule-h{color:#047857;}
+  .rule-col.skip .rule-h{color:#be123c;}
+  .rule-col ul{margin:0;padding:0;list-style:none;}
+  .rule-col li{font-size:12.5px;font-weight:600;padding:4px 0;border-bottom:1px solid rgba(15,23,42,.06);line-height:1.3;}
+  .rule-col li:last-child{border-bottom:none;}
+  .roadmap-progress{margin-top:8px;background:#eef0f6;border-radius:999px;height:6px;overflow:hidden;}
   .roadmap-progress-bar{height:100%;background:var(--primary);border-radius:999px;transition:width .2s;}
   .phase{
     background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
-    margin-bottom:14px;overflow:hidden;
+    margin-bottom:10px;overflow:hidden;
   }
-  .phase-head{
-    display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;
-  }
+  .phase-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;}
   .phase-num{
-    width:30px;height:30px;border-radius:9px;background:var(--primary-ink);color:var(--primary);
-    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;
+    width:28px;height:28px;border-radius:8px;background:var(--primary-ink);color:var(--primary);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;
   }
-  .phase-title{font-weight:700;font-size:14.5px;flex:1;}
+  .phase-title{font-weight:700;font-size:14px;flex:1;}
   .phase-sub{font-size:12px;color:var(--muted);font-weight:500;}
   .phase-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f6;color:var(--muted);white-space:nowrap;}
   .phase-when{font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap;}
-  .phase-body{padding:0 20px 18px 62px;display:none;}
+  .phase-body{padding:0 16px 14px 56px;display:none;}
   .phase.open .phase-body{display:block;}
-  .phase-tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
-  .phase-item{display:flex;align-items:flex-start;gap:9px;padding:7px 0;font-size:13px;line-height:1.45;border-bottom:1px dashed var(--line);}
-  .phase-item:last-child{border-bottom:none;}
-  .phase-item input{margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--primary);cursor:pointer;}
+  .phase-tags{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;}
+  .phase-item{display:flex;align-items:flex-start;gap:9px;padding:6px 0;font-size:13px;line-height:1.35;}
+  .phase-item input{margin-top:2px;flex-shrink:0;width:15px;height:15px;accent-color:var(--primary);cursor:pointer;}
   .phase-item label{cursor:pointer;flex:1;}
   .phase-item.done label{color:var(--muted);text-decoration:line-through;}
-  .resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:14px 0 4px;}
-  .resource-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);}
-  .resource-card .verdict{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;}
-  .resource-card .verdict.keep{color:#059669;}
-  .resource-card .verdict.partial{color:#a16207;}
-  .resource-card .verdict.skip{color:#be185d;}
-  .resource-card h3{margin:0 0 6px;font-size:14px;}
-  .resource-card p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.45;}
-  .roadmap-kicker{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px;}
-  .week-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin:12px 0 4px;}
+  .roadmap-kicker{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;}
+  .week-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-bottom:10px;}
   .week-cell{
-    border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:#fff;cursor:pointer;
+    border:1px solid var(--line);border-radius:10px;padding:8px 8px 9px;background:#fff;cursor:pointer;
     text-align:left;font:inherit;color:inherit;
   }
   .week-cell:hover{border-color:var(--primary);}
-  .week-cell .wk{font-size:11px;font-weight:800;color:var(--primary);}
-  .week-cell .dates{font-size:11px;color:var(--muted);margin-top:1px;}
-  .week-cell .focus{font-size:12.5px;font-weight:600;margin-top:5px;line-height:1.3;}
+  .week-cell .wk{font-size:10px;font-weight:800;color:var(--primary);letter-spacing:.04em;text-transform:uppercase;}
+  .week-cell .dates{font-size:10px;color:var(--muted);margin-top:1px;}
+  .week-cell .focus{font-size:12px;font-weight:600;margin-top:4px;line-height:1.25;}
   .week-cell.current{border-color:var(--primary);background:var(--primary-ink);}
-  .week-cell.done-week{opacity:.72;}
-  .phase.current-week{border-color:#c7d2fe;box-shadow:0 0 0 3px rgba(79,70,229,.12);}
+  .week-cell.done-week{opacity:.7;}
+  .phase.current-week{border-color:#c7d2fe;box-shadow:0 0 0 3px rgba(79,70,229,.1);}
   .phase-badge.now{background:var(--primary-ink);color:var(--primary);}
+  @media (max-width:900px){
+    .plan-row,.do-skip,.week-strip{grid-template-columns:1fr 1fr;}
+  }
 
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px;}
   .stat-card{
@@ -220,7 +226,10 @@
   .job-role{font-size:13.5px;color:var(--ink);font-weight:500;margin-bottom:3px;}
   .job-meta{font-size:12.5px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;}
   .job-meta b{color:var(--ink);font-weight:600;}
-  .job-why{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4;max-width:560px;}
+  .job-why{
+    font-size:12px;color:var(--muted);margin-top:6px;line-height:1.35;max-width:640px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
   .job-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
   .linkbtn{
     font-size:12.5px;font-weight:600;color:var(--primary);background:var(--primary-ink);
@@ -382,108 +391,88 @@ let statusMap = {};
 let filters = { rank: "", status: "", style: "", q: "" };
 
 // ---------- Prep roadmap ----------
-// Researched Nov 9, 2026 against Oct–Nov 2026 reports: Meta AI-enabled coding
-// (Hello Interview), DoorDash AI working session (official blog Mar 2026),
-// DevInterview.AI industry survey (updated Oct 12, 2026), NeetCode catalog
-// (checked Oct 14, 2026), Amazon LPs, Meta behavioral, mid-level resume norms.
 const PREP_RESEARCH_DATE = "2026-11-09";
-
-const GAPS = [
-  { verdict: "keep", title: "Work stories — yes, they ask this",
-    body: "Every loop still has a behavioral round. Amazon maps 10–15 STAR stories to Leadership Principles. Meta wants 8–10 stories (conflict, ambiguity, failure, feedback, scope-cut, mentoring). Use Capital One: FICO, security, incidents, promotions — not charity hours." },
-  { verdict: "skip", title: "Volunteer / unpaid charity — not needed",
-    body: "SWE mid-level loops do not screen for volunteer work. When they say “tell me about a time you volunteered,” they mean you stepped up on a messy work project. Do not spend November joining a nonprofit to pad the resume." },
-  { verdict: "skip", title: "New personal projects / GitHub portfolio — skip for 8 weeks",
-    body: "At ~4 years, interviewers want shipped work from the job. Side projects help new grads and career-switchers, not you. A tutorial GitHub can hurt. Do not build a dropshipping site or a portfolio app instead of mocks. Optional later: pin one real repo if it shows AI/full-stack you cannot show from C1." },
+const USE_LIST = [
+  "Python for Coding Interviews — week 1 only",
+  "Blind 75 — try, then video, then retype",
+  "Xu Vol 1 — out loud, not silent reading",
+  "8 C1 STAR stories + 90-sec intro",
+  "Cursor on a repo you didn’t write",
 ];
-
-const RESOURCES = [
-  { verdict: "partial", title: "NeetCode package (use ~20%, skip the rest)",
-    body: "Catalog as of Oct 2026: Blind 75 / 150 / 250 (free lists), 2×25h DSA video courses, 2 system-design courses (~10h), Python/SQL/fullstack, 2 OOD courses, AI coding (bug-fix → implement → optimize), voice mocks. USE: Blind 75 + videos, the AI coding sessions, voice mocks, OOD Interviews (not the patterns encyclopedia). SKIP: both 25h DSA courses, NeetCode system design (Xu is the 45-min drill book), Python/SQL/fullstack, NeetCode 150/250. Lists were built before the 2026 AI-round shift — they do not train DoorDash/Coinbase ‘your IDE in a real repo.’" },
-  { verdict: "keep", title: "System Design Interview (Alex Xu Vol 1)",
-    body: "Still the closest match to a 45-min HLD round: framework + worked prompts. Drill out loud. Vol 2 only if Stripe/Datadog/payments loops show up. Hello Interview’s free ‘System Design in a Hurry’ is a backup for delivery pacing, not a third book to finish." },
-  { verdict: "partial", title: "Designing Data-Intensive Applications",
-    body: "Not an interview book (~670 pages). After Xu, skim only replication, partitioning, transactions, consistency. Skip encoding, batch, consensus proofs. Useful for Snowflake/Datadog/Stripe follow-ups. Do not start it in week 1." },
-  { verdict: "keep", title: "What none of those cover (the actual 2026 gap)",
-    body: "1) Recruiter screen + 90-sec intro + comp number. 2) Behavioral story bank. 3) AI-in-your-own-IDE (DoorDash/Coinbase/Shopify — NeetCode’s AI practice is Meta’s 3-phase CoderPad shape, not this). 4) Code-review / MR (GitLab). 5) Live-build from a messy spec (Anthropic / some OAs). 6) Asking, in writing, whether each round bans or requires AI." },
+const SKIP_LIST = [
+  "Python for Beginners / old lc-stuff notes",
+  "NeetCode 150, 250, both 25h DSA courses",
+  "NeetCode system-design courses + DDIA first",
+  "Google / Meta / Amazon / Apple before Jan 2",
+  "Volunteer, new GitHub, dropshipping store",
 ];
-
 const ROADMAP = [
-  { week: 1, start: "2026-11-09", end: "2026-11-15", title: "Stories, resume, first apps",
+  { week: 1, start: "2026-11-09", end: "2026-11-15", title: "Python from a blank file",
     when: "Nov 9–15", tags: [],
     items: [
-      "Resume + LinkedIn match. Lead with C1 impact (FICO / security / incidents), not CODA-as-bootcamp",
-      "Write 8 STAR stories from work: ownership, conflict, failure, incident, mentoring, ambiguity, saying no / cutting scope, using AI at work",
-      "Rehearse a 60–90s intro out loud: physics → CODA → 4 years SWE. Own it. Do not apologize for skipping CS",
-      "Lock your comp floor (no paycut vs C1 ~$180k unless the job is actually chill). Write it down before recruiter calls",
-      "Apply this week to AI/mixed tracker jobs (Coinbase, DoorDash, GitLab, Anthropic, Datadog). Do not wait for DSA 75",
+      "Course: NeetCode “Python for Coding Interviews” — dict, set, list, heapq. Not Python for Beginners",
+      "Every day: empty file → working function. No copy-paste. Frequency count, two-sum by hand, tiny BFS",
+      "Draft 8 C1 STAR stories: own it, conflict, fail, incident, mentor, unclear, said no, used AI",
+      "90-sec intro out loud: physics → CODA → 4 yrs SWE. Write your comp floor. No apps this week",
     ]},
-  { week: 2, start: "2026-11-16", end: "2026-11-22", title: "DSA patterns, AI off",
+  { week: 2, start: "2026-11-16", end: "2026-11-22", title: "Blind 75, untimed",
     when: "Nov 16–22", tags: ["leetcode","mixed"],
     items: [
-      "NeetCode Blind 75 only: arrays/hash, two pointers, sliding window, stack, binary search (~25 problems). Videos if stuck, then retry timed",
-      "Every problem: 25–30 min, say time/space out loud. This is still the no-AI round at Amazon/Google/Meta/Apple/JPM/Goldman",
-      "Skip hard 2-D DP and ‘Advanced Algorithms’ 25h course. You need enough to catch a wrong AI answer, not a contest rating",
-      "Paste this to every recruiter: for each round, is AI allowed / expected / banned? Their editor or yours? Agent mode ok?",
-      "Keep applying. Goal: 8–12 apps by end of week 2",
+      "Arrays, hash, two pointers, sliding window, stack, binary search",
+      "Method: 10–15 min yourself → video if stuck → retype from memory. Paste = did not count",
+      "Ignore lc-stuff beginner notes. That repo is strings/loops from April. Too basic",
+      "Still no Google / Meta / Amazon / Apple. A fail can lock you out 6–12 months",
     ]},
-  { week: 3, start: "2026-11-23", end: "2026-11-29", title: "AI coding — two formats",
-    when: "Nov 23–29 · light Thanksgiving", tags: ["ai","mixed"],
+  { week: 3, start: "2026-11-23", end: "2026-11-29", title: "Trees + first AI format",
+    when: "Nov 23–29", tags: ["ai","mixed"],
     items: [
-      "Format A (Meta / NeetCode): 3 timed sessions — bug fix, then implement, then optimize — on a codebase you did not write. Narrate checks. Do not paste the whole prompt",
-      "Format B (DoorDash / Coinbase / Shopify): 2× 60 min in Cursor on an unfamiliar repo. README → run tests → hypothesis → then prompt. Use the tool you already use",
-      "Six-point check before accepting model output: runs, edge cases, complexity, off-by-one, names, did it solve the actual requirement",
-      "One GitLab-style pass: review a real PR/MR (bugs, tests, design) and talk through it out loud",
-      "Do not rebuild your Shopify store this week. That is not interview prep",
+      "Blind 75 untimed: trees, graphs, heaps. Same try → video → retype method",
+      "2 NeetCode AI sessions (bug-fix, then implement). Narrate. Don’t paste the whole prompt",
+      "Thanksgiving week: fewer problems is fine. Don’t start the store",
     ]},
-  { week: 4, start: "2026-11-30", end: "2026-12-06", title: "Finish Blind 75 + start Xu",
+  { week: 4, start: "2026-11-30", end: "2026-12-06", title: "Timed 75 + Xu starts",
     when: "Nov 30–Dec 6", tags: ["leetcode","mixed"],
     items: [
-      "Finish Blind 75: trees, graphs/BFS/DFS, heaps, intervals. Stop at 75. NeetCode 150 waits until a specific company asks for more",
-      "Xu Vol 1 chapter 1 on paper until automatic: requirements → back-of-envelope → API → boxes → 1–2 deep dives → failures",
-      "First 3 Xu drills out loud (URL shortener, rate limiter, unique ID). Reading the chapter ≠ the round",
-      "Now apply to mixed/leetcode names too (Amazon, Snowflake, Atlassian, Shopify) — you have enough DSA to not freeze",
+      "Finish Blind 75, now timed 25 min, AI off. Stop at 75",
+      "Xu ch 1 on paper until automatic: reqs → numbers → API → boxes → deep dive → failures",
+      "2 Xu drills out loud: URL shortener, rate limiter. Reading ≠ the round",
     ]},
-  { week: 5, start: "2026-12-07", end: "2026-12-13", title: "System design (the round that still exists)",
+  { week: 5, start: "2026-12-07", end: "2026-12-13", title: "System design",
     when: "Dec 7–13", tags: ["ai","mixed","leetcode"],
     items: [
-      "4 more Xu drills out loud: chat, news feed, job scheduler, plus one from your tracker companies (payments if Stripe, metrics if Datadog)",
-      "Senior push: retries, idempotency, hot keys, cache stampede, what you monitor. ‘I would use Kafka’ is a fail",
-      "Skip NeetCode’s system-design video courses — you already have Xu. Optional free: Hello Interview ‘System Design in a Hurry’ for pacing",
-      "DDIA only if Xu drills feel easy: replication + partitioning + transactions + consistency. Four chapters, not the book",
+      "5 Xu drills out loud: chat, news feed, unique ID, scheduler, plus one from your tracker",
+      "They will push: retries, idempotency, hot keys, what you monitor",
+      "Skip NeetCode design courses. DDIA only if Xu already feels easy — 4 chapters, not the book",
     ]},
-  { week: 6, start: "2026-12-14", end: "2026-12-20", title: "LLD + first mocks",
-    when: "Dec 14–20", tags: ["ai","mixed","leetcode"],
+  { week: 6, start: "2026-12-14", end: "2026-12-20", title: "AI repo + mocks",
+    when: "Dec 14–20", tags: ["ai","mixed"],
     items: [
-      "NeetCode Object-Oriented Design Interviews (not the patterns encyclopedia): LRU + TTL, rate limiter class, parking lot or mkdir/ls",
-      "One live-build from a messy spec (task manager / small HTTP service / order module). Design first, AI implements, you write a test it did not suggest",
-      "3 mocks: 1 classic coding (AI off), 1 AI-assisted, 1 HLD. Use NeetCode voice mock if that is in the package. Mocks > more chapters",
-      "If Amazon is in play: map your 8 stories onto Leadership Principles. Every result needs one number ($, latency, users, weeks)",
+      "2× 60 min in Cursor on a repo you didn’t write. README → tests → then prompt",
+      "NeetCode OOD Interviews: LRU, rate limiter class. Not the patterns encyclopedia",
+      "3 mocks: coding AI-off, AI-assisted, HLD. Coinbase/DoorDash/GitLab only if these don’t fall apart",
     ]},
-  { week: 7, start: "2026-12-21", end: "2026-12-27", title: "Interviews + weak spots",
-    when: "Dec 21–27 · holidays", tags: [],
+  { week: 7, start: "2026-12-21", end: "2026-12-27", title: "Hold + polish",
+    when: "Dec 21–27", tags: [],
     items: [
-      "Rehearse 3 C1 stories until tight. Add the AI-at-work story — 2026 loops (Microsoft, Amazon GenAI fluency, Meta) now ask it",
-      "Redo only the Blind 75 patterns you still miss. No new books, no NeetCode 150",
-      "Show up to any screens that landed. Confirm AI rules again the day before",
-      "Do not quit C1. Do not start a store sprint. Interviews first",
+      "Redo only weak Blind 75 patterns. No new books. No 150",
+      "Polish 3 C1 stories + the AI-at-work story",
+      "Holiday freeze: still no FAANG apps. Don’t quit C1",
     ]},
-  { week: 8, start: "2026-12-28", end: "2027-01-01", title: "Jan 1 checkpoint",
+  { week: 8, start: "2026-12-28", end: "2027-01-01", title: "Ready check",
     when: "Dec 28–Jan 1", tags: [],
     items: [
-      "Write down: apps sent, screens booked, offers (or none). That is the scoreboard, not ‘hours studied’",
-      "Still no offer is normal — Google-style loops can run 8–12 weeks. Keep C1. Keep applying in January",
-      "Park the business until a job loop is done. Dropshipping does not remove the interview trap",
-      "Only then: optional 1 GitHub repo if you want a visible AI/full-stack sample. Not required",
+      "Can you type a medium from a blank file in 25 min? 8 stories? Xu framework with no notes?",
+      "Jan 2: start apps. AI/mixed first, then Google / Meta / Amazon / Apple",
+      "Keep C1. An offer by Jan 1 was never the goal. Loops run into Feb–Mar",
     ]},
 ];
 
 function loadChecklist(){
-  try { return JSON.parse(localStorage.getItem('prepChecklist_v3') || '{}'); }
+  try { return JSON.parse(localStorage.getItem('prepChecklist_v4') || '{}'); }
   catch(e){ return {}; }
 }
 function saveChecklist(state){
-  localStorage.setItem('prepChecklist_v3', JSON.stringify(state));
+  localStorage.setItem('prepChecklist_v4', JSON.stringify(state));
 }
 
 function weekStatus(phase){
@@ -500,14 +489,7 @@ function renderRoadmap(){
   const state = loadChecklist();
   const styleTagHtml = tags => tags.length
     ? `<div class="phase-tags">${tags.map(t => `<span class="tag style-${t}">${STYLE_LABEL[t]}</span>`).join('')}</div>`
-    : `<div class="phase-tags"><span class="tag" style="background:#eef0f6;color:var(--muted);">Applies to everyone</span></div>`;
-  const verdictLabel = v => v === "keep" ? "Use this" : v === "partial" ? "Use parts only" : "Skip for now";
-  const cardHtml = r => `
-    <div class="resource-card">
-      <div class="verdict ${r.verdict}">${verdictLabel(r.verdict)}</div>
-      <h3>${r.title}</h3>
-      <p>${r.body}</p>
-    </div>`;
+    : "";
 
   let totalItems = 0, totalDone = 0;
   const phasesHtml = ROADMAP.map((phase, pi) => {
@@ -516,14 +498,14 @@ function renderRoadmap(){
     const complete = phaseDone === phase.items.length;
     const ws = weekStatus(phase);
     const open = ws === "current" || (ws === "upcoming" && !ROADMAP.some(p => weekStatus(p) === "current") && pi === 0);
-    const badge = complete ? "✓ Complete" : ws === "current" ? "This week" : ws === "past" ? "Past" : "Upcoming";
+    const badge = complete ? "Done" : ws === "current" ? "This week" : ws === "past" ? "Past" : "Upcoming";
     return `
       <div class="phase ${open ? "open" : ""} ${ws === "current" ? "current-week" : ""}" data-phase="${pi}" id="week-${phase.week}">
         <div class="phase-head">
           <div class="phase-num">${complete ? "✓" : phase.week}</div>
           <div>
             <div class="phase-title">${phase.title}</div>
-            <div class="phase-sub">${phaseDone}/${phase.items.length} done</div>
+            <div class="phase-sub">${phaseDone}/${phase.items.length}</div>
           </div>
           <div class="phase-when">${phase.when}</div>
           <div class="phase-badge ${ws === "current" && !complete ? "now" : ""}">${badge}</div>
@@ -550,23 +532,34 @@ function renderRoadmap(){
     const complete = phaseDone === phase.items.length;
     return `
       <button type="button" class="week-cell ${ws === "current" ? "current" : ""} ${complete ? "done-week" : ""}" data-jump="week-${phase.week}">
-        <div class="wk">Week ${phase.week}${ws === "current" ? " · now" : ""}</div>
-        <div class="dates">${phase.when.split("·")[0].trim()}</div>
+        <div class="wk">W${phase.week}${ws === "current" ? " now" : ""}</div>
+        <div class="dates">${phase.when}</div>
         <div class="focus">${phase.title}</div>
       </button>`;
   }).join("");
 
   el.innerHTML = `
     <div class="roadmap-intro">
-      8 weeks, Nov 9 → Jan 1. Researched ${PREP_RESEARCH_DATE} against 2026 loops (Meta AI-enabled coding, DoorDash official AI session, still-classic Amazon/Google DSA + design + behavioral). Apply while you prep. Do not quit C1 from this plan.
-      <div class="roadmap-kicker">Do they want projects / volunteer?</div>
-      <div class="resource-grid">${GAPS.map(cardHtml).join("")}</div>
-      <div class="roadmap-kicker">Your books &amp; NeetCode vs what 2026 actually tests</div>
-      <div class="resource-grid">${RESOURCES.map(cardHtml).join("")}</div>
-      <div class="roadmap-kicker">Calendar</div>
+      <div class="plan-row">
+        <div class="plan-cell"><div class="k">Study</div><div class="v">Nov 9 – Dec 20</div></div>
+        <div class="plan-cell"><div class="k">Start interviews</div><div class="v">Jan 2</div></div>
+        <div class="plan-cell"><div class="k">Offer by Jan 1?</div><div class="v">No. Keep C1</div></div>
+        <div class="plan-cell"><div class="k">Volunteer / GitHub</div><div class="v">Not needed</div></div>
+      </div>
+      <div class="do-skip">
+        <div class="rule-col use">
+          <div class="rule-h">Use</div>
+          <ul>${USE_LIST.map(x => `<li>${x}</li>`).join("")}</ul>
+        </div>
+        <div class="rule-col skip">
+          <div class="rule-h">Skip</div>
+          <ul>${SKIP_LIST.map(x => `<li>${x}</li>`).join("")}</ul>
+        </div>
+      </div>
+      <div class="roadmap-kicker">Weeks</div>
       <div class="week-strip">${weekStrip}</div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:10px;">
-        <span>Overall progress</span><span>${totalDone}/${totalItems} (${pct}%)</span>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);">
+        <span>Progress</span><span>${totalDone}/${totalItems} · ${pct}%</span>
       </div>
       <div class="roadmap-progress"><div class="roadmap-progress-bar" style="width:${pct}%"></div></div>
     </div>
@@ -605,10 +598,8 @@ function schoolCardHtml(s){
           <span class="tag gre-${s.greGroup}">${s.gre}</span>
         </div>
         <div class="job-role">${s.program} · ${s.degree}</div>
-        <div class="job-meta"><span>💻 ${s.format}</span></div>
-        <div class="job-why"><b>Deadline:</b> ${s.deadline}</div>
-        <div class="job-why">${s.why} <span style="opacity:.7">— ${s.fitNote}</span></div>
-        <div class="job-why" style="margin-top:4px;">${s.notes}</div>
+        <div class="job-meta"><span>💻 ${s.format}</span><span><b>${s.deadline}</b></span></div>
+        <div class="job-why" title="${(s.why + " — " + s.fitNote + " " + s.notes).replace(/"/g,"&quot;")}">${s.why} — ${s.fitNote}</div>
       </div>
       <div class="job-actions">
         <a class="linkbtn" href="${s.link}" target="_blank" rel="noopener">Admissions page ↗</a>
@@ -622,7 +613,7 @@ function schoolCardHtml(s){
 function renderSchools(){
   const list = document.getElementById('schoolList');
   const intro = document.getElementById('schoolsIntro');
-  intro.innerHTML = `${SCHOOLS_NOTE}${SCHOOLS_RESEARCH_DATE ? ` <span style="color:var(--muted)">Researched ${SCHOOLS_RESEARCH_DATE}.</span>` : ""}`;
+  intro.innerHTML = `Ivy / top-20 <b>online</b> only. None require GRE. Harvard = Extension School, not SEAS.${SCHOOLS_RESEARCH_DATE ? ` <span style="color:var(--muted)">Checked ${SCHOOLS_RESEARCH_DATE}.</span>` : ""}`;
 
   const rows = SCHOOLS.filter(s => {
     if (schoolFilters.chance && s.chance !== schoolFilters.chance) return false;
@@ -640,7 +631,7 @@ function renderSchools(){
     if (!subset.length){
       if (g === "required" && !schoolFilters.gre){
         html += `<div class="school-section">${GRE_SECTION.required}</div>
-          <div class="roadmap-intro" style="margin-bottom:12px;">None of these Ivy / top-20 <b>online</b> CS programs currently require the GRE. MIT, Princeton, Yale, Stanford, and Caltech do not offer a fully online CS master's.</div>`;
+          <div class="roadmap-intro" style="margin-bottom:12px;">No online Ivy/top-20 CS program requires GRE. MIT, Princeton, Yale, Stanford, Caltech have no fully online CS MS.</div>`;
       }
       return;
     }
@@ -772,7 +763,7 @@ function renderList(){
           </div>
           <div class="job-role">${j.role}</div>
           <div class="job-meta"><span>📍 ${j.location}</span><span>💼 ${j.workMode}</span><span><b>${j.comp}</b></span></div>
-          <div class="job-why">${j.why} <span style="opacity:.7">— ${j.notes}</span></div>
+          <div class="job-why" title="${(j.why + " — " + (j.notes || "")).replace(/"/g,"&quot;")}">${j.why}</div>
         </div>
         <div class="job-actions">
           <a class="linkbtn" href="${j.link}" target="_blank" rel="noopener">View posting ↗</a>
