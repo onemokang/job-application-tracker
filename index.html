@@ -250,9 +250,26 @@
   footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 36px;}
   footer code{background:#eef0f6;padding:2px 6px;border-radius:5px;}
 
+  #updateBanner{display:none;position:sticky;top:0;z-index:40;}
+  .update-banner{
+    background:#1e1b4b;color:#fff;padding:12px 20px 14px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .update-banner-inner{
+    max-width:1180px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  }
+  .update-date{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.65;}
+  .update-banner ul{margin:6px 0 0;padding-left:18px;font-size:13px;line-height:1.4;}
+  .update-banner li{margin:3px 0;}
+  #ackUpdate{
+    flex-shrink:0;border:none;border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:700;
+    background:#fff;color:#1e1b4b;cursor:pointer;font-family:inherit;
+  }
+  #ackUpdate:hover{filter:brightness(.95);}
   @media (max-width:640px){
     .job-card{grid-template-columns:auto 1fr;}
     .job-actions{grid-column:1 / -1;flex-direction:row;justify-content:space-between;margin-top:6px;}
+    .update-banner-inner{flex-direction:column;}
   }
 </style>
 </head>
@@ -270,6 +287,17 @@
 </div>
 
 <div id="siteContent">
+  <div id="updateBanner">
+    <div class="update-banner">
+      <div class="update-banner-inner">
+        <div>
+          <div class="update-date" id="updateDate"></div>
+          <ul id="updateBullets"></ul>
+        </div>
+        <button type="button" id="ackUpdate">Acknowledge</button>
+      </div>
+    </div>
+  </div>
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-top">
@@ -379,6 +407,8 @@ let SCHOOLS_RESEARCH_DATE = null;
 let DEFAULT_STATUS = "Not Applied";
 let AUTO_REFRESH_BOARDS = {};
 let DATA_LAST_UPDATED = null;
+const UPDATE_ACK_KEY = "trackerAckUpdateId_v1";
+let LATEST_UPDATE = null;
 let STYLE_RESEARCH_DATE = null;
 const CHANCE_LABEL = {high:"High chance", likely:"Likely", medium:"Medium"};
 let schoolFilters = { chance: "", status: "", gre: "" };
@@ -693,6 +723,47 @@ function schoolKey(s){
   return s.school + " · " + s.program;
 }
 
+async function loadUpdates(){
+  try {
+    const res = await fetch("updates.json", { cache: "no-store" });
+    if (!res.ok) return;
+    LATEST_UPDATE = await res.json();
+  } catch (e) {
+    LATEST_UPDATE = null;
+  }
+}
+
+function renderUpdateBanner(){
+  const box = document.getElementById("updateBanner");
+  const u = LATEST_UPDATE;
+  if (!u || !u.id || !Array.isArray(u.bullets) || !u.bullets.length){
+    box.style.display = "none";
+    return;
+  }
+  if (localStorage.getItem(UPDATE_ACK_KEY) === u.id){
+    box.style.display = "none";
+    return;
+  }
+  document.getElementById("updateDate").textContent = `Updated ${u.date || u.id}`;
+  const ul = document.getElementById("updateBullets");
+  ul.innerHTML = "";
+  u.bullets.forEach(b => {
+    const li = document.createElement("li");
+    li.textContent = b;
+    ul.appendChild(li);
+  });
+  box.style.display = "block";
+}
+
+function wireUpdateBanner(){
+  document.getElementById("ackUpdate").addEventListener("click", () => {
+    if (LATEST_UPDATE && LATEST_UPDATE.id){
+      localStorage.setItem(UPDATE_ACK_KEY, LATEST_UPDATE.id);
+    }
+    document.getElementById("updateBanner").style.display = "none";
+  });
+}
+
 async function loadSchoolData(){
   const res = await fetch("schools.json", { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load schools.json: ${res.status}`);
@@ -866,6 +937,9 @@ async function initSite(){
   } catch (e) {
     console.error(e);
   }
+  await loadUpdates();
+  wireUpdateBanner();
+  renderUpdateBanner();
 
   if (DATA_LAST_UPDATED){
     const d = new Date(DATA_LAST_UPDATED);

@@ -29,7 +29,9 @@ import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
-DATA_PATH = Path(__file__).resolve().parent.parent / "data.json"
+ROOT = Path(__file__).resolve().parent.parent
+DATA_PATH = ROOT / "data.json"
+UPDATES_PATH = ROOT / "updates.json"
 
 TITLE_INCLUDE = re.compile(
     r"software engineer|swe\b|backend engineer|full[- ]stack engineer|platform engineer",
@@ -107,11 +109,26 @@ def link_is_reachable(url: str) -> bool:
         return True  # network hiccup — don't flag as dead on a fluke
 
 
+def write_update(bullets: list[str]) -> None:
+    if not bullets:
+        return
+    now = datetime.now(timezone.utc)
+    payload = {
+        "id": now.strftime("%Y-%m-%dT%H:%MZ"),
+        "date": f"{now:%b} {now.day}, {now:%Y}",
+        "source": "daily-refresh",
+        "bullets": bullets,
+    }
+    UPDATES_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+    print("[update-banner]", payload["id"], bullets)
+
+
 def main():
     data = json.loads(DATA_PATH.read_text())
     jobs = data["jobs"]
     boards = data.get("autoRefreshBoards", {})
     changed = False
+    bullets: list[str] = []
 
     for job in jobs:
         company = job["company"]
@@ -134,6 +151,7 @@ def main():
                 job["link"] = match["link"]
                 job["postingTitle"] = match["role"]
                 changed = True
+                bullets.append(f"{company}: new live posting — {match['role']}")
             elif match:
                 job["postingTitle"] = match["role"]
             elif not match:
@@ -145,6 +163,7 @@ def main():
 
     data["lastUpdated"] = datetime.now(timezone.utc).isoformat()
     DATA_PATH.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    write_update(bullets)
     print("changed:", changed)
 
 
