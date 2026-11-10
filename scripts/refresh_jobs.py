@@ -2,20 +2,15 @@
 """
 Daily refresh for the job tracker.
 
-For every company in data.json's `autoRefreshBoards` (companies hosted on
-Greenhouse), pull the live public Job Board API and point that company's
-`link`/`role`/`location` at a currently-open posting matching:
-  - title looks like a software engineering role
-  - location matches that company's target bucket (remote / Chicago / SF-NYC)
+What this robot is allowed to change (and what the banner reports):
+  - Greenhouse boards in autoRefreshBoards: swap the Apply link to a live
+    SWE posting in that company's location bucket (remote / Chicago / SF-NYC).
+  - Every job: flag a clearly dead apply link (HTTP 404/410).
 
-This keeps those 4 links from ever going stale/404, without needing any
-auth or scraping — Greenhouse's board API is public.
+What it never changes: interview `style`, comp, rank, schools, prep roadmap.
 
-NOTE on the `style` field (ai / leetcode / mixed / unclear): this script
-never touches it. Interview style requires reading real candidate reports
-(Glassdoor/Blind/Reddit/company blogs), which isn't something a link-check
-script can verify. When a new company is added, set its `style` by hand
-after research, and record a short `styleNote` with your source/reasoning.
+Banner (updates.json) is written only when something above actually changed.
+Date + bullets. Acknowledge in the UI hides it until the next real change.
 
 Run by .github/workflows/refresh-jobs.yml on a daily cron.
 """
@@ -47,7 +42,7 @@ LOCATION_PATTERNS = {
     3: re.compile(r"san francisco|new york|sunnyvale|nyc", re.I),
 }
 
-UA = "job-application-tracker-refresh-bot (+https://github.com/onemokang/job-application-tracker)"
+UA = "job-tracker-bot (+https://github.com/onemokang/job-application-tracker)"
 
 
 def fetch_board(board_token: str) -> list[dict]:
@@ -75,9 +70,6 @@ def best_match(jobs: list[dict], rank: int) -> dict | None:
     if not candidates:
         return None
 
-    # Prefer titles that start with "Senior" or contain a plain, generic
-    # "Software Engineer" phrase over more niche variants — gives a more
-    # representative link for this personal tracker's purposes.
     def score(c):
         title = c[0]
         s = 0
@@ -87,7 +79,7 @@ def best_match(jobs: list[dict], rank: int) -> dict | None:
             s += 1
         if "(all teams)" in title.lower():
             s += 1
-        return -s  # lower is better for sort
+        return -s
 
     candidates.sort(key=score)
     title, loc, url = candidates[0]
@@ -95,8 +87,7 @@ def best_match(jobs: list[dict], rank: int) -> dict | None:
 
 
 def link_is_reachable(url: str) -> bool:
-    """Best-effort HEAD/GET check. Many ATS sites block bots (403), which we
-    don't treat as broken — only a clear 404/410 counts as dead."""
+    """Only a clear 404/410 counts as dead. 403/429 are treated as still up."""
     try:
         req = urllib.request.Request(url, headers={"User-Agent": UA}, method="GET")
         urllib.request.urlopen(req, timeout=15)
@@ -104,9 +95,9 @@ def link_is_reachable(url: str) -> bool:
     except urllib.error.HTTPError as e:
         if e.code in (404, 410):
             return False
-        return True  # 403/429/etc — ambiguous, assume still fine
+        return True
     except Exception:
-        return True  # network hiccup — don't flag as dead on a fluke
+        return True
 
 
 def write_update(bullets: list[str]) -> None:
@@ -143,23 +134,19 @@ def main():
                 match = None
 
             if match and match["link"] != job.get("link"):
-                print(f"[update] {company}: link -> {match['link']} (live posting: {match['role']!r})")
-                # Only the link + a transparency note change — curated role/
-                # location/comp framing (which reflects the general target,
-                # not one specific req) is left untouched so comp estimates
-                # never silently drift to match whatever title the bot found.
+                print(f"[update] {company}: link -> {match['link']} ({match['role']!r})")
                 job["link"] = match["link"]
                 job["postingTitle"] = match["role"]
                 changed = True
-                bullets.append(f"{company}: new live posting — {match['role']}")
+                bullets.append(f"Jobs: {company} apply link refreshed → {match['role']}")
             elif match:
                 job["postingTitle"] = match["role"]
-            elif not match:
+            else:
                 print(f"[warn] {company}: no current match found on board, leaving as-is")
-        else:
-            # Non-Greenhouse entries: best-effort dead-link check only.
-            if not link_is_reachable(job["link"]):
-                print(f"[warn] {company}: link looks dead ({job['link']})")
+
+        if not link_is_reachable(job["link"]):
+            print(f"[warn] {company}: link looks dead ({job['link']})")
+            bullets.append(f"Jobs: {company} apply link looks dead")
 
     data["lastUpdated"] = datetime.now(timezone.utc).isoformat()
     DATA_PATH.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")

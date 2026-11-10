@@ -1,10 +1,9 @@
 {
-  "id": "2026-11-09T23:00Z",
+  "id": "2026-11-09T23:10Z",
   "date": "Nov 9, 2026",
   "source": "site",
   "bullets": [
-    "Prep: stop Python for Beginners at 21/82. Switch to Python for Coding Interviews.",
-    "Study through Dec 20. Start interviews Jan 2. Keep C1.",
-    "Daily robot will show this banner when a job posting link actually changes."
+    "Prep Use list now labeled NeetCode vs Alex Xu.",
+    "Daily job robot only updates Jobs apply links + dead-link flags, then shows them here as bullets."
   ]
 }

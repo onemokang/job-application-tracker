@@ -118,6 +118,10 @@
   .rule-col ul{margin:0;padding:0;list-style:none;}
   .rule-col li{font-size:12.5px;font-weight:600;padding:4px 0;border-bottom:1px solid rgba(15,23,42,.06);line-height:1.3;}
   .rule-col li:last-child{border-bottom:none;}
+  .rule-col li b{
+    display:inline-block;min-width:78px;margin-right:8px;font-size:10px;font-weight:800;
+    letter-spacing:.04em;text-transform:uppercase;opacity:.7;
+  }
   .roadmap-progress{margin-top:8px;background:#eef0f6;border-radius:999px;height:6px;overflow:hidden;}
   .roadmap-progress-bar{height:100%;background:var(--primary);border-radius:999px;transition:width .2s;}
   .phase{
@@ -423,32 +427,32 @@ let filters = { rank: "", status: "", style: "", q: "" };
 // ---------- Prep roadmap ----------
 const PREP_RESEARCH_DATE = "2026-11-09";
 const USE_LIST = [
-  "Python for Coding Interviews — week 1 only",
-  "3 short lessons: Cheat Sheet, Big-O, 8 Data Structures",
-  "Blind 75 list + videos — try, then retype",
-  "Object Oriented Design Interviews — week 6",
-  "Xu Vol 1 out loud (not a NeetCode course)",
+  { src: "NeetCode", text: "Python for Coding Interviews — week 1 only" },
+  { src: "NeetCode", text: "Cheat Sheet, Big-O, 8 Data Structures — once" },
+  { src: "NeetCode", text: "Blind 75 + videos — try, then retype" },
+  { src: "NeetCode", text: "Object Oriented Design Interviews — week 6" },
+  { src: "Alex Xu", text: "System Design Interview Vol 1 — out loud" },
 ];
 const SKIP_LIST = [
-  "Python for Beginners — stop at 21/82. Do not finish",
-  "Both DSA courses + both System Design courses",
-  "Python OOP, SQL, Full Stack, OOD Patterns",
-  "JS challenge, YouTube clone, MongoDB, 150/250",
-  "Google / Meta / Amazon / Apple before Jan 2",
+  { src: "NeetCode", text: "Python for Beginners — stop at 21/82" },
+  { src: "NeetCode", text: "Both DSA courses + both System Design courses" },
+  { src: "NeetCode", text: "Python OOP, SQL, Full Stack, OOD Patterns" },
+  { src: "NeetCode", text: "JS challenge, YouTube clone, MongoDB, 150/250" },
+  { src: "Apps", text: "Google / Meta / Amazon / Apple before Jan 2" },
 ];
 const ROADMAP = [
   { week: 1, start: "2026-11-09", end: "2026-11-15", title: "Python from a blank file",
     when: "Nov 9–15", tags: [],
     items: [
-      "Stop Python for Beginners at 21/82. Switch to Python for Coding Interviews (dict, set, heapq)",
-      "Once: Python Cheat Sheet, Big-O, 8 Data Structures. Then empty file → function every day. No paste",
+      "NeetCode: stop Python for Beginners at 21/82. Switch to Python for Coding Interviews",
+      "NeetCode once: Cheat Sheet, Big-O, 8 Data Structures. Then empty file → function. No paste",
       "Draft 8 C1 STAR stories: own it, conflict, fail, incident, mentor, unclear, said no, used AI",
       "90-sec intro out loud: physics → CODA → 4 yrs SWE. Write your comp floor. No apps this week",
     ]},
   { week: 2, start: "2026-11-16", end: "2026-11-22", title: "Blind 75, untimed",
     when: "Nov 16–22", tags: ["leetcode","mixed"],
     items: [
-      "Arrays, hash, two pointers, sliding window, stack, binary search",
+      "NeetCode Blind 75: arrays, hash, two pointers, sliding window, stack, binary search",
       "Method: 10–15 min yourself → video if stuck → retype from memory. Paste = did not count",
       "Ignore lc-stuff beginner notes. That repo is strings/loops from April. Too basic",
       "Still no Google / Meta / Amazon / Apple. A fail can lock you out 6–12 months",
@@ -464,21 +468,21 @@ const ROADMAP = [
     when: "Nov 30–Dec 6", tags: ["leetcode","mixed"],
     items: [
       "Finish Blind 75, now timed 25 min, AI off. Stop at 75",
-      "Xu ch 1 on paper until automatic: reqs → numbers → API → boxes → deep dive → failures",
-      "2 Xu drills out loud: URL shortener, rate limiter. Reading ≠ the round",
+      "Alex Xu Vol 1 ch 1 on paper until automatic: reqs → numbers → API → boxes → deep dive → failures",
+      "Alex Xu: 2 drills out loud — URL shortener, rate limiter. Reading ≠ the round",
     ]},
   { week: 5, start: "2026-12-07", end: "2026-12-13", title: "System design",
     when: "Dec 7–13", tags: ["ai","mixed","leetcode"],
     items: [
-      "5 Xu drills out loud: chat, news feed, unique ID, scheduler, plus one from your tracker",
+      "Alex Xu: 5 drills out loud — chat, news feed, unique ID, scheduler, plus one from your tracker",
       "They will push: retries, idempotency, hot keys, what you monitor",
-      "Skip NeetCode design courses. DDIA only if Xu already feels easy — 4 chapters, not the book",
+      "Skip NeetCode System Design courses. DDIA (Kleppmann) only if Xu already feels easy",
     ]},
   { week: 6, start: "2026-12-14", end: "2026-12-20", title: "AI repo + mocks",
     when: "Dec 14–20", tags: ["ai","mixed"],
     items: [
       "2× 60 min in Cursor on a repo you didn’t write. README → tests → then prompt",
-      "NeetCode OOD Interviews: LRU, rate limiter class. Not the patterns encyclopedia",
+      "NeetCode Object Oriented Design Interviews: LRU, rate limiter class. Not OOD Patterns",
       "3 mocks: coding AI-off, AI-assisted, HLD. Coinbase/DoorDash/GitLab only if these don’t fall apart",
     ]},
   { week: 7, start: "2026-12-21", end: "2026-12-27", title: "Hold + polish",
@@ -498,11 +502,11 @@ const ROADMAP = [
 ];
 
 function loadChecklist(){
-  try { return JSON.parse(localStorage.getItem('prepChecklist_v5') || '{}'); }
+  try { return JSON.parse(localStorage.getItem('prepChecklist_v6') || '{}'); }
   catch(e){ return {}; }
 }
 function saveChecklist(state){
-  localStorage.setItem('prepChecklist_v5', JSON.stringify(state));
+  localStorage.setItem('prepChecklist_v6', JSON.stringify(state));
 }
 
 function weekStatus(phase){
@@ -579,11 +583,11 @@ function renderRoadmap(){
       <div class="do-skip">
         <div class="rule-col use">
           <div class="rule-h">Use</div>
-          <ul>${USE_LIST.map(x => `<li>${x}</li>`).join("")}</ul>
+          <ul>${USE_LIST.map(x => `<li><b>${x.src}</b>${x.text}</li>`).join("")}</ul>
         </div>
         <div class="rule-col skip">
           <div class="rule-h">Skip</div>
-          <ul>${SKIP_LIST.map(x => `<li>${x}</li>`).join("")}</ul>
+          <ul>${SKIP_LIST.map(x => `<li><b>${x.src}</b>${x.text}</li>`).join("")}</ul>
         </div>
       </div>
       <div class="roadmap-kicker">Weeks</div>
@@ -744,7 +748,8 @@ function renderUpdateBanner(){
     box.style.display = "none";
     return;
   }
-  document.getElementById("updateDate").textContent = `Updated ${u.date || u.id}`;
+  const src = u.source === "daily-refresh" ? "Daily job robot" : "Site";
+  document.getElementById("updateDate").textContent = `Updated ${u.date || u.id} · ${src}`;
   const ul = document.getElementById("updateBullets");
   ul.innerHTML = "";
   u.bullets.forEach(b => {
