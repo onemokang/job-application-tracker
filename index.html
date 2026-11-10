@@ -394,24 +394,24 @@ let filters = { rank: "", status: "", style: "", q: "" };
 const PREP_RESEARCH_DATE = "2026-11-09";
 const USE_LIST = [
   "Python for Coding Interviews — week 1 only",
-  "Blind 75 — try, then video, then retype",
-  "Xu Vol 1 — out loud, not silent reading",
-  "8 C1 STAR stories + 90-sec intro",
-  "Cursor on a repo you didn’t write",
+  "3 short lessons: Cheat Sheet, Big-O, 8 Data Structures",
+  "Blind 75 list + videos — try, then retype",
+  "Object Oriented Design Interviews — week 6",
+  "Xu Vol 1 out loud (not a NeetCode course)",
 ];
 const SKIP_LIST = [
-  "Python for Beginners / old lc-stuff notes",
-  "NeetCode 150, 250, both 25h DSA courses",
-  "NeetCode system-design courses + DDIA first",
+  "Python for Beginners — stop at 21/82. Do not finish",
+  "Both DSA courses + both System Design courses",
+  "Python OOP, SQL, Full Stack, OOD Patterns",
+  "JS challenge, YouTube clone, MongoDB, 150/250",
   "Google / Meta / Amazon / Apple before Jan 2",
-  "Volunteer, new GitHub, dropshipping store",
 ];
 const ROADMAP = [
   { week: 1, start: "2026-11-09", end: "2026-11-15", title: "Python from a blank file",
     when: "Nov 9–15", tags: [],
     items: [
-      "Course: NeetCode “Python for Coding Interviews” — dict, set, list, heapq. Not Python for Beginners",
-      "Every day: empty file → working function. No copy-paste. Frequency count, two-sum by hand, tiny BFS",
+      "Stop Python for Beginners at 21/82. Switch to Python for Coding Interviews (dict, set, heapq)",
+      "Once: Python Cheat Sheet, Big-O, 8 Data Structures. Then empty file → function every day. No paste"
       "Draft 8 C1 STAR stories: own it, conflict, fail, incident, mentor, unclear, said no, used AI",
       "90-sec intro out loud: physics → CODA → 4 yrs SWE. Write your comp floor. No apps this week",
     ]},
@@ -468,11 +468,11 @@ const ROADMAP = [
 ];
 
 function loadChecklist(){
-  try { return JSON.parse(localStorage.getItem('prepChecklist_v4') || '{}'); }
+  try { return JSON.parse(localStorage.getItem('prepChecklist_v5') || '{}'); }
   catch(e){ return {}; }
 }
 function saveChecklist(state){
-  localStorage.setItem('prepChecklist_v4', JSON.stringify(state));
+  localStorage.setItem('prepChecklist_v5', JSON.stringify(state));
 }
 
 function weekStatus(phase){
