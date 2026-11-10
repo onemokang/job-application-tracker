@@ -137,6 +137,20 @@
   .resource-card .verdict.skip{color:#be185d;}
   .resource-card h3{margin:0 0 6px;font-size:14px;}
   .resource-card p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.45;}
+  .roadmap-kicker{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px;}
+  .week-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin:12px 0 4px;}
+  .week-cell{
+    border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:#fff;cursor:pointer;
+    text-align:left;font:inherit;color:inherit;
+  }
+  .week-cell:hover{border-color:var(--primary);}
+  .week-cell .wk{font-size:11px;font-weight:800;color:var(--primary);}
+  .week-cell .dates{font-size:11px;color:var(--muted);margin-top:1px;}
+  .week-cell .focus{font-size:12.5px;font-weight:600;margin-top:5px;line-height:1.3;}
+  .week-cell.current{border-color:var(--primary);background:var(--primary-ink);}
+  .week-cell.done-week{opacity:.72;}
+  .phase.current-week{border-color:#c7d2fe;box-shadow:0 0 0 3px rgba(79,70,229,.12);}
+  .phase-badge.now{background:var(--primary-ink);color:var(--primary);}
 
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px;}
   .stat-card{
@@ -368,70 +382,117 @@ let statusMap = {};
 let filters = { rank: "", status: "", style: "", q: "" };
 
 // ---------- Prep roadmap ----------
-// Verdicts from 2026 interview reports for THIS tracker (Coinbase, DoorDash,
-// Datadog, Shopify, Stripe, GitLab, Anthropic, Amazon, Google, Meta, Apple,
-// Uber Freight, JPM, Goldman, Microsoft, etc.) — not generic "grind everything".
+// Researched Nov 9, 2026 against Oct–Nov 2026 reports: Meta AI-enabled coding
+// (Hello Interview), DoorDash AI working session (official blog Mar 2026),
+// DevInterview.AI industry survey (updated Oct 12, 2026), NeetCode catalog
+// (checked Oct 14, 2026), Amazon LPs, Meta behavioral, mid-level resume norms.
+const PREP_RESEARCH_DATE = "2026-11-09";
+
+const GAPS = [
+  { verdict: "keep", title: "Work stories — yes, they ask this",
+    body: "Every loop still has a behavioral round. Amazon maps 10–15 STAR stories to Leadership Principles. Meta wants 8–10 stories (conflict, ambiguity, failure, feedback, scope-cut, mentoring). Use Capital One: FICO, security, incidents, promotions — not charity hours." },
+  { verdict: "skip", title: "Volunteer / unpaid charity — not needed",
+    body: "SWE mid-level loops do not screen for volunteer work. When they say “tell me about a time you volunteered,” they mean you stepped up on a messy work project. Do not spend November joining a nonprofit to pad the resume." },
+  { verdict: "skip", title: "New personal projects / GitHub portfolio — skip for 8 weeks",
+    body: "At ~4 years, interviewers want shipped work from the job. Side projects help new grads and career-switchers, not you. A tutorial GitHub can hurt. Do not build a dropshipping site or a portfolio app instead of mocks. Optional later: pin one real repo if it shows AI/full-stack you cannot show from C1." },
+];
+
 const RESOURCES = [
-  { verdict: "partial", title: "NeetCode package",
-    body: "Keep it for pattern videos + Blind 75 / first ~75 problems. Do not finish all 150 before applying — mixed/leetcode companies still ask DSA, but AI rounds grade verification, not grinding. If the package includes NeetCode's AI coding practice (bug-fix → implement → optimize), that part is more useful than extra problems." },
+  { verdict: "partial", title: "NeetCode package (use ~20%, skip the rest)",
+    body: "Catalog as of Oct 2026: Blind 75 / 150 / 250 (free lists), 2×25h DSA video courses, 2 system-design courses (~10h), Python/SQL/fullstack, 2 OOD courses, AI coding (bug-fix → implement → optimize), voice mocks. USE: Blind 75 + videos, the AI coding sessions, voice mocks, OOD Interviews (not the patterns encyclopedia). SKIP: both 25h DSA courses, NeetCode system design (Xu is the 45-min drill book), Python/SQL/fullstack, NeetCode 150/250. Lists were built before the 2026 AI-round shift — they do not train DoorDash/Coinbase ‘your IDE in a real repo.’" },
   { verdict: "keep", title: "System Design Interview (Alex Xu Vol 1)",
-    body: "This is the one that matches the actual 45-min HLD round (framework + worked prompts). Use it as drills out loud, not as a book to finish. Vol 2 is optional later (payments/queues/metrics) if Stripe/Ramp/Datadog loops appear." },
+    body: "Still the closest match to a 45-min HLD round: framework + worked prompts. Drill out loud. Vol 2 only if Stripe/Datadog/payments loops show up. Hello Interview’s free ‘System Design in a Hurry’ is a backup for delivery pacing, not a third book to finish." },
   { verdict: "partial", title: "Designing Data-Intensive Applications",
-    body: "Do not read cover to cover before interviews — it isn't an interview book (~670 pages). After Xu, skim only: replication, partitioning/sharding, transactions, consistency. Skip encoding, batch processing, consensus proofs. Highest payoff at Snowflake, Datadog, Stripe, Coinbase, Bloomberg." },
+    body: "Not an interview book (~670 pages). After Xu, skim only replication, partitioning, transactions, consistency. Skip encoding, batch, consensus proofs. Useful for Snowflake/Datadog/Stripe follow-ups. Do not start it in week 1." },
+  { verdict: "keep", title: "What none of those cover (the actual 2026 gap)",
+    body: "1) Recruiter screen + 90-sec intro + comp number. 2) Behavioral story bank. 3) AI-in-your-own-IDE (DoorDash/Coinbase/Shopify — NeetCode’s AI practice is Meta’s 3-phase CoderPad shape, not this). 4) Code-review / MR (GitLab). 5) Live-build from a messy spec (Anthropic / some OAs). 6) Asking, in writing, whether each round bans or requires AI." },
 ];
 
 const ROADMAP = [
-  { title: "Foundations: resume, stories, targets", when: "Before you apply", tags: [],
+  { week: 1, start: "2026-11-09", end: "2026-11-15", title: "Stories, resume, first apps",
+    when: "Nov 9–15", tags: [],
     items: [
-      "Resume + LinkedIn fully updated and consistent with each other",
-      "6–8 STAR stories drafted (ownership, conflict, failure/mistake, incident, mentoring, leading under ambiguity)",
-      "A 60–90 second 'walk me through your background' answer, rehearsed out loud",
-      "Know your target comp number and your floor, so you don't improvise during a recruiter call",
+      "Resume + LinkedIn match. Lead with C1 impact (FICO / security / incidents), not CODA-as-bootcamp",
+      "Write 8 STAR stories from work: ownership, conflict, failure, incident, mentoring, ambiguity, saying no / cutting scope, using AI at work",
+      "Rehearse a 60–90s intro out loud: physics → CODA → 4 years SWE. Own it. Do not apologize for skipping CS",
+      "Lock your comp floor (no paycut vs C1 ~$180k unless the job is actually chill). Write it down before recruiter calls",
+      "Apply this week to AI/mixed tracker jobs (Coinbase, DoorDash, GitLab, Anthropic, Datadog). Do not wait for DSA 75",
     ]},
-  { title: "DSA — enough to diagnose, not grind", when: "~1–2 weeks", tags: ["leetcode","mixed"],
+  { week: 2, start: "2026-11-16", end: "2026-11-22", title: "DSA patterns, AI off",
+    when: "Nov 16–22", tags: ["leetcode","mixed"],
     items: [
-      "NeetCode: do Blind 75 (or the first ~75 on the roadmap). Stop. 150 is overkill for this list and delays applying",
-      "Patterns that still show up: hash maps, two pointers, sliding window, BFS/DFS, heaps, binary search. Skip deep hard-DP grind",
-      "Timed reps with AI off: 25–30 min, say complexity out loud. Amazon/Google/Meta/Apple/JPM/Goldman/Uber Freight still ask this",
-      "Use DSA as a checker for AI rounds: when the model writes a loop, you should know if it's O(n²) before you accept it",
+      "NeetCode Blind 75 only: arrays/hash, two pointers, sliding window, stack, binary search (~25 problems). Videos if stuck, then retry timed",
+      "Every problem: 25–30 min, say time/space out loud. This is still the no-AI round at Amazon/Google/Meta/Apple/JPM/Goldman",
+      "Skip hard 2-D DP and ‘Advanced Algorithms’ 25h course. You need enough to catch a wrong AI answer, not a contest rating",
+      "Paste this to every recruiter: for each round, is AI allowed / expected / banned? Their editor or yours? Agent mode ok?",
+      "Keep applying. Goal: 8–12 apps by end of week 2",
     ]},
-  { title: "AI-assisted coding (the new skill)", when: "~1–2 weeks", tags: ["ai","mixed"],
+  { week: 3, start: "2026-11-23", end: "2026-11-29", title: "AI coding — two formats",
+    when: "Nov 23–29 · light Thanksgiving", tags: ["ai","mixed"],
     items: [
-      "Pick one tool you already use (Cursor/Claude Code/Copilot) and practice in it daily — switching tools the night before is a common fail",
-      "3× 60-min sessions on code you didn't write: README → run tests → form a hypothesis → then prompt. This is Coinbase/DoorDash/Datadog/Atlassian",
-      "Shopify-style: 45 min from an empty repo (task manager, rover, small HTTP service). Design first, AI implements, you test",
-      "Stripe-style: multi-part spec. Prompt one piece at a time. Read every diff. Write a test the AI didn't suggest",
-      "Ask every recruiter, in writing, per round: AI allowed / expected / banned? Own editor or theirs? Agent mode ok?",
+      "Format A (Meta / NeetCode): 3 timed sessions — bug fix, then implement, then optimize — on a codebase you did not write. Narrate checks. Do not paste the whole prompt",
+      "Format B (DoorDash / Coinbase / Shopify): 2× 60 min in Cursor on an unfamiliar repo. README → run tests → hypothesis → then prompt. Use the tool you already use",
+      "Six-point check before accepting model output: runs, edge cases, complexity, off-by-one, names, did it solve the actual requirement",
+      "One GitLab-style pass: review a real PR/MR (bugs, tests, design) and talk through it out loud",
+      "Do not rebuild your Shopify store this week. That is not interview prep",
     ]},
-  { title: "High-level system design", when: "~1–2 weeks", tags: ["ai","mixed","leetcode"],
+  { week: 4, start: "2026-11-30", end: "2026-12-06", title: "Finish Blind 75 + start Xu",
+    when: "Nov 30–Dec 6", tags: ["leetcode","mixed"],
     items: [
-      "Xu Vol 1, chapter 1 framework on paper until it's automatic: requirements → numbers → API → boxes → 1–2 deep dives → failures",
-      "Drill 5–8 of Xu's prompts out loud (URL shortener, rate limiter, chat, news feed, job scheduler). Reading ≠ the round",
-      "At senior level they push reliability: retries, idempotency, hot keys, cache stampede, what you monitor — not 'I would use Kafka'",
-      "DDIA only after the above: replication + partitioning + transactions + consistency. That's the follow-up vocabulary, not the framework",
+      "Finish Blind 75: trees, graphs/BFS/DFS, heaps, intervals. Stop at 75. NeetCode 150 waits until a specific company asks for more",
+      "Xu Vol 1 chapter 1 on paper until automatic: requirements → back-of-envelope → API → boxes → 1–2 deep dives → failures",
+      "First 3 Xu drills out loud (URL shortener, rate limiter, unique ID). Reading the chapter ≠ the round",
+      "Now apply to mixed/leetcode names too (Amazon, Snowflake, Atlassian, Shopify) — you have enough DSA to not freeze",
     ]},
-  { title: "LLD, code review, live-build (Xu/DDIA don't cover this)", when: "~1 week", tags: ["ai","mixed","leetcode"],
+  { week: 5, start: "2026-12-07", end: "2026-12-13", title: "System design (the round that still exists)",
+    when: "Dec 7–13", tags: ["ai","mixed","leetcode"],
     items: [
-      "Uber Freight / JPM / Goldman still run class-design or PR-review rounds. Practice: LRU, rate limiter class, file system mkdir/ls, parking-lot OOP",
-      "GitLab: review a real merge request like a teammate (bugs, tests, architecture) then talk through it",
-      "DoorDash Code Craft / Anthropic OA: build a small business module from a messy spec, with tests, no algorithm trick",
-      "None of your three books train this — use your own repos + timed builds, not more reading",
+      "4 more Xu drills out loud: chat, news feed, job scheduler, plus one from your tracker companies (payments if Stripe, metrics if Datadog)",
+      "Senior push: retries, idempotency, hot keys, cache stampede, what you monitor. ‘I would use Kafka’ is a fail",
+      "Skip NeetCode’s system-design video courses — you already have Xu. Optional free: Hello Interview ‘System Design in a Hurry’ for pacing",
+      "DDIA only if Xu drills feel easy: replication + partitioning + transactions + consistency. Four chapters, not the book",
     ]},
-  { title: "Behavioral, mocks, then apply", when: "Ongoing — don't wait to finish everything", tags: [],
+  { week: 6, start: "2026-12-14", end: "2026-12-20", title: "LLD + first mocks",
+    when: "Dec 14–20", tags: ["ai","mixed","leetcode"],
     items: [
-      "Rehearse 2–3 Capital One stories until tight: FICO $50M unblock, security initiative, incident response",
-      "Add one story about how you use AI at work — several 2026 loops now grade this",
-      "2–3 mocks (one classic coding, one AI-assisted, one HLD) before interview #1. Mocks beat more book chapters",
-      "Apply while prepping. Foundations + DSA 75 + one AI mock is enough to start AI/mixed companies; don't wait for DDIA",
+      "NeetCode Object-Oriented Design Interviews (not the patterns encyclopedia): LRU + TTL, rate limiter class, parking lot or mkdir/ls",
+      "One live-build from a messy spec (task manager / small HTTP service / order module). Design first, AI implements, you write a test it did not suggest",
+      "3 mocks: 1 classic coding (AI off), 1 AI-assisted, 1 HLD. Use NeetCode voice mock if that is in the package. Mocks > more chapters",
+      "If Amazon is in play: map your 8 stories onto Leadership Principles. Every result needs one number ($, latency, users, weeks)",
+    ]},
+  { week: 7, start: "2026-12-21", end: "2026-12-27", title: "Interviews + weak spots",
+    when: "Dec 21–27 · holidays", tags: [],
+    items: [
+      "Rehearse 3 C1 stories until tight. Add the AI-at-work story — 2026 loops (Microsoft, Amazon GenAI fluency, Meta) now ask it",
+      "Redo only the Blind 75 patterns you still miss. No new books, no NeetCode 150",
+      "Show up to any screens that landed. Confirm AI rules again the day before",
+      "Do not quit C1. Do not start a store sprint. Interviews first",
+    ]},
+  { week: 8, start: "2026-12-28", end: "2027-01-01", title: "Jan 1 checkpoint",
+    when: "Dec 28–Jan 1", tags: [],
+    items: [
+      "Write down: apps sent, screens booked, offers (or none). That is the scoreboard, not ‘hours studied’",
+      "Still no offer is normal — Google-style loops can run 8–12 weeks. Keep C1. Keep applying in January",
+      "Park the business until a job loop is done. Dropshipping does not remove the interview trap",
+      "Only then: optional 1 GitHub repo if you want a visible AI/full-stack sample. Not required",
     ]},
 ];
 
 function loadChecklist(){
-  try { return JSON.parse(localStorage.getItem('prepChecklist_v2') || '{}'); }
+  try { return JSON.parse(localStorage.getItem('prepChecklist_v3') || '{}'); }
   catch(e){ return {}; }
 }
 function saveChecklist(state){
-  localStorage.setItem('prepChecklist_v2', JSON.stringify(state));
+  localStorage.setItem('prepChecklist_v3', JSON.stringify(state));
+}
+
+function weekStatus(phase){
+  const now = Date.now();
+  const start = Date.parse(phase.start + "T00:00:00");
+  const end = Date.parse(phase.end + "T23:59:59");
+  if (now < start) return "upcoming";
+  if (now > end) return "past";
+  return "current";
 }
 
 function renderRoadmap(){
@@ -440,22 +501,32 @@ function renderRoadmap(){
   const styleTagHtml = tags => tags.length
     ? `<div class="phase-tags">${tags.map(t => `<span class="tag style-${t}">${STYLE_LABEL[t]}</span>`).join('')}</div>`
     : `<div class="phase-tags"><span class="tag" style="background:#eef0f6;color:var(--muted);">Applies to everyone</span></div>`;
+  const verdictLabel = v => v === "keep" ? "Use this" : v === "partial" ? "Use parts only" : "Skip for now";
+  const cardHtml = r => `
+    <div class="resource-card">
+      <div class="verdict ${r.verdict}">${verdictLabel(r.verdict)}</div>
+      <h3>${r.title}</h3>
+      <p>${r.body}</p>
+    </div>`;
 
   let totalItems = 0, totalDone = 0;
   const phasesHtml = ROADMAP.map((phase, pi) => {
     const phaseDone = phase.items.filter((_, ii) => state[`${pi}-${ii}`]).length;
     totalItems += phase.items.length; totalDone += phaseDone;
     const complete = phaseDone === phase.items.length;
+    const ws = weekStatus(phase);
+    const open = ws === "current" || (ws === "upcoming" && !ROADMAP.some(p => weekStatus(p) === "current") && pi === 0);
+    const badge = complete ? "✓ Complete" : ws === "current" ? "This week" : ws === "past" ? "Past" : "Upcoming";
     return `
-      <div class="phase ${pi===0 ? 'open' : ''}" data-phase="${pi}">
+      <div class="phase ${open ? "open" : ""} ${ws === "current" ? "current-week" : ""}" data-phase="${pi}" id="week-${phase.week}">
         <div class="phase-head">
-          <div class="phase-num">${complete ? '✓' : pi+1}</div>
+          <div class="phase-num">${complete ? "✓" : phase.week}</div>
           <div>
             <div class="phase-title">${phase.title}</div>
             <div class="phase-sub">${phaseDone}/${phase.items.length} done</div>
           </div>
           <div class="phase-when">${phase.when}</div>
-          <div class="phase-badge">${complete ? '✓ Complete' : 'In progress'}</div>
+          <div class="phase-badge ${ws === "current" && !complete ? "now" : ""}">${badge}</div>
         </div>
         <div class="phase-body">
           ${styleTagHtml(phase.tags)}
@@ -463,28 +534,37 @@ function renderRoadmap(){
             const id = `${pi}-${ii}`;
             const checked = !!state[id];
             return `
-              <div class="phase-item ${checked ? 'done' : ''}">
-                <input type="checkbox" id="chk-${id}" data-id="${id}" ${checked ? 'checked' : ''}>
+              <div class="phase-item ${checked ? "done" : ""}">
+                <input type="checkbox" id="chk-${id}" data-id="${id}" ${checked ? "checked" : ""}>
                 <label for="chk-${id}">${item}</label>
               </div>`;
-          }).join('')}
+          }).join("")}
         </div>
       </div>`;
-  }).join('');
+  }).join("");
 
   const pct = totalItems ? Math.round(100 * totalDone / totalItems) : 0;
-
-  const resourceHtml = RESOURCES.map(r => `
-    <div class="resource-card">
-      <div class="verdict ${r.verdict}">${r.verdict === "keep" ? "Use this" : r.verdict === "partial" ? "Use parts only" : "Skip for now"}</div>
-      <h3>${r.title}</h3>
-      <p>${r.body}</p>
-    </div>`).join("");
+  const weekStrip = ROADMAP.map((phase, pi) => {
+    const ws = weekStatus(phase);
+    const phaseDone = phase.items.filter((_, ii) => state[`${pi}-${ii}`]).length;
+    const complete = phaseDone === phase.items.length;
+    return `
+      <button type="button" class="week-cell ${ws === "current" ? "current" : ""} ${complete ? "done-week" : ""}" data-jump="week-${phase.week}">
+        <div class="wk">Week ${phase.week}${ws === "current" ? " · now" : ""}</div>
+        <div class="dates">${phase.when.split("·")[0].trim()}</div>
+        <div class="focus">${phase.title}</div>
+      </button>`;
+  }).join("");
 
   el.innerHTML = `
     <div class="roadmap-intro">
-      Researched against the companies on this tracker (2026 reports). AI-assisted loops still ask system design and still fail people who can't check AI output. DSA is not dead — it's just not the whole job.
-      <div class="resource-grid">${resourceHtml}</div>
+      8 weeks, Nov 9 → Jan 1. Researched ${PREP_RESEARCH_DATE} against 2026 loops (Meta AI-enabled coding, DoorDash official AI session, still-classic Amazon/Google DSA + design + behavioral). Apply while you prep. Do not quit C1 from this plan.
+      <div class="roadmap-kicker">Do they want projects / volunteer?</div>
+      <div class="resource-grid">${GAPS.map(cardHtml).join("")}</div>
+      <div class="roadmap-kicker">Your books &amp; NeetCode vs what 2026 actually tests</div>
+      <div class="resource-grid">${RESOURCES.map(cardHtml).join("")}</div>
+      <div class="roadmap-kicker">Calendar</div>
+      <div class="week-strip">${weekStrip}</div>
       <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:10px;">
         <span>Overall progress</span><span>${totalDone}/${totalItems} (${pct}%)</span>
       </div>
@@ -492,10 +572,17 @@ function renderRoadmap(){
     </div>
     ${phasesHtml}`;
 
-  el.querySelectorAll('.phase-head').forEach(h => h.addEventListener('click', () => {
-    h.closest('.phase').classList.toggle('open');
+  el.querySelectorAll(".week-cell").forEach(btn => btn.addEventListener("click", () => {
+    const target = document.getElementById(btn.dataset.jump);
+    if (!target) return;
+    document.querySelectorAll(".phase").forEach(p => p.classList.remove("open"));
+    target.classList.add("open");
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   }));
-  el.querySelectorAll('.phase-item input[type=checkbox]').forEach(cb => cb.addEventListener('click', e => {
+  el.querySelectorAll(".phase-head").forEach(h => h.addEventListener("click", () => {
+    h.closest(".phase").classList.toggle("open");
+  }));
+  el.querySelectorAll(".phase-item input[type=checkbox]").forEach(cb => cb.addEventListener("click", e => {
     e.stopPropagation();
     const s = loadChecklist();
     s[cb.dataset.id] = cb.checked;
