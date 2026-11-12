@@ -1,9 +1,8 @@
 {
-  "id": "2026-11-09T23:10Z",
-  "date": "Nov 9, 2026",
-  "source": "site",
+  "id": "2026-11-12T20:43Z",
+  "date": "Nov 12, 2026",
+  "source": "daily-refresh",
   "bullets": [
-    "Prep Use list now labeled NeetCode vs Alex Xu.",
-    "Daily job robot only updates Jobs apply links + dead-link flags, then shows them here as bullets."
+    "Jobs: Coinbase apply link refreshed → Senior Software Engineer"
   ]
 }
