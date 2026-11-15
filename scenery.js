@@ -39,7 +39,6 @@ const WORLDS = {
     amb(c) {
       let s = "";
       if (!c.d) {
-        for (let i = 0; i < 4; i++) s += A("flit", `animation-duration:${(16 + c.r() * 8).toFixed(1)}s;animation-delay:${dl(c, 20)}`, T(RX(c), RY(c), 1, `<g class="flapx"><ellipse cx="-3" rx="3.6" ry="2.6" fill="#ff8fab"/><ellipse cx="3" rx="3.6" ry="2.6" fill="#ffb86b"/></g>`));
         for (let i = 0; i < 2; i++) s += drift(c, c.top + 120 + c.r() * 60, 70 + c.r() * 30, cloud(false));
       } else s += flies(c, 14);
       return s;
@@ -178,7 +177,6 @@ const WORLDS = {
         for (let k = 0; k < 3; k++) { x += (c.r() < 0.5 ? -1 : 1) * (30 + c.r() * 60); x = Math.max(10, Math.min(c.W - 10, x)); dd += ` H${x.toFixed(0)}`; y += 20 + c.r() * 40; dd += ` V${y.toFixed(0)}`; }
         s += `<path d="${dd}" fill="none" stroke="${c.d ? "#12525e" : "#7ec9bf"}" stroke-width="2"/><path class="flow" style="animation-delay:${dl(c, 3)}" d="${dd}" fill="none" stroke="${c.d ? "#3df2ff" : "#ff8a3d"}" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="8 120"/>`;
       }
-      for (let i = 0; i < 8; i++) s += A("blip", `animation-delay:${dl(c, 2)}`, T(RX(c), RY(c), 1, `<circle r="3" fill="${c.d ? "#ff4fd8" : "#ff8a3d"}"/>`));
       return s;
     },
   },

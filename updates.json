@@ -1,6 +1,17 @@
 {
   "entries": [
     {
+      "id": "2026-11-16T00:10Z",
+      "date": "2026-11-16",
+      "source": "site",
+      "bullets": [
+        {
+          "k": "site",
+          "text": "Removed the bouncing pink dots from the map."
+        }
+      ]
+    },
+    {
       "id": "2026-11-15T23:50Z",
       "date": "2026-11-15",
       "source": "site",
