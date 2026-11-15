@@ -31,7 +31,7 @@
           "src": "NeetCode · Lesson",
           "title": "How to Use NeetCode Effectively",
           "link": "https://neetcode.io/courses/lessons/how-to-use-neetcode-effectively",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#how-to-use-neetcode-effectively"
         },
         {
           "id": "py-2",
@@ -39,7 +39,7 @@
           "src": "NeetCode · YouTube (free)",
           "title": "Python for Coding Interviews – Everything you need to Know",
           "link": "https://www.youtube.com/watch?v=0K_eZGS5NsU",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20Python/Python%20for%20Coding%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20Python/Python%20for%20Coding%20Interviews/README.md"
         },
         {
           "id": "py-3",
@@ -48,7 +48,7 @@
           "title": "Python for Coding Interviews: all ~40 exercises, in order",
           "note": "Type each one from an empty file. No pasting.",
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20Python/Python%20for%20Coding%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20Python/Python%20for%20Coding%20Interviews/README.md"
         },
         {
           "id": "py-4",
@@ -56,7 +56,7 @@
           "src": "NeetCode · Lesson",
           "title": "Python Cheat Sheet",
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20Python/Python%20for%20Coding%20Interviews/README.md#python-cheat-sheet"
         },
         {
           "id": "py-5",
@@ -64,7 +64,7 @@
           "src": "NeetCode · Lesson",
           "title": "Big-O Notation",
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#big-o-notation"
         },
         {
           "id": "py-6",
@@ -72,7 +72,7 @@
           "src": "NeetCode · Lesson",
           "title": "8 Data Structures for Coding Interviews",
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#8-data-structures-for-coding-interviews"
         },
         {
           "id": "py-7",
@@ -85,7 +85,7 @@
             "Valid Anagram",
             "Two Sum"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#blank-file-test"
         }
       ],
       "diff": 1
@@ -122,7 +122,7 @@
             "7. Queues"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-07-arrays-stacks-linked-lists-queues"
         },
         {
           "id": "dsa-h",
@@ -134,7 +134,7 @@
             "27. Hash Implementation"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-2627-hashing"
         },
         {
           "id": "b-arr",
@@ -152,7 +152,7 @@
             "Product of Array Except Self",
             "Longest Consecutive Sequence"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#arrays--hashing"
         },
         {
           "id": "b-two",
@@ -165,7 +165,7 @@
             "3Sum",
             "Container With Most Water"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#two-pointers"
         },
         {
           "id": "b-win",
@@ -179,7 +179,7 @@
             "Longest Repeating Character Replacement",
             "Minimum Window Substring"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#sliding-window"
         },
         {
           "id": "r-2",
@@ -187,7 +187,7 @@
           "src": "Self",
           "title": "Redo every miss from an empty file",
           "note": "No notes. If you miss it twice, rewatch the video.",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#redo-log"
         }
       ],
       "diff": 1
@@ -206,7 +206,7 @@
           "src": "NeetCode · Lesson",
           "title": "Sorting Algorithms Cheat Sheet",
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#sorting-algorithms-cheat-sheet"
         },
         {
           "id": "dsa-b",
@@ -218,7 +218,7 @@
             "9. Fibonacci Sequence"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-89-recursion"
         },
         {
           "id": "dsa-s",
@@ -233,7 +233,7 @@
           ],
           "link": "https://neetcode.io/courses",
           "optional": true,
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-1013-sorting-optional"
         },
         {
           "id": "dsa-c",
@@ -245,7 +245,7 @@
             "15. Search Range"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-1415-binary-search"
         },
         {
           "id": "b-stk",
@@ -258,7 +258,7 @@
             "Find Minimum in Rotated Sorted Array",
             "Search in Rotated Sorted Array"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#stack--binary-search"
         },
         {
           "id": "b-ll",
@@ -274,7 +274,7 @@
             "Remove Nth Node From End of List",
             "Merge k Sorted Lists"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#linked-list"
         },
         {
           "id": "dsa-d",
@@ -290,7 +290,7 @@
             "21. BST Sets and Maps"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-1621-trees"
         },
         {
           "id": "b-tr1",
@@ -305,14 +305,14 @@
             "Subtree of Another Tree",
             "Lowest Common Ancestor of a Binary Search Tree"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#trees-part-1"
         },
         {
           "id": "r-3",
           "type": "redo",
           "src": "Self",
           "title": "Redo every miss from an empty file",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#redo-log"
         }
       ],
       "diff": 2
@@ -339,7 +339,7 @@
             "Binary Tree Maximum Path Sum",
             "Serialize and Deserialize Binary Tree"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#trees-part-2"
         },
         {
           "id": "dsa-e",
@@ -353,7 +353,7 @@
             "25. Heapify"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-2225-backtracking--heap"
         },
         {
           "id": "b-bt",
@@ -369,7 +369,7 @@
             "Word Search II",
             "Find Median from Data Stream"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#backtracking-tries-heap"
         },
         {
           "id": "l-20",
@@ -377,35 +377,35 @@
           "src": "NeetCode · Lesson",
           "title": "20 Must-Know System Design Concepts",
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#20-must-know-system-design-concepts"
         },
         {
           "id": "xu-1",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 1 · Scale From Zero To Millions Of Users",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-1--scale-from-zero-to-millions-of-users"
         },
         {
           "id": "xu-2",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 2 · Back-of-the-envelope Estimation",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-2--back-of-the-envelope-estimation"
         },
         {
           "id": "xu-3",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 3 · A Framework For System Design Interviews",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-3--a-framework-for-system-design-interviews"
         },
         {
           "id": "r-4",
           "type": "redo",
           "src": "Self",
           "title": "Redo every miss from an empty file",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#redo-log"
         }
       ],
       "diff": 2
@@ -424,7 +424,7 @@
           "src": "NeetCode · Lesson",
           "title": "5 Graph Algorithms for Coding Interviews",
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#5-graph-algorithms-for-coding-interviews"
         },
         {
           "id": "dsa-f",
@@ -438,7 +438,7 @@
             "31. Adjacency List"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-2831-graphs"
         },
         {
           "id": "b-gr",
@@ -455,7 +455,7 @@
             "Graph Valid Tree",
             "Alien Dictionary"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#graphs"
         },
         {
           "id": "b-int",
@@ -472,49 +472,49 @@
             "Meeting Rooms",
             "Meeting Rooms II"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#greedy--intervals"
         },
         {
           "id": "xu-4",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 4 · Design A Rate Limiter",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-4--design-a-rate-limiter"
         },
         {
           "id": "xu-5",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 5 · Design Consistent Hashing",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-5--design-consistent-hashing"
         },
         {
           "id": "xu-6",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 6 · Design A Key-value Store",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-6--design-a-key-value-store"
         },
         {
           "id": "xu-7",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 7 · Design A Unique ID Generator In Distributed Systems",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-7--design-a-unique-id-generator-in-distributed-systems"
         },
         {
           "id": "xu-8",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 8 · Design A URL Shortener",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-8--design-a-url-shortener"
         },
         {
           "id": "r-5",
           "type": "redo",
           "src": "Self",
           "title": "Redo every miss from an empty file",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#redo-log"
         }
       ],
       "diff": 3
@@ -537,7 +537,7 @@
             "33. 2-Dimension DP"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lessons-3233-dynamic-programming"
         },
         {
           "id": "b-dp1",
@@ -557,7 +557,7 @@
             "Word Break",
             "Longest Increasing Subsequence"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#1-d-dynamic-programming"
         },
         {
           "id": "b-dp2",
@@ -569,49 +569,49 @@
             "Unique Paths",
             "Longest Common Subsequence"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#2-d-dynamic-programming"
         },
         {
           "id": "xu-9",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 9 · Design A Web Crawler",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-9--design-a-web-crawler"
         },
         {
           "id": "xu-10",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 10 · Design A Notification System",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-10--design-a-notification-system"
         },
         {
           "id": "xu-11",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 11 · Design A News Feed System",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-11--design-a-news-feed-system"
         },
         {
           "id": "xu-12",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 12 · Design A Chat System",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-12--design-a-chat-system"
         },
         {
           "id": "xu-13",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 13 · Design A Search Autocomplete System",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-13--design-a-search-autocomplete-system"
         },
         {
           "id": "r-6",
           "type": "redo",
           "src": "Self",
           "title": "Redo every miss from an empty file",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#redo-log"
         }
       ],
       "diff": 4
@@ -635,7 +635,7 @@
             "Spiral Matrix",
             "Set Matrix Zeroes"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#math--geometry"
         },
         {
           "id": "dsa-i",
@@ -646,7 +646,7 @@
             "34. Bit Operations"
           ],
           "link": "https://neetcode.io/courses",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners/README.md#lesson-34-bit-operations"
         },
         {
           "id": "b-bit",
@@ -661,28 +661,28 @@
             "Missing Number",
             "Sum of Two Integers"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#bit-manipulation"
         },
         {
           "id": "xu-14",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 14 · Design YouTube",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-14--design-youtube"
         },
         {
           "id": "xu-15",
           "type": "book",
           "src": "Alex Xu · Vol 1",
           "title": "Ch 15 · Design Google Drive",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#ch-15--design-google-drive"
         },
         {
           "id": "r-7",
           "type": "redo",
           "src": "Self",
           "title": "Timed redo: 10 Blind 75 problems you missed, 25 min each",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#timed-redo"
         },
         {
           "id": "pat",
@@ -704,7 +704,7 @@
             "Koko Eating Bananas",
             "Binary Tree Right Side View"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#checkpoint-test"
         }
       ],
       "diff": 4,
@@ -724,7 +724,7 @@
           "src": "NeetCode · AI Coding Interviews",
           "title": "Triplet Draw (Easy)",
           "link": "https://neetcode.io/practice/ai-coding",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/AI%20Coding%20Interviews/README.md#triplet-draw-easy"
         },
         {
           "id": "ai-2",
@@ -732,7 +732,7 @@
           "src": "NeetCode · AI Coding Interviews",
           "title": "Delivery Grid (Medium)",
           "link": "https://neetcode.io/practice/ai-coding",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/AI%20Coding%20Interviews/README.md#delivery-grid-medium"
         },
         {
           "id": "ai-3",
@@ -740,7 +740,7 @@
           "src": "NeetCode · AI Coding Interviews",
           "title": "Word Reveal (Medium)",
           "link": "https://neetcode.io/practice/ai-coding",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/AI%20Coding%20Interviews/README.md#word-reveal-medium"
         },
         {
           "id": "ai-4",
@@ -748,7 +748,7 @@
           "src": "Own IDE + your AI tool",
           "title": "60-min build: a rover-on-a-grid simulator",
           "note": "Narrate. Write tests. Read every AI diff before accepting.",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/AI%20Coding%20Interviews/README.md#60-min-build-rover-on-a-grid"
         },
         {
           "id": "ood-0",
@@ -756,7 +756,7 @@
           "src": "NeetCode · OOD Interviews",
           "title": "Design Connect Four (free demo lesson)",
           "link": "https://neetcode.io/courses/ood-interview/0",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews/README.md#0-design-connect-four--prep-map"
         },
         {
           "id": "ood-1",
@@ -764,7 +764,7 @@
           "src": "NeetCode · OOD Interviews",
           "title": "Design a Parking Lot",
           "link": "https://neetcode.io/courses/ood-interview/0",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews/README.md#2-design-a-parking-lot--prep-map"
         },
         {
           "id": "ood-2",
@@ -772,7 +772,7 @@
           "src": "NeetCode · OOD Interviews",
           "title": "Design a Bank",
           "link": "https://neetcode.io/courses/ood-interview/0",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews/README.md#3-design-a-bank--prep-map"
         },
         {
           "id": "ood-3",
@@ -780,7 +780,7 @@
           "src": "NeetCode · OOD Interviews",
           "title": "Design an Elevator System",
           "link": "https://neetcode.io/courses/ood-interview/0",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews/README.md#5-design-an-elevator-system--prep-map"
         },
         {
           "id": "star",
@@ -798,7 +798,7 @@
             "Said no to a request",
             "Used AI to ship faster"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Behavioral"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Behavioral/README.md"
         }
       ],
       "diff": 4
@@ -826,7 +826,7 @@
             "Search a 2D Matrix",
             "Time Based Key-Value Store"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#arrays-stack-binary-search"
         },
         {
           "id": "n-2",
@@ -842,7 +842,7 @@
             "K Closest Points to Origin",
             "Task Scheduler"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#linked-list-heap"
         },
         {
           "id": "ai-4b",
@@ -850,7 +850,7 @@
           "src": "NeetCode · AI Coding Interviews",
           "title": "Streaming Analytics (Hard)",
           "link": "https://neetcode.io/practice/ai-coding",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/AI%20Coding%20Interviews/README.md#streaming-analytics-hard"
         },
         {
           "id": "mock-1",
@@ -863,7 +863,7 @@
           "type": "redo",
           "src": "Self",
           "title": "Redo every miss from an empty file",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#redo-log"
         }
       ]
     },
@@ -890,7 +890,7 @@
             "Redundant Connection",
             "Network Delay Time"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#backtracking-graphs"
         },
         {
           "id": "n-4",
@@ -906,7 +906,7 @@
             "Edit Distance",
             "Best Time to Buy and Sell Stock with Cooldown"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#dynamic-programming"
         },
         {
           "id": "ai-5",
@@ -914,7 +914,7 @@
           "src": "NeetCode · AI Coding Interviews",
           "title": "Build System (Hard)",
           "link": "https://neetcode.io/practice/ai-coding",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/AI%20Coding%20Interviews/README.md#build-system-hard"
         },
         {
           "id": "mock-2",
@@ -927,7 +927,7 @@
           "type": "mock",
           "src": "Alex Xu · Vol 1",
           "title": "System design mock: Ch 8 URL Shortener, 35 min, recorded",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#mock-1-ch-8-url-shortener"
         },
         {
           "id": "ddia",
@@ -936,14 +936,14 @@
           "title": "Replication · Sharding · Transactions",
           "optional": true,
           "note": "2nd ed: Ch 6, 7, 8. 1st ed: Ch 5, 6, 7. Optional.",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/DDIA"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/DDIA/README.md"
         },
         {
           "id": "r-10",
           "type": "redo",
           "src": "Self",
           "title": "Redo every miss from an empty file",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#redo-log"
         }
       ]
     },
@@ -962,7 +962,7 @@
           "type": "mock",
           "src": "Alex Xu · Vol 1",
           "title": "System design mock: Ch 11 News Feed, 35 min, recorded",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#mock-2-ch-11-news-feed"
         },
         {
           "id": "mock-3",
@@ -990,7 +990,7 @@
             "Palindrome Partitioning",
             "Word Bag Maximizer (Hard), AI mode"
           ],
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/Practice/Blind%2075%20and%20NeetCode%20150/README.md#final-test"
         },
         {
           "id": "go",
@@ -1043,7 +1043,7 @@
           "type": "mock",
           "src": "Alex Xu · Vol 1",
           "title": "Mock 4: system design, 35 min",
-          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
+          "notes": "https://github.com/onemokang/lc-stuff/blob/main/System%20Design/Alex%20Xu%20Vol%201/README.md#mock-4-any-chapter"
         }
       ]
     },

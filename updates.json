@@ -1,6 +1,17 @@
 {
   "entries": [
     {
+      "id": "2026-11-16T01:30Z",
+      "date": "2026-11-15",
+      "source": "site",
+      "bullets": [
+        {
+          "k": "site",
+          "text": "Each step's \"My notes\" link now opens the exact section for that lesson or chapter."
+        }
+      ]
+    },
+    {
       "id": "2026-11-16T01:00Z",
       "date": "2026-11-15",
       "source": "site",
