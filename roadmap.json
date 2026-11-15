@@ -1122,5 +1122,6 @@
     "Missed a day? Don't catch up. Resume where you left off.",
     "Dread, no progress for 2 weeks, bad sleep? Take a full week off, then go back 2 topics."
   ],
-  "notesRepo": "https://github.com/onemokang/lc-stuff"
+  "notesRepo": "https://github.com/onemokang/lc-stuff",
+  "interviewStart": "2027-02-01"
 }
