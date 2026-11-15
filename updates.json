@@ -1,6 +1,21 @@
 {
   "entries": [
     {
+      "id": "2026-11-16T00:30Z",
+      "date": "2026-11-15",
+      "source": "site",
+      "bullets": [
+        {
+          "k": "site",
+          "text": "Test banner: this is a mock update. Tap Got it to dismiss."
+        },
+        {
+          "k": "new",
+          "text": "Mock: Example Co. posted a new Software Engineer role (not real)."
+        }
+      ]
+    },
+    {
       "id": "2026-11-16T00:10Z",
       "date": "2026-11-16",
       "source": "site",
