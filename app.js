@@ -416,6 +416,7 @@ function openSheet(id) {
       <h3>${esc(s.title)}</h3>
       <div class="when">${esc(s.zone.name)} · ${esc(fmt(s.zone.start))} – ${esc(fmt(s.zone.end))}</div>
       ${s.note ? `<div class="nt" style="margin-top:8px">${esc(s.note)}</div>` : ""}
+      ${s.how ? `<div class="how"><b>How</b>${esc(s.how)}</div>` : ""}
       ${probs ? `<ul class="pl">${probs}</ul>` : ""}
       <div class="row">
         ${s.link ? `<a class="btn g" href="${esc(s.link)}" target="_blank" rel="noopener">Open ↗</a>` : ""}

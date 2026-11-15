@@ -1,6 +1,21 @@
 {
   "entries": [
     {
+      "id": "2026-11-16T02:00Z",
+      "date": "2026-11-15",
+      "source": "site",
+      "bullets": [
+        {
+          "k": "site",
+          "text": "Each step's \"My notes\" link now opens its own file, no more shared pages."
+        },
+        {
+          "k": "site",
+          "text": "Steps now say how much to do (watch all, skim, or do every problem)."
+        }
+      ]
+    },
+    {
       "id": "2026-11-16T01:30Z",
       "date": "2026-11-15",
       "source": "site",

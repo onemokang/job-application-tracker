@@ -10,7 +10,7 @@ Live: https://onemokang.github.io/job-application-tracker/
 |---|---|
 | **Jobs** | One open role per company with apply link, posted pay, comp estimate, interview style. Grouped by Remote, Chicago, Relocate. Mark roles as applied. |
 | **Grad school** | Online CS / data programs with exact deadlines, GRE rules and ranks. |
-| **Prep map** | A 14-world map from Python basics to apply waves. Each step names the exact lesson, chapter or problem set. Tick steps and problems as you go. |
+| **Prep map** | A 14-world map from Python basics to apply waves. Each step names the exact lesson, chapter or problem set, says how much to do, and links to its own notes file. Tick steps and problems as you go. |
 
 Also: a "What changed" banner with dated notes, light and dark themes (each world has its own scenery), and a countdown to the apply date.
 
