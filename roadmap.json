@@ -101,10 +101,10 @@
         {
           "id": "fw",
           "type": "do",
-          "src": "lc-stuff · STUDY_PLAN.md",
+          "src": "lc-stuff · Reference.md",
           "title": "Problem-solving framework: Read, Example, Brute force, Optimize, Code",
           "note": "Use it on every problem. Say each step out loud.",
-          "link": "https://github.com/onemokang/lc-stuff/blob/main/STUDY_PLAN.md#problem-solving-framework"
+          "link": "https://github.com/onemokang/lc-stuff/blob/main/Reference.md#problem-solving-framework"
         },
         {
           "id": "dsa-a",
@@ -687,10 +687,10 @@
         {
           "id": "pat",
           "type": "do",
-          "src": "lc-stuff · STUDY_PLAN.md",
+          "src": "lc-stuff · Reference.md",
           "title": "Name the pattern in 60 seconds",
           "note": "Sliding window · two pointers · fast/slow pointers · merge intervals · BFS · top-K heap · DP. Say the pattern before you code.",
-          "link": "https://github.com/onemokang/lc-stuff/blob/main/STUDY_PLAN.md#pattern-recognition-cheat-sheet"
+          "link": "https://github.com/onemokang/lc-stuff/blob/main/Reference.md#pattern-recognition-cheat-sheet"
         },
         {
           "id": "gate-2",

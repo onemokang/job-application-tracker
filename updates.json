@@ -1,6 +1,17 @@
 {
   "entries": [
     {
+      "id": "2026-11-16T01:00Z",
+      "date": "2026-11-15",
+      "source": "site",
+      "bullets": [
+        {
+          "k": "site",
+          "text": "Notes repo cleaned up. Prep map links now point to Reference.md."
+        }
+      ]
+    },
+    {
       "id": "2026-11-16T00:30Z",
       "date": "2026-11-15",
       "source": "site",
