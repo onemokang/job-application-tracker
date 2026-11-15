@@ -1,118 +1,212 @@
 {
-  "researchDate": "2026-11-08",
-  "note": "Ivy or US News 2026 overall top 20 only. Rice removed. MIT / Princeton / Yale / Stanford / Caltech have no fully online CS master's. Harvard's only mostly-online option is Extension School (diploma says Extension Studies, not a Harvard SEAS MS). Among these online programs, none currently require the GRE — they are split into 'not required' vs 'optional (a score can help)'. Deadlines checked Nov 8, 2026; Spring 2027 dates that already passed are omitted.",
+  "researchDate": "2026-11-15",
+  "rankSource": "US News 2026 Best National Universities (published Sep 23, 2025)",
+  "scope": "Ivy League or US News top 20, online master's only. MIT, Princeton, Yale, Stanford, Caltech, Duke, Cornell, Dartmouth, UCLA, WashU have no fully online CS/data master's. Harvard's only online CS master's is Extension School.",
   "schools": [
     {
       "greGroup": "none",
+      "kind": "cs",
       "chance": "high",
-      "school": "Johns Hopkins (Engineering for Professionals)",
-      "program": "MS Computer Science",
-      "degree": "Computer Science",
-      "gre": "Not required",
-      "format": "100% online, rolling",
-      "deadline": "Rolling. Apply by Oct 1 for spring / Mar 1 for summer / Jun 1 for fall (suggested, not hard cuts). Spring 2027 class starts Jan 25 — apply ASAP if you want that term.",
-      "why": "US News #7. Built for working engineers/scientists. Physics + SWE is a normal admit. Free to apply.",
-      "fitNote": "Same JHU name. Decisions in about 2–3 weeks.",
-      "link": "https://ep.jhu.edu/programs/computer-science/",
-      "notes": "3 starts: fall (Aug), spring (Jan), summer (May/June)."
+      "school": "Johns Hopkins",
+      "program": "MS Computer Science (Engineering for Professionals)",
+      "rank": "#7",
+      "gre": "No GRE · no fee",
+      "format": "100% online · rolling",
+      "rolling": true,
+      "starts": "Aug · Jan · May",
+      "deadlines": [],
+      "why": "Built for working engineers. Physics + SWE is a normal profile.",
+      "catch": "Rolling admission, three start terms a year.",
+      "link": "https://ep.jhu.edu/programs/computer-science/"
     },
     {
       "greGroup": "none",
-      "chance": "likely",
-      "school": "University of Chicago",
-      "program": "MS in Applied Data Science (Online)",
-      "degree": "Applied Data Science (not CS)",
-      "gre": "Not required",
-      "format": "Online, live evenings/Sat Central time",
-      "deadline": "Autumn 2027 online: final June 23, 2027. Portal can close early if the cohort fills.",
-      "why": "US News #6. Physics + SWE is a normal profile. Evening classes work if you stay in Chicago.",
-      "fitNote": "UChicago's actual online master's. MPCS (CS) is in-person only.",
-      "link": "https://datascience.uchicago.edu/education/masters-programs/ms-in-applied-data-science/how-to-apply/",
-      "notes": "In-person ADS has earlier priority dates; this row is the online program only."
+      "kind": "ds",
+      "chance": "high",
+      "school": "Michigan",
+      "program": "Master of Applied Data Science (online)",
+      "rank": "#20",
+      "gre": "No GRE · no fee · no essay · no letters",
+      "format": "100% online",
+      "deadlines": [
+        { "term": "Winter 2027 (final)", "date": "2026-11-15", "note": "priority Oct 1 passed" },
+        { "term": "Spring/Summer 2027", "date": "2027-03-15" },
+        { "term": "Fall 2027", "date": "2027-07-15", "note": "year not printed by school" }
+      ],
+      "why": "Lowest-effort application on the list. Needs basic Python only.",
+      "catch": "Data science, not CS. Placement test after admission.",
+      "link": "https://www.si.umich.edu/admissions-aid/apply/how-do-i-apply-master-applied-data-science"
     },
     {
       "greGroup": "none",
+      "kind": "cs",
       "chance": "likely",
       "school": "Vanderbilt",
       "program": "Online MS Computer Science",
-      "degree": "Computer Science",
-      "gre": "Not required (waived)",
-      "format": "100% online, live 1 night/week per course",
-      "deadline": "Spring 2027: Nov 15, 2026 (extended — 1 week from now). Summer 2027: Apr 1, 2027. Fall 2027: Apr 15 priority / Jun 15 final.",
-      "why": "US News #17. Same diploma as campus MSCS. Built for working professionals.",
-      "fitNote": "They describe the audience as CS or engineering background. Your SWE job helps; physics is adjacent, not a perfect undergrad match.",
-      "link": "https://computing.vanderbilt.edu/online-mscs/",
-      "notes": "Optional twice-a-year Nashville meetups. If you want January 2027, the deadline is Nov 15."
+      "rank": "#17",
+      "gre": "No GRE",
+      "format": "100% online · live 1 evening a week",
+      "deadlines": [
+        { "term": "Spring 2027", "date": "2026-11-15", "note": "extended deadline" },
+        { "term": "Summer 2027", "date": "2027-04-01", "note": "extended deadline" },
+        { "term": "Fall 2027 · round 1", "date": "2027-04-15" },
+        { "term": "Fall 2027 · final", "date": "2027-06-15" }
+      ],
+      "why": "Same diploma as the campus MSCS.",
+      "catch": "Built for CS/engineering backgrounds. Your SWE job helps.",
+      "link": "https://computing.vanderbilt.edu/online-mscs/"
     },
     {
       "greGroup": "none",
+      "kind": "ds",
+      "chance": "likely",
+      "school": "UChicago",
+      "program": "MS Applied Data Science (online)",
+      "rank": "#6",
+      "gre": "No GRE",
+      "format": "Online · live evenings, Central time",
+      "deadlines": [
+        { "term": "Autumn 2027 (final)", "date": "2027-06-23", "note": "portal can close early" }
+      ],
+      "why": "Evening classes work if you stay in Chicago.",
+      "catch": "Data science, not CS. The CS master's (MPCS) is in-person only.",
+      "link": "https://datascience.uchicago.edu/education/masters-programs/ms-in-applied-data-science/how-to-apply/"
+    },
+    {
+      "greGroup": "none",
+      "kind": "cs",
       "chance": "high",
       "school": "Harvard Extension School",
-      "program": "ALM in Computer Science",
-      "degree": "Master of Liberal Arts (Extension Studies) in Computer Science",
-      "gre": "Not required",
-      "format": "11 of 12 courses online; 1 required 3-week Harvard campus summer course",
-      "deadline": "No normal app. Register for 2 admission courses (Java II + Data Structures), get a B or better, then apply in the semester of the second course. Spring 2027 course registration closes Jan 19, 2027.",
-      "why": "Harvard name, no GRE, you earn admission by passing two classes.",
-      "fitNote": "Honest catch: the diploma says Harvard Extension School / Master of Liberal Arts in Extension Studies, not a Harvard SEAS MS. Employers who know the difference will see that.",
-      "link": "https://extension.harvard.edu/academics/programs/computer-science-masters-degree-program/",
-      "notes": "Fall 2026 degree-application window is Nov 1–Dec 1, 2026 if you already finished the two courses."
+      "program": "ALM Computer Science",
+      "rank": "Ivy · Extension",
+      "gre": "No GRE",
+      "format": "11 of 12 courses online · 1 summer course on campus",
+      "deadlines": [
+        { "term": "Spring 2027 course registration closes", "date": "2027-01-19" }
+      ],
+      "why": "Earn admission by passing 2 courses with a B or better.",
+      "catch": "Diploma reads Master of Liberal Arts in Extension Studies, not a SEAS MS.",
+      "link": "https://extension.harvard.edu/academics/programs/computer-science-masters-degree-program/"
     },
     {
       "greGroup": "optional",
+      "kind": "cs",
+      "chance": "medium",
+      "school": "Brown",
+      "program": "ScM Computer Science, AI/ML track (online)",
+      "rank": "#13 · Ivy",
+      "gre": "GRE optional (encouraged)",
+      "format": "Online · live lectures + async",
+      "cost": "≈ $88K (8 × $10,977)",
+      "deadlines": [
+        { "term": "Spring 2027", "date": "2026-11-01", "note": "passed" },
+        { "term": "Fall 2027", "date": "2027-01-15" }
+      ],
+      "why": "Ivy CS master's, same degree as campus.",
+      "catch": "Wants a CS degree or equivalent coursework. Physics is reviewed case by case.",
+      "link": "https://graduateprograms.brown.edu/graduate-program/computer-science-scm-ai-ml-track"
+    },
+    {
+      "greGroup": "optional",
+      "kind": "ds",
       "chance": "likely",
-      "school": "UPenn Engineering Online",
-      "program": "MSE in Data Science (MSE-DS)",
-      "degree": "Data Science (engineering master's)",
-      "gre": "Optional — not required",
-      "format": "100% online",
-      "deadline": "Fall 2027: priority Mar 1, 2027; final May 31, 2027; classes Aug 2027. Spring 2027 deadline (Oct 26, 2026) already passed.",
-      "why": "Ivy, US News #10. Official path: physics degree + 2+ years as a software engineer.",
-      "fitNote": "Best Penn fit. Skip MSE-AI — they want a CS/CE undergrad degree. GRE only useful if your undergrad grades were weak.",
-      "link": "https://online.engineering.upenn.edu/degrees/mse-ds/mse-ds-admissions/",
-      "notes": "2 recommenders + personal statement. $95 fee."
+      "school": "UC Berkeley",
+      "program": "Master of Information & Data Science (online)",
+      "rank": "#15",
+      "gre": "GRE optional",
+      "format": "Online · weekly live Zoom classes",
+      "deadlines": [
+        { "term": "May 2027 · early action", "date": "2027-01-15" },
+        { "term": "May 2027 · priority", "date": "2027-02-12" },
+        { "term": "May 2027 · final", "date": "2027-02-26" }
+      ],
+      "why": "Strong brand. Python + linear algebra expected.",
+      "catch": "Data science, not CS. 2 work recommendations, $135 fee.",
+      "link": "https://ischoolonline.berkeley.edu/admissions/"
     },
     {
       "greGroup": "optional",
+      "kind": "ds",
       "chance": "high",
-      "school": "UPenn Engineering Online",
-      "program": "MAS-CS (formerly MCIT Online)",
-      "degree": "Computer Science (applied)",
-      "gre": "Optional — not required",
-      "format": "100% online",
-      "deadline": "Fall 2027: priority Mar 1, 2027; final May 31, 2027. Spring 2027 deadline already passed.",
-      "why": "Ivy, built for non-CS majors. Physics covers the quant bar.",
-      "fitNote": "Easiest Ivy admit — coursework starts at CS foundations and may feel basic after Capital One.",
-      "link": "https://online.engineering.upenn.edu/degrees/mas-cs/admissions/",
-      "notes": "Same cycle as MSE-DS."
+      "school": "Northwestern",
+      "program": "MS Data Science (online, part-time)",
+      "rank": "#7",
+      "gre": "GRE optional",
+      "format": "Online · mostly async · start any quarter",
+      "deadlines": [
+        { "term": "Spring 2027", "date": "2027-01-15" },
+        { "term": "Fall 2027", "date": "2027-07-15" }
+      ],
+      "why": "Part-time, one or two classes per quarter.",
+      "catch": "Data science, not CS. $75 fee.",
+      "link": "https://sps.northwestern.edu/masters/data-science/admission.html"
     },
     {
       "greGroup": "optional",
+      "kind": "ds",
+      "chance": "likely",
+      "school": "UPenn",
+      "program": "MSE Data Science (online)",
+      "rank": "#7 · Ivy",
+      "gre": "GRE optional",
+      "format": "100% online",
+      "deadlines": [
+        { "term": "Fall 2027 · priority", "date": "2027-03-01" },
+        { "term": "Fall 2027 · final", "date": "2027-05-31" }
+      ],
+      "why": "Stated bar: quantitative degree (physics) + 2 yrs as a software engineer.",
+      "catch": "Data science, not CS. 2 recommenders, 1,000-word essay, $95.",
+      "link": "https://online.engineering.upenn.edu/degrees/mse-ds/mse-ds-admissions/"
+    },
+    {
+      "greGroup": "optional",
+      "kind": "cs",
+      "chance": "high",
+      "school": "UPenn",
+      "program": "MAS Computer Science (online)",
+      "rank": "#7 · Ivy",
+      "gre": "GRE optional",
+      "format": "100% online",
+      "deadlines": [
+        { "term": "Fall 2027 · priority", "date": "2027-03-01" },
+        { "term": "Fall 2027 · final", "date": "2027-05-31" }
+      ],
+      "why": "Any bachelor's degree works. Built for non-CS majors.",
+      "catch": "May feel basic after 4 years of SWE. The essay must explain why you fit.",
+      "link": "https://online.engineering.upenn.edu/degrees/mas-cs/admissions/"
+    },
+    {
+      "greGroup": "optional",
+      "kind": "swe",
       "chance": "likely",
       "school": "Carnegie Mellon",
-      "program": "MSE Online (Master of Software Engineering)",
-      "degree": "Software Engineering",
-      "gre": "Optional — not required (no penalty if omitted)",
-      "format": "100% online, part-time",
-      "deadline": "Fall 2027 start: apply Mar 3–May 5, 2027. January 2027 deadline (Oct 14, 2026) already passed.",
-      "why": "US News #20. Built for working software engineers. Physics counts as technical undergrad.",
-      "fitNote": "Diploma: Master of Science – Software Engineering (does not say online). There is a coding assessment after you apply.",
-      "link": "https://mse.s3d.cmu.edu/applicants/mse-as-online/apply.html",
-      "notes": "3 recommenders + video essay."
+      "program": "Master of Software Engineering (online)",
+      "rank": "#20",
+      "gre": "GRE optional",
+      "format": "100% online · part-time",
+      "deadlines": [
+        { "term": "Fall 2027 (opens Mar 3)", "date": "2027-05-05" }
+      ],
+      "why": "Built for working software engineers.",
+      "catch": "Coding assessment after you apply. 3 recommenders + video essay.",
+      "link": "https://mse.s3d.cmu.edu/applicants/mse-as-online/apply.html"
     },
     {
       "greGroup": "optional",
+      "kind": "cs",
       "chance": "medium",
-      "school": "Columbia Engineering (CVN)",
-      "program": "MS Computer Science",
-      "degree": "Computer Science",
-      "gre": "Optional — not required",
-      "format": "100% online (same diploma as campus)",
-      "deadline": "Fall 2027: Feb 15, 2027. Spring 2027 deadline (Oct 15, 2026) already passed.",
-      "why": "Ivy, US News #15. Same Columbia Engineering MS as on-campus.",
-      "fitNote": "Work does not waive 6 for-credit prereqs (4 CS + 2 math). Physics covers math; you likely still need university CS courses (not Coursera). Their non-CS Bridge is in-person only.",
-      "link": "https://cvn.columbia.edu/content/computer-science-masters-degree",
-      "notes": "Min GPA 3.3; most admits 3.5+."
+      "school": "Columbia",
+      "program": "MS Computer Science (Video Network)",
+      "rank": "#15 · Ivy",
+      "gre": "GRE optional",
+      "format": "100% online · same diploma as campus",
+      "deadlines": [
+        { "term": "Spring 2027", "date": "2026-10-15", "note": "passed" },
+        { "term": "Fall 2027", "date": "2027-02-15" }
+      ],
+      "why": "Same Columbia Engineering MS as on campus.",
+      "catch": "Needs 6 university prereqs (4 CS + 2 math). MOOCs and work don't count. GPA 3.3+.",
+      "link": "https://cvn.columbia.edu/content/computer-science-masters-degree"
     }
   ]
 }

@@ -1,26 +1,17 @@
-// Tiny "backend" built on the GitHub Contents API — reads/writes status.json
-// directly in the repo so status syncs across every device/browser.
+// Tiny "backend" built on the GitHub Contents API.
+// Reads/writes status.json and progress.json directly in the repo so state
+// syncs across every device. The token lives only in localStorage.
 
 const API_BASE = "https://api.github.com";
 const TOKEN_KEY = "trackerSyncToken_v1";
-let currentSha = null;
+const shaByPath = {};
 
-function getToken() {
-  return localStorage.getItem(TOKEN_KEY) || "";
-}
-function setToken(tok) {
-  localStorage.setItem(TOKEN_KEY, tok.trim());
-}
-function hasToken() {
-  return !!getToken();
-}
+function getToken() { return localStorage.getItem(TOKEN_KEY) || ""; }
+function setToken(tok) { localStorage.setItem(TOKEN_KEY, tok.trim()); }
+function hasToken() { return !!getToken(); }
 
-function b64encode(str) {
-  return btoa(unescape(encodeURIComponent(str)));
-}
-function b64decode(str) {
-  return decodeURIComponent(escape(atob(str)));
-}
+function b64encode(str) { return btoa(unescape(encodeURIComponent(str))); }
+function b64decode(str) { return decodeURIComponent(escape(atob(str))); }
 
 function apiHeaders() {
   return {
@@ -30,48 +21,54 @@ function apiHeaders() {
   };
 }
 
-function contentsUrl() {
-  return `${API_BASE}/repos/${SYNC_CONFIG.owner}/${SYNC_CONFIG.repo}/contents/${SYNC_CONFIG.path}?ref=${SYNC_CONFIG.branch}`;
+function contentsUrl(path) {
+  return `${API_BASE}/repos/${SYNC_CONFIG.owner}/${SYNC_CONFIG.repo}/contents/${path}`;
 }
 
-async function fetchStatusMap() {
+// Returns parsed JSON, {} if the file doesn't exist yet, or null if sync failed.
+async function fetchRemoteJson(path) {
   if (!hasToken()) return null;
   try {
-    const res = await fetch(contentsUrl(), { headers: apiHeaders() });
-    if (res.status === 404) { currentSha = null; return {}; }
+    const res = await fetch(`${contentsUrl(path)}?ref=${SYNC_CONFIG.branch}`, { headers: apiHeaders(), cache: "no-store" });
+    if (res.status === 404) { shaByPath[path] = null; return {}; }
     if (!res.ok) throw new Error(`GitHub read failed: ${res.status}`);
     const data = await res.json();
-    currentSha = data.sha;
+    shaByPath[path] = data.sha;
     const text = b64decode(data.content.replace(/\n/g, ""));
     return JSON.parse(text || "{}");
   } catch (e) {
-    console.warn("Status sync read failed, falling back to local only:", e);
-    return null; // signals "sync unavailable"
+    console.warn("Sync read failed:", path, e);
+    return null;
   }
 }
 
-async function pushStatusMap(map, retry = true) {
+async function pushRemoteJson(path, obj, message, retry = true) {
   if (!hasToken()) throw new Error("No sync token configured");
   const body = {
-    message: `Update status: ${new Date().toISOString()}`,
-    content: b64encode(JSON.stringify(map, null, 2)),
+    message: `${message}: ${new Date().toISOString()}`,
+    content: b64encode(JSON.stringify(obj, null, 2)),
     branch: SYNC_CONFIG.branch,
   };
-  if (currentSha) body.sha = currentSha;
+  if (shaByPath[path]) body.sha = shaByPath[path];
 
-  const res = await fetch(contentsUrl().split("?")[0], {
+  const res = await fetch(contentsUrl(path), {
     method: "PUT",
     headers: { ...apiHeaders(), "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
 
-  if (res.status === 409 && retry) {
-    // sha out of date (changed elsewhere) — refetch and retry once
-    await fetchStatusMap();
-    return pushStatusMap(map, false);
+  if ((res.status === 409 || res.status === 422) && retry) {
+    // sha out of date: refetch the sha and retry once
+    await fetchRemoteJson(path);
+    return pushRemoteJson(path, obj, message, false);
   }
   if (!res.ok) throw new Error(`GitHub write failed: ${res.status}`);
   const data = await res.json();
-  currentSha = data.content.sha;
+  shaByPath[path] = data.content.sha;
   return true;
 }
+
+const fetchStatusMap = () => fetchRemoteJson(SYNC_CONFIG.path);
+const pushStatusMap = (map) => pushRemoteJson(SYNC_CONFIG.path, map, "Update status");
+const fetchProgress = () => fetchRemoteJson(SYNC_CONFIG.progressPath);
+const pushProgress = (p) => pushRemoteJson(SYNC_CONFIG.progressPath, p, "Update prep progress");

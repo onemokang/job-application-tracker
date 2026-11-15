@@ -1,8 +1,16 @@
 {
-  "id": "2026-11-15T19:18Z",
-  "date": "Nov 15, 2026",
-  "source": "daily-refresh",
-  "bullets": [
-    "Jobs: Coinbase apply link refreshed → Senior Software Engineer"
+  "entries": [
+    {
+      "id": "2026-11-15T20:30Z",
+      "date": "2026-11-15",
+      "source": "site",
+      "bullets": [
+        { "k": "site", "text": "Target is now $200K+ total comp. 6 roles dropped (see bottom of Jobs)." },
+        { "k": "site", "text": "Every card pulls a real open posting. Pay and location come from it." },
+        { "k": "site", "text": "Grad school: added Brown, Berkeley, Michigan, Northwestern. Penn rank fixed (#7)." },
+        { "k": "site", "text": "Prep map: exact lessons and chapters, Nov 16 to Feb 1. Progress saves." },
+        { "k": "site", "text": "Robot now runs twice a day. Dark mode added." }
+      ]
+    }
   ]
 }

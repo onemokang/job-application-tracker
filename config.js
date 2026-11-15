@@ -5,5 +5,6 @@ const SYNC_CONFIG = {
   owner: "onemokang",
   repo: "job-application-tracker",
   path: "status.json",
+  progressPath: "progress.json",
   branch: "main",
 };

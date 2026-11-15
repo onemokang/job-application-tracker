@@ -1,0 +1,736 @@
+{
+  "researchDate": "2026-11-15",
+  "start": "2026-11-16",
+  "interviewStart": "2027-02-01",
+  "pace": "≈ 3 h/day until Jan 3 · ≈ 1.5 h/day after",
+  "verdict": [
+    "Feb 1 works for AI-first companies (Coinbase, DoorDash, Datadog, Anthropic, Ramp, Shopify, Stripe).",
+    "It is tight for Google, Meta, Apple, Amazon. They still run classic LeetCode loops. Apply there last.",
+    "Feb 1 = first real screens. Offers land Mar–Apr. Do not quit before a signed offer.",
+    "Slipping 2 weeks is fine. Skipping the Jan 3 checkpoint is not."
+  ],
+  "skip": [
+    "NeetCode: Python for Beginners (stop at 21/82)",
+    "NeetCode: both DSA courses, both System Design courses",
+    "NeetCode: Python OOP, SQL, Full Stack, JS, MongoDB, 150, 250",
+    "DDIA before Jan 18 (optional deep dive)"
+  ],
+  "zones": [
+    {
+      "id": "z1",
+      "name": "Python Camp",
+      "theme": "meadow",
+      "start": "2026-11-16",
+      "end": "2026-11-22",
+      "goal": "Write code from a blank file",
+      "steps": [
+        {
+          "id": "py-1",
+          "type": "lesson",
+          "src": "NeetCode · Lesson",
+          "title": "How to Use NeetCode Effectively",
+          "link": "https://neetcode.io/courses/lessons/how-to-use-neetcode-effectively"
+        },
+        {
+          "id": "py-2",
+          "type": "video",
+          "src": "NeetCode · YouTube (free)",
+          "title": "Python for Coding Interviews – Everything you need to Know",
+          "link": "https://www.youtube.com/watch?v=0K_eZGS5NsU"
+        },
+        {
+          "id": "py-3",
+          "type": "course",
+          "src": "NeetCode · Course",
+          "title": "Python for Coding Interviews: all ~40 exercises, in order",
+          "note": "Type each one from an empty file. No pasting.",
+          "link": "https://neetcode.io/courses"
+        },
+        {
+          "id": "py-4",
+          "type": "lesson",
+          "src": "NeetCode · Lesson",
+          "title": "Python Cheat Sheet",
+          "link": "https://neetcode.io/courses"
+        },
+        {
+          "id": "py-5",
+          "type": "lesson",
+          "src": "NeetCode · Lesson",
+          "title": "Big-O Notation",
+          "link": "https://neetcode.io/courses"
+        },
+        {
+          "id": "py-6",
+          "type": "lesson",
+          "src": "NeetCode · Lesson",
+          "title": "8 Data Structures for Coding Interviews",
+          "link": "https://neetcode.io/courses"
+        },
+        {
+          "id": "py-7",
+          "type": "gate",
+          "src": "Self-test",
+          "title": "Blank-file test: 3 problems, 15 min each",
+          "note": "Pass = move on. Fail = repeat the Python course exercises for 3 more days.",
+          "problems": [
+            "Contains Duplicate",
+            "Valid Anagram",
+            "Two Sum"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "z2",
+      "name": "Blind 75 · Foothills",
+      "theme": "hills",
+      "start": "2026-11-23",
+      "end": "2026-11-29",
+      "goal": "15 problems. Try 15 min, then watch the video, then retype.",
+      "steps": [
+        {
+          "id": "b-arr",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Arrays & Hashing",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Contains Duplicate",
+            "Valid Anagram",
+            "Two Sum",
+            "Group Anagrams",
+            "Top K Frequent Elements",
+            "Encode and Decode Strings",
+            "Product of Array Except Self",
+            "Longest Consecutive Sequence"
+          ]
+        },
+        {
+          "id": "b-two",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Two Pointers",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Valid Palindrome",
+            "3Sum",
+            "Container With Most Water"
+          ]
+        },
+        {
+          "id": "b-win",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Sliding Window",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Best Time to Buy and Sell Stock",
+            "Longest Substring Without Repeating Characters",
+            "Longest Repeating Character Replacement",
+            "Minimum Window Substring"
+          ]
+        },
+        {
+          "id": "r-2",
+          "type": "redo",
+          "src": "Self",
+          "title": "Redo every miss from an empty file",
+          "note": "No notes. If you miss it twice, rewatch the video."
+        }
+      ]
+    },
+    {
+      "id": "z3",
+      "name": "Blind 75 · Ridge",
+      "theme": "ridge",
+      "start": "2026-11-30",
+      "end": "2026-12-06",
+      "goal": "14 problems. Pointers and recursion start here.",
+      "steps": [
+        {
+          "id": "l-sort",
+          "type": "lesson",
+          "src": "NeetCode · Lesson",
+          "title": "Sorting Algorithms Cheat Sheet",
+          "link": "https://neetcode.io/courses"
+        },
+        {
+          "id": "b-stk",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Stack + Binary Search",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Valid Parentheses",
+            "Find Minimum in Rotated Sorted Array",
+            "Search in Rotated Sorted Array"
+          ]
+        },
+        {
+          "id": "b-ll",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Linked List",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Reverse Linked List",
+            "Merge Two Sorted Lists",
+            "Linked List Cycle",
+            "Reorder List",
+            "Remove Nth Node From End of List",
+            "Merge k Sorted Lists"
+          ]
+        },
+        {
+          "id": "b-tr1",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Trees, part 1",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Invert Binary Tree",
+            "Maximum Depth of Binary Tree",
+            "Same Tree",
+            "Subtree of Another Tree",
+            "Lowest Common Ancestor of a Binary Search Tree"
+          ]
+        },
+        {
+          "id": "r-3",
+          "type": "redo",
+          "src": "Self",
+          "title": "Redo every miss from an empty file"
+        }
+      ]
+    },
+    {
+      "id": "z4",
+      "name": "Trees, Tries + System Design",
+      "theme": "forest",
+      "start": "2026-12-07",
+      "end": "2026-12-13",
+      "goal": "6 + 6 problems, then start the system design book",
+      "steps": [
+        {
+          "id": "b-tr2",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Trees, part 2",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Binary Tree Level Order Traversal",
+            "Validate Binary Search Tree",
+            "Kth Smallest Element in a BST",
+            "Construct Binary Tree from Preorder and Inorder Traversal",
+            "Binary Tree Maximum Path Sum",
+            "Serialize and Deserialize Binary Tree"
+          ]
+        },
+        {
+          "id": "b-bt",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Backtracking, Tries, Heap",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Combination Sum",
+            "Word Search",
+            "Implement Trie (Prefix Tree)",
+            "Design Add and Search Words Data Structure",
+            "Word Search II",
+            "Find Median from Data Stream"
+          ]
+        },
+        {
+          "id": "l-20",
+          "type": "lesson",
+          "src": "NeetCode · Lesson",
+          "title": "20 Must-Know System Design Concepts",
+          "link": "https://neetcode.io/courses"
+        },
+        {
+          "id": "xu-1",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 1 · Scale From Zero To Millions Of Users"
+        },
+        {
+          "id": "xu-2",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 2 · Back-of-the-envelope Estimation"
+        },
+        {
+          "id": "xu-3",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 3 · A Framework For System Design Interviews"
+        },
+        {
+          "id": "r-4",
+          "type": "redo",
+          "src": "Self",
+          "title": "Redo every miss from an empty file"
+        }
+      ]
+    },
+    {
+      "id": "z5",
+      "name": "Graphs + Intervals",
+      "theme": "peaks",
+      "start": "2026-12-14",
+      "end": "2026-12-20",
+      "goal": "14 problems + 5 chapters. Say each design out loud.",
+      "steps": [
+        {
+          "id": "l-graph",
+          "type": "lesson",
+          "src": "NeetCode · Lesson",
+          "title": "5 Graph Algorithms for Coding Interviews",
+          "link": "https://neetcode.io/courses"
+        },
+        {
+          "id": "b-gr",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Graphs",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Number of Islands",
+            "Clone Graph",
+            "Pacific Atlantic Water Flow",
+            "Course Schedule",
+            "Number of Connected Components in an Undirected Graph",
+            "Graph Valid Tree",
+            "Alien Dictionary"
+          ]
+        },
+        {
+          "id": "b-int",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Greedy + Intervals",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Maximum Subarray",
+            "Jump Game",
+            "Insert Interval",
+            "Merge Intervals",
+            "Non-overlapping Intervals",
+            "Meeting Rooms",
+            "Meeting Rooms II"
+          ]
+        },
+        {
+          "id": "xu-4",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 4 · Design A Rate Limiter"
+        },
+        {
+          "id": "xu-5",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 5 · Design Consistent Hashing"
+        },
+        {
+          "id": "xu-6",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 6 · Design A Key-value Store"
+        },
+        {
+          "id": "xu-7",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 7 · Design A Unique ID Generator In Distributed Systems"
+        },
+        {
+          "id": "xu-8",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 8 · Design A URL Shortener"
+        },
+        {
+          "id": "r-5",
+          "type": "redo",
+          "src": "Self",
+          "title": "Redo every miss from an empty file"
+        }
+      ]
+    },
+    {
+      "id": "z6",
+      "name": "DP Valley",
+      "theme": "lake",
+      "start": "2026-12-21",
+      "end": "2026-12-27",
+      "goal": "12 problems + 5 chapters. Holiday week: light days are OK.",
+      "steps": [
+        {
+          "id": "b-dp1",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "1-D Dynamic Programming",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Climbing Stairs",
+            "House Robber",
+            "House Robber II",
+            "Longest Palindromic Substring",
+            "Palindromic Substrings",
+            "Decode Ways",
+            "Coin Change",
+            "Maximum Product Subarray",
+            "Word Break",
+            "Longest Increasing Subsequence"
+          ]
+        },
+        {
+          "id": "b-dp2",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "2-D Dynamic Programming",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Unique Paths",
+            "Longest Common Subsequence"
+          ]
+        },
+        {
+          "id": "xu-9",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 9 · Design A Web Crawler"
+        },
+        {
+          "id": "xu-10",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 10 · Design A Notification System"
+        },
+        {
+          "id": "xu-11",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 11 · Design A News Feed System"
+        },
+        {
+          "id": "xu-12",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 12 · Design A Chat System"
+        },
+        {
+          "id": "xu-13",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 13 · Design A Search Autocomplete System"
+        },
+        {
+          "id": "r-6",
+          "type": "redo",
+          "src": "Self",
+          "title": "Redo every miss from an empty file"
+        }
+      ]
+    },
+    {
+      "id": "z7",
+      "name": "Checkpoint",
+      "theme": "summit",
+      "start": "2026-12-28",
+      "end": "2027-01-03",
+      "goal": "Finish Blind 75. Prove it with a test.",
+      "steps": [
+        {
+          "id": "b-math",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Math & Geometry",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Rotate Image",
+            "Spiral Matrix",
+            "Set Matrix Zeroes"
+          ]
+        },
+        {
+          "id": "b-bit",
+          "type": "problems",
+          "src": "NeetCode · Blind 75",
+          "title": "Bit Manipulation",
+          "link": "https://neetcode.io/practice/practice/blind75",
+          "problems": [
+            "Number of 1 Bits",
+            "Counting Bits",
+            "Reverse Bits",
+            "Missing Number",
+            "Sum of Two Integers"
+          ]
+        },
+        {
+          "id": "xu-14",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 14 · Design YouTube"
+        },
+        {
+          "id": "xu-15",
+          "type": "book",
+          "src": "Alex Xu · Vol 1",
+          "title": "Ch 15 · Design Google Drive"
+        },
+        {
+          "id": "r-7",
+          "type": "redo",
+          "src": "Self",
+          "title": "Timed redo: 10 Blind 75 problems you missed, 25 min each"
+        },
+        {
+          "id": "gate-2",
+          "type": "gate",
+          "src": "NeetCode · NeetCode 150",
+          "title": "Checkpoint: 3 unseen mediums, 30 min each",
+          "note": "Pass = 2 of 3. Fail = push the apply date back 2 weeks.",
+          "link": "https://neetcode.io/practice",
+          "problems": [
+            "Daily Temperatures",
+            "Koko Eating Bananas",
+            "Binary Tree Right Side View"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "z8",
+      "name": "AI Round Forest",
+      "theme": "grove",
+      "start": "2027-01-04",
+      "end": "2027-01-10",
+      "goal": "Practice interviews where AI is allowed",
+      "steps": [
+        {
+          "id": "ai-1",
+          "type": "ai",
+          "src": "NeetCode · AI Coding Interviews",
+          "title": "Triplet Draw (Easy)",
+          "link": "https://neetcode.io/practice/ai-coding"
+        },
+        {
+          "id": "ai-2",
+          "type": "ai",
+          "src": "NeetCode · AI Coding Interviews",
+          "title": "Delivery Grid (Medium)",
+          "link": "https://neetcode.io/practice/ai-coding"
+        },
+        {
+          "id": "ai-3",
+          "type": "ai",
+          "src": "NeetCode · AI Coding Interviews",
+          "title": "Word Reveal (Medium)",
+          "link": "https://neetcode.io/practice/ai-coding"
+        },
+        {
+          "id": "ai-4",
+          "type": "do",
+          "src": "Own IDE + your AI tool",
+          "title": "60-min build: a rover-on-a-grid simulator",
+          "note": "Narrate. Write tests. Read every AI diff before accepting."
+        },
+        {
+          "id": "ood-0",
+          "type": "course",
+          "src": "NeetCode · OOD Interviews",
+          "title": "Design Connect Four (free demo lesson)",
+          "link": "https://neetcode.io/courses/ood-interview/0"
+        },
+        {
+          "id": "ood-1",
+          "type": "course",
+          "src": "NeetCode · OOD Interviews",
+          "title": "Design a Parking Lot",
+          "link": "https://neetcode.io/courses/ood-interview/0"
+        },
+        {
+          "id": "ood-2",
+          "type": "course",
+          "src": "NeetCode · OOD Interviews",
+          "title": "Design a Bank",
+          "link": "https://neetcode.io/courses/ood-interview/0"
+        },
+        {
+          "id": "ood-3",
+          "type": "course",
+          "src": "NeetCode · OOD Interviews",
+          "title": "Design an Elevator System",
+          "link": "https://neetcode.io/courses/ood-interview/0"
+        },
+        {
+          "id": "star",
+          "type": "do",
+          "src": "Self",
+          "title": "Write 8 STAR stories from Capital One",
+          "note": "Pick from your Achievement Log. One page each.",
+          "problems": [
+            "Owned a project end to end",
+            "Conflict with a teammate",
+            "A failure you wrote up yourself",
+            "Production incident",
+            "Mentored someone",
+            "Unclear requirements",
+            "Said no to a request",
+            "Used AI to ship faster"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "z9",
+      "name": "Mock Camp · Apply Wave 1",
+      "theme": "dawn",
+      "start": "2027-01-11",
+      "end": "2027-01-17",
+      "goal": "Send the first applications. Start mocks.",
+      "steps": [
+        {
+          "id": "ap-1",
+          "type": "apply",
+          "src": "Job tracker",
+          "title": "Apply wave 1: AI-friendly companies",
+          "note": "Resume out to every AI-friendly company on the Jobs tab.",
+          "problems": [
+            "Coinbase",
+            "DoorDash",
+            "Datadog",
+            "Anthropic",
+            "Ramp",
+            "Shopify"
+          ]
+        },
+        {
+          "id": "mock-1",
+          "type": "mock",
+          "src": "Friend or Pramp",
+          "title": "Mock 1: 2 Blind 75 mediums in 45 min, out loud"
+        },
+        {
+          "id": "mock-sd1",
+          "type": "mock",
+          "src": "Alex Xu · Vol 1",
+          "title": "System design mock: Ch 8 URL Shortener, 35 min, recorded"
+        },
+        {
+          "id": "ai-4b",
+          "type": "ai",
+          "src": "NeetCode · AI Coding Interviews",
+          "title": "Streaming Analytics (Hard)",
+          "link": "https://neetcode.io/practice/ai-coding"
+        }
+      ]
+    },
+    {
+      "id": "z10",
+      "name": "Mock Camp · Round 2",
+      "theme": "dawn",
+      "start": "2027-01-18",
+      "end": "2027-01-24",
+      "goal": "Two more mocks. Optional deep dive.",
+      "steps": [
+        {
+          "id": "mock-2",
+          "type": "mock",
+          "src": "Friend or Pramp",
+          "title": "Mock 2: coding, 45 min, out loud"
+        },
+        {
+          "id": "mock-sd2",
+          "type": "mock",
+          "src": "Alex Xu · Vol 1",
+          "title": "System design mock: Ch 11 News Feed, 35 min, recorded"
+        },
+        {
+          "id": "ai-5",
+          "type": "ai",
+          "src": "NeetCode · AI Coding Interviews",
+          "title": "Build System (Hard)",
+          "link": "https://neetcode.io/practice/ai-coding"
+        },
+        {
+          "id": "ddia",
+          "type": "book",
+          "optional": true,
+          "src": "DDIA",
+          "title": "Replication · Sharding · Transactions",
+          "note": "2nd ed: Ch 6, 7, 8. 1st ed: Ch 5, 6, 7. Optional."
+        }
+      ]
+    },
+    {
+      "id": "z11",
+      "name": "Wave 2 · Go / No-Go",
+      "theme": "peak",
+      "start": "2027-01-25",
+      "end": "2027-01-31",
+      "goal": "Send wave 2. Check you are ready.",
+      "steps": [
+        {
+          "id": "ap-2",
+          "type": "apply",
+          "src": "Job tracker",
+          "title": "Apply wave 2: mixed-style loops",
+          "problems": [
+            "Stripe",
+            "Atlassian",
+            "Snowflake",
+            "Microsoft",
+            "Bloomberg",
+            "Amazon"
+          ]
+        },
+        {
+          "id": "recr",
+          "type": "do",
+          "src": "Every recruiter",
+          "title": "Ask: \"Is AI allowed in this round?\"",
+          "note": "Ask for every screen. Rules differ by team and change often."
+        },
+        {
+          "id": "go",
+          "type": "gate",
+          "src": "Self",
+          "title": "Go / No-Go review",
+          "note": "Need: checkpoint passed, 2 mocks done, 3+ screens booked. If not, shift Feb dates.",
+          "problems": [
+            "Checkpoint passed",
+            "2+ mocks done",
+            "3+ screens booked"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "z12",
+      "name": "Interviews Begin",
+      "theme": "finish",
+      "start": "2027-02-01",
+      "end": "2027-02-07",
+      "goal": "First real screens",
+      "steps": [
+        {
+          "id": "ap-3",
+          "type": "apply",
+          "src": "Job tracker",
+          "title": "Wave 3 after 2 real loops: Google, Meta, Apple",
+          "note": "Apply only once you have done at least 2 real interviews.",
+          "problems": [
+            "Google",
+            "Meta",
+            "Apple"
+          ]
+        }
+      ]
+    }
+  ]
+}
