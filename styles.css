@@ -167,7 +167,7 @@ details .more{font-size:12.5px;color:var(--muted);margin-top:6px;display:grid;ga
 @keyframes ff{0%,100%{transform:translate(0,0);opacity:.9}50%{transform:translate(5px,-6px);opacity:.35}}
 @keyframes fk{0%,100%{opacity:1}45%{opacity:.7}60%{opacity:.95}}
 .tw{animation:tw 3s ease-in-out infinite}
-.ff{animation:ff 5s ease-in-out infinite}
+.ff{animation:ff 7s ease-in-out infinite}
 .fk{animation:fk 2.2s ease-in-out infinite}
 @keyframes ring{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
 @keyframes pulse{50%{opacity:.4}}
@@ -184,29 +184,29 @@ details .more{font-size:12.5px;color:var(--muted);margin-top:6px;display:grid;ga
 @keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(calc(var(--dy)*-1));opacity:0}}
 .smoke{animation-name:smoke}
 @keyframes smoke{0%{transform:translateY(0) scale(.6);opacity:0}20%{opacity:.8}100%{transform:translateY(calc(var(--dy)*-1)) scale(1.8);opacity:0}}
-.spin{transform-origin:center;animation:spin 6s linear infinite}
+.spin{transform-origin:center;animation:spin 14s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.roll{transform-origin:center;animation:spin 1.6s linear infinite}
-.sway{transform-origin:50% 100%;animation:sway 4s ease-in-out infinite}
+.roll{transform-origin:center;animation:spin 4s linear infinite}
+.sway{transform-origin:50% 100%;animation:sway 7s ease-in-out infinite}
 @keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
-.bob{animation:bob 3s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-2px) rotate(2deg)}}
-.flap{transform-origin:center;animation:flap .9s ease-in-out infinite}
-.flapfast{animation-duration:.35s}
+.bob{animation:bob 7s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-1px) rotate(1deg)}}
+.flap{transform-origin:center;animation:flap 1.6s ease-in-out infinite}
+.flapfast{animation-duration:.7s}
 @keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.35)}}
-.flapx{transform-origin:center;animation:flapx .35s ease-in-out infinite}
+.flapx{transform-origin:center;animation:flapx .9s ease-in-out infinite}
 @keyframes flapx{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.3)}}
-.flit{animation:flit 7s ease-in-out infinite}
+.flit{animation:flit 16s ease-in-out infinite}
 @keyframes flit{0%,100%{transform:translate(0,0)}25%{transform:translate(18px,-12px)}50%{transform:translate(32px,4px)}75%{transform:translate(12px,10px)}}
-.wave{transform-origin:left center;animation:wave 1.4s ease-in-out infinite}
+.wave{transform-origin:left center;animation:wave 2.6s ease-in-out infinite}
 @keyframes wave{0%,100%{transform:scaleX(1) skewY(0)}50%{transform:scaleX(.8) skewY(8deg)}}
-.ripple{transform-origin:center;animation:ripple 4s ease-out infinite}
+.ripple{transform-origin:center;animation:ripple 6s ease-out infinite}
 @keyframes ripple{0%{transform:scale(.2);opacity:0}20%{opacity:1}100%{transform:scale(1.3);opacity:0}}
 .slide{animation:slide 5s ease-in-out infinite}
 @keyframes slide{0%,100%{transform:translateX(-6px);opacity:.3}50%{transform:translateX(6px);opacity:.9}}
-.flow{animation:flow 3s linear infinite}
+.flow{animation:flow 6s linear infinite}
 @keyframes flow{from{stroke-dashoffset:128}to{stroke-dashoffset:0}}
-.blip{animation:blip 2s ease-in-out infinite}
+.blip{animation:blip 4.5s ease-in-out infinite}
 @keyframes blip{0%,100%{opacity:.2;transform:scale(.6)}50%{opacity:1;transform:scale(1.4)}}
 .flash{opacity:0;animation:flash 9s linear infinite}
 @keyframes flash{0%,90%,100%{opacity:0}91%{opacity:1}92%{opacity:.1}93%{opacity:1}96%{opacity:0}}

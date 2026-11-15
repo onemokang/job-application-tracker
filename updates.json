@@ -1,6 +1,17 @@
 {
   "entries": [
     {
+      "id": "2026-11-15T23:50Z",
+      "date": "2026-11-15",
+      "source": "site",
+      "bullets": [
+        {
+          "k": "site",
+          "text": "Slowed the map animations (boats, butterflies, birds, pulses, cars)."
+        }
+      ]
+    },
+    {
       "id": "2026-11-15T23:30Z",
       "date": "2026-11-15",
       "source": "site",

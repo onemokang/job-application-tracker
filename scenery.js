@@ -39,7 +39,7 @@ const WORLDS = {
     amb(c) {
       let s = "";
       if (!c.d) {
-        for (let i = 0; i < 4; i++) s += A("flit", `animation-duration:${(6 + c.r() * 4).toFixed(1)}s;animation-delay:${dl(c, 6)}`, T(RX(c), RY(c), 1, `<g class="flapx"><ellipse cx="-3" rx="3.6" ry="2.6" fill="#ff8fab"/><ellipse cx="3" rx="3.6" ry="2.6" fill="#ffb86b"/></g>`));
+        for (let i = 0; i < 4; i++) s += A("flit", `animation-duration:${(16 + c.r() * 8).toFixed(1)}s;animation-delay:${dl(c, 20)}`, T(RX(c), RY(c), 1, `<g class="flapx"><ellipse cx="-3" rx="3.6" ry="2.6" fill="#ff8fab"/><ellipse cx="3" rx="3.6" ry="2.6" fill="#ffb86b"/></g>`));
         for (let i = 0; i < 2; i++) s += drift(c, c.top + 120 + c.r() * 60, 70 + c.r() * 30, cloud(false));
       } else s += flies(c, 14);
       return s;
@@ -59,7 +59,7 @@ const WORLDS = {
       let s = "";
       if (!c.d) {
         for (let i = 0; i < 3; i++) s += drift(c, c.top + 115 + c.r() * 80, 65 + c.r() * 30, cloud(false));
-        for (let i = 0; i < 2; i++) s += drift(c, c.top + 130 + c.r() * 120, 28 + c.r() * 10, bird("#53606e"));
+        for (let i = 0; i < 2; i++) s += drift(c, c.top + 130 + c.r() * 120, 55 + c.r() * 20, bird("#53606e"));
       } else { s += stars(c, 18) + shoot(c); for (let i = 0; i < 2; i++) s += drift(c, c.top + 120 + c.r() * 100, 90, cloud(true, 0.5)); }
       return s;
     },
@@ -77,7 +77,7 @@ const WORLDS = {
     amb(c) {
       let s = "";
       const cols = c.d ? ["#c47a3a", "#b08a2a"] : ["#f08a24", "#f2c230", "#e2582b"];
-      for (let i = 0; i < (c.d ? 4 : 10); i++) s += fall(c, RX(c), 7 + c.r() * 6, (c.r() * 60 - 30).toFixed(0), `<path d="M0,-4 Q4,0 0,5 Q-4,0 0,-4Z" fill="${cols[i % cols.length]}"/>`, "fall spinfall");
+      for (let i = 0; i < (c.d ? 4 : 10); i++) s += fall(c, RX(c), 14 + c.r() * 8, (c.r() * 60 - 30).toFixed(0), `<path d="M0,-4 Q4,0 0,5 Q-4,0 0,-4Z" fill="${cols[i % cols.length]}"/>`, "fall spinfall");
       if (c.d) s += flies(c, 12);
       return s;
     },
@@ -99,7 +99,7 @@ const WORLDS = {
       for (let i = 0; i < 7; i++) s += A("ripple", `animation-duration:${(3 + c.r() * 2).toFixed(1)}s;animation-delay:${dl(c, 4)}`, T(RX(c), RY(c), 1, `<ellipse rx="22" ry="6" fill="none" stroke="${col}" stroke-opacity=".75" stroke-width="1.5"/>`));
       if (!c.d) {
         for (let i = 0; i < 2; i++) s += drift(c, c.top + 125 + c.r() * 40, 70 + c.r() * 20, cloud(false));
-        for (let i = 0; i < 2; i++) s += drift(c, RY(c), 45 + c.r() * 15, `<g class="bob"><ellipse rx="7" ry="3.6" fill="#fff"/><circle cx="6" cy="-3" r="2.6" fill="#fff"/><path d="M8,-3 l4,1 l-4,1Z" fill="#ff9a3d"/></g>`);
+        for (let i = 0; i < 2; i++) s += drift(c, RY(c), 110 + c.r() * 40, `<g class="bob"><ellipse rx="7" ry="3.6" fill="#fff"/><circle cx="6" cy="-3" r="2.6" fill="#fff"/><path d="M8,-3 l4,1 l-4,1Z" fill="#ff9a3d"/></g>`);
       } else s += stars(c, 16) + shoot(c);
       return s;
     },
@@ -117,7 +117,7 @@ const WORLDS = {
     },
     amb(c) {
       let s = "";
-      for (let i = 0; i < 3; i++) s += drift(c, RY(c), 18 + c.r() * 8, `<g class="roll"><circle r="6" fill="none" stroke="${c.d ? "#8a6a3a" : "#a6762f"}" stroke-width="1.6" stroke-dasharray="3 2"/><circle r="3" fill="none" stroke="${c.d ? "#8a6a3a" : "#a6762f"}" stroke-width="1.2"/></g>`);
+      for (let i = 0; i < 3; i++) s += drift(c, RY(c), 40 + c.r() * 15, `<g class="roll"><circle r="6" fill="none" stroke="${c.d ? "#8a6a3a" : "#a6762f"}" stroke-width="1.6" stroke-dasharray="3 2"/><circle r="3" fill="none" stroke="${c.d ? "#8a6a3a" : "#a6762f"}" stroke-width="1.2"/></g>`);
       if (!c.d) { for (let i = 0; i < 12; i++) s += `<circle class="tw" cx="${RX(c).toFixed(0)}" cy="${RY(c).toFixed(0)}" r="1.4" fill="#fff6d0" style="animation-delay:${dl(c, 3)}"/>`; }
       else s += stars(c, 20) + shoot(c);
       return s;
@@ -136,7 +136,7 @@ const WORLDS = {
     amb(c) {
       let s = "";
       const n = Math.round((c.bottom - c.top) / 30);
-      for (let i = 0; i < n; i++) s += fall(c, RX(c), 6 + c.r() * 6, (c.r() * 40 - 20).toFixed(0), `<circle r="${(1.4 + c.r() * 1.6).toFixed(1)}" fill="#fff"${c.d ? "" : ` stroke="#a9c8e0" stroke-width=".6"`}/>`, "fall");
+      for (let i = 0; i < n; i++) s += fall(c, RX(c), 12 + c.r() * 8, (c.r() * 40 - 20).toFixed(0), `<circle r="${(1.4 + c.r() * 1.6).toFixed(1)}" fill="#fff"${c.d ? "" : ` stroke="#a9c8e0" stroke-width=".6"`}/>`, "fall");
       if (c.d) {
         for (let i = 0; i < 2; i++) s += `<path class="aurora" style="animation-delay:${dl(c, 5)}" d="M0,${(c.top + 110 + i * 60).toFixed(0)} Q${c.W * 0.3},${(c.top + 70 + i * 60).toFixed(0)} ${c.W * 0.5},${(c.top + 110 + i * 60).toFixed(0)} T${c.W},${(c.top + 100 + i * 60).toFixed(0)} V${(c.top + 150 + i * 60).toFixed(0)} H0Z" fill="${i ? "#7a5cff" : "#3df2b0"}" fill-opacity=".22"/>`;
         s += stars(c, 14);
@@ -156,7 +156,7 @@ const WORLDS = {
     },
     amb(c) {
       let s = "";
-      for (let i = 0; i < 3; i++) s += drift(c, c.top + 115 + c.r() * 150, 40 + c.r() * 20, bird(c.d ? "#8a82b8" : "#3c3552"));
+      for (let i = 0; i < 3; i++) s += drift(c, c.top + 115 + c.r() * 150, 70 + c.r() * 25, bird(c.d ? "#8a82b8" : "#3c3552"));
       if (c.d) s += stars(c, 10);
       return s;
     },
@@ -194,8 +194,8 @@ const WORLDS = {
     },
     amb(c) {
       let s = "";
-      for (let i = 0; i < 12; i++) s += rise(c, RX(c), RY(c), 70 + c.r() * 60, 3 + c.r() * 3, `<circle r="${(1.2 + c.r() * 1.6).toFixed(1)}" fill="${c.d ? "#ff9a4d" : "#ff6a1f"}"/>`);
-      for (let i = 0; i < 4; i++) s += rise(c, RX(c), RY(c), 90, 6 + c.r() * 3, `<ellipse rx="9" ry="6" fill="${c.d ? "#4a3a3a" : "#7a6a66"}" fill-opacity=".55"/>`).replace('class="rise"', 'class="rise smoke"');
+      for (let i = 0; i < 12; i++) s += rise(c, RX(c), RY(c), 70 + c.r() * 60, 7 + c.r() * 4, `<circle r="${(1.2 + c.r() * 1.6).toFixed(1)}" fill="${c.d ? "#ff9a4d" : "#ff6a1f"}"/>`);
+      for (let i = 0; i < 4; i++) s += rise(c, RX(c), RY(c), 90, 11 + c.r() * 4, `<ellipse rx="9" ry="6" fill="${c.d ? "#4a3a3a" : "#7a6a66"}" fill-opacity=".55"/>`).replace('class="rise"', 'class="rise smoke"');
       return s;
     },
   },
@@ -229,7 +229,7 @@ const WORLDS = {
     amb(c) {
       let s = "";
       s += T(c.W * 0.78, c.top + 150, 1, `<circle r="${c.d ? 24 : 20}" fill="${c.d ? "#ff5a4d" : "#f3d9de"}" fill-opacity="${c.d ? 0.9 : 0.8}"/>${c.d ? `<circle r="52" fill="url(#glowO)" class="fk"/>` : ""}`);
-      for (let i = 0; i < 4; i++) s += drift(c, c.top + 120 + c.r() * 160, 22 + c.r() * 10, `<g class="flap flapfast"><path d="M-9,0 Q-4,-8 0,-2 Q4,-8 9,0 Q4,-3 0,3 Q-4,-3 -9,0Z" fill="${c.d ? "#0a040c" : "#2d1b36"}"/></g>`);
+      for (let i = 0; i < 4; i++) s += drift(c, c.top + 120 + c.r() * 160, 50 + c.r() * 20, `<g class="flap flapfast"><path d="M-9,0 Q-4,-8 0,-2 Q4,-8 9,0 Q4,-3 0,3 Q-4,-3 -9,0Z" fill="${c.d ? "#0a040c" : "#2d1b36"}"/></g>`);
       if (c.d) s += stars(c, 10);
       return s;
     },
@@ -251,7 +251,7 @@ const WORLDS = {
       const lx = c.W * 0.82, ly = c.top + (c.bottom - c.top) * 0.55;
       s += T(lx, ly, 1, `<path d="M-6,14 L-4,-16 L4,-16 L6,14Z" fill="${c.d ? "#cfd6e6" : "#fff"}" stroke="#e5484d" stroke-width="0"/><path d="M-5,-4 H5 V2 H-5Z M-4.4,-10 H4.4 V-6 H-4.4Z" fill="#e5484d"/><rect x="-4" y="-22" width="8" height="6" fill="${c.d ? "#ffd36b" : "#8e98b0"}"/><path d="M-5,-22 L0,-28 L5,-22Z" fill="#e5484d"/>`);
       if (c.d) s += A("beam", `transform-origin:${lx}px ${ly - 19}px`, `<path d="M${lx},${ly - 19} L${lx + 120},${ly - 31} L${lx + 120},${ly - 7}Z" fill="#ffe08a" fill-opacity=".35"/>`);
-      if (!c.d) { for (let i = 0; i < 2; i++) s += drift(c, c.top + 120 + c.r() * 100, 30 + c.r() * 10, bird("#6b7a8a")); for (let i = 0; i < 2; i++) s += drift(c, c.top + 115 + c.r() * 60, 75, cloud(false)); }
+      if (!c.d) { for (let i = 0; i < 2; i++) s += drift(c, c.top + 120 + c.r() * 100, 60 + c.r() * 20, bird("#6b7a8a")); for (let i = 0; i < 2; i++) s += drift(c, c.top + 115 + c.r() * 60, 75, cloud(false)); }
       else s += stars(c, 18) + shoot(c);
       return s;
     },
@@ -275,9 +275,9 @@ const WORLDS = {
       for (let i = 0; i < streets; i++) {
         const y = c.top + 150 + ((c.bottom - c.top - 200) * (i + 0.5)) / streets;
         s += `<rect x="0" y="${y.toFixed(0)}" width="${c.W}" height="7" fill="${c.d ? "#0a0d1f" : "#7f8ab5"}" fill-opacity=".8"/>`;
-        for (let k = 0; k < 3; k++) s += drift(c, y + 3.5, 9 + c.r() * 7, c.d ? `<rect x="-5" y="-2" width="10" height="4" rx="2" fill="#1a2250"/><circle cx="6" r="5" fill="url(#glowY)"/><circle cx="5" r="1.4" fill="#fff3a8"/>` : `<rect x="-5" y="-2.5" width="10" height="5" rx="2" fill="${["#e5484d", "#2f80ed", "#f5a623", "#27ae60"][k % 4]}"/>`);
+        for (let k = 0; k < 3; k++) s += drift(c, y + 3.5, 22 + c.r() * 14, c.d ? `<rect x="-5" y="-2" width="10" height="4" rx="2" fill="#1a2250"/><circle cx="6" r="5" fill="url(#glowY)"/><circle cx="5" r="1.4" fill="#fff3a8"/>` : `<rect x="-5" y="-2.5" width="10" height="5" rx="2" fill="${["#e5484d", "#2f80ed", "#f5a623", "#27ae60"][k % 4]}"/>`);
       }
-      s += drift(c, c.top + 120, 55, c.d ? `<path d="M-9,0 H9 M-3,-5 L3,0 L-3,5" stroke="#cfd6e6" stroke-width="1.6" fill="none"/><circle cx="-9" r="1.6" fill="#ff4d4d" class="blink"/>` : `<path d="M-9,0 H9 M-3,-5 L3,0 L-3,5" stroke="#5a6b8a" stroke-width="1.8" fill="none"/>`);
+      s += drift(c, c.top + 120, 110, c.d ? `<path d="M-9,0 H9 M-3,-5 L3,0 L-3,5" stroke="#cfd6e6" stroke-width="1.6" fill="none"/><circle cx="-9" r="1.6" fill="#ff4d4d" class="blink"/>` : `<path d="M-9,0 H9 M-3,-5 L3,0 L-3,5" stroke="#5a6b8a" stroke-width="1.8" fill="none"/>`);
       if (!c.d) for (let i = 0; i < 2; i++) s += drift(c, c.top + 125 + c.r() * 60, 80, cloud(false, 0.7));
       else s += stars(c, 14);
       return s;
@@ -295,7 +295,7 @@ const WORLDS = {
     amb(c) {
       let s = "";
       const cols = ["#e5484d", "#2f80ed", "#27ae60", "#f5a623", "#9b59b6"];
-      for (let i = 0; i < 22; i++) s += fall(c, RX(c), 6 + c.r() * 5, (c.r() * 50 - 25).toFixed(0), `<g class="spin"><rect x="-2" y="-3" width="4" height="6" fill="${cols[i % cols.length]}"/></g>`, "fall");
+      for (let i = 0; i < 22; i++) s += fall(c, RX(c), 11 + c.r() * 6, (c.r() * 50 - 25).toFixed(0), `<g class="spin"><rect x="-2" y="-3" width="4" height="6" fill="${cols[i % cols.length]}"/></g>`, "fall");
       for (let i = 0; i < 3; i++) {
         const x = RX(c), y = RY(c); let sp = "";
         for (let a = 0; a < 8; a++) { const r = (a * Math.PI) / 4; sp += `<path d="M0,0 L${(Math.cos(r) * 16).toFixed(1)},${(Math.sin(r) * 16).toFixed(1)}" stroke="${cols[(a + i) % cols.length]}" stroke-width="2" stroke-linecap="round"/>`; }
