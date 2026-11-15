@@ -4,16 +4,17 @@
   "pace": "≈ 3 h/day to Jan 3 · ≈ 2 h/day Jan 4–31 · lighter in Feb",
   "verdict": [
     "Applying from Feb 1 is realistic, even for Google, Meta, Apple, Amazon.",
-    "11 weeks = Blind 75 + 24 more mediums + 6 AI problems + 4 mocks.",
+    "11 weeks = 8 h of DSA lessons + Blind 75 + 24 more mediums + 6 AI problems + 5 mocks.",
     "Apply to AI-friendly companies first. Use them as live practice.",
     "Offers likely Mar–May. Rejections are normal. Don't quit before a signed offer.",
     "Two tests (Jan 3, Jan 31) decide go or delay."
   ],
   "skip": [
     "NeetCode: Python for Beginners (stop at 21/82)",
-    "NeetCode: both DSA courses, both System Design courses",
-    "NeetCode: Python OOP, SQL, Full Stack, JS, MongoDB, 150, 250",
-    "DDIA before Jan 18 (optional deep dive)"
+    "NeetCode: Advanced Algorithms",
+    "NeetCode: both System Design courses (Alex Xu covers it)",
+    "NeetCode: Python OOP, SQL, Full Stack, OOD Patterns, JS, MongoDB, YouTube clone",
+    "DDIA before Jan 18 (optional)"
   ],
   "zones": [
     {
@@ -29,14 +30,16 @@
           "type": "lesson",
           "src": "NeetCode · Lesson",
           "title": "How to Use NeetCode Effectively",
-          "link": "https://neetcode.io/courses/lessons/how-to-use-neetcode-effectively"
+          "link": "https://neetcode.io/courses/lessons/how-to-use-neetcode-effectively",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
         },
         {
           "id": "py-2",
           "type": "video",
           "src": "NeetCode · YouTube (free)",
           "title": "Python for Coding Interviews – Everything you need to Know",
-          "link": "https://www.youtube.com/watch?v=0K_eZGS5NsU"
+          "link": "https://www.youtube.com/watch?v=0K_eZGS5NsU",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20Python/Python%20for%20Coding%20Interviews"
         },
         {
           "id": "py-3",
@@ -44,28 +47,32 @@
           "src": "NeetCode · Course",
           "title": "Python for Coding Interviews: all ~40 exercises, in order",
           "note": "Type each one from an empty file. No pasting.",
-          "link": "https://neetcode.io/courses"
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20Python/Python%20for%20Coding%20Interviews"
         },
         {
           "id": "py-4",
           "type": "lesson",
           "src": "NeetCode · Lesson",
           "title": "Python Cheat Sheet",
-          "link": "https://neetcode.io/courses"
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
         },
         {
           "id": "py-5",
           "type": "lesson",
           "src": "NeetCode · Lesson",
           "title": "Big-O Notation",
-          "link": "https://neetcode.io/courses"
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
         },
         {
           "id": "py-6",
           "type": "lesson",
           "src": "NeetCode · Lesson",
           "title": "8 Data Structures for Coding Interviews",
-          "link": "https://neetcode.io/courses"
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
         },
         {
           "id": "py-7",
@@ -77,7 +84,8 @@
             "Contains Duplicate",
             "Valid Anagram",
             "Two Sum"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
       "diff": 1,
@@ -91,6 +99,44 @@
       "end": "2026-11-29",
       "goal": "15 problems. Try 15 min, then watch the video, then retype.",
       "steps": [
+        {
+          "id": "fw",
+          "type": "do",
+          "src": "lc-stuff · STUDY_PLAN.md",
+          "title": "Problem-solving framework: Read, Example, Brute force, Optimize, Code",
+          "note": "Use it on every problem. Say each step out loud.",
+          "link": "https://github.com/onemokang/lc-stuff/blob/main/STUDY_PLAN.md#problem-solving-framework"
+        },
+        {
+          "id": "dsa-a",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 0–7: Arrays, Stacks, Linked Lists, Queues",
+          "problems": [
+            "0. Introduction",
+            "1. RAM",
+            "2. Static Arrays",
+            "3. Dynamic Arrays",
+            "4. Stacks",
+            "5. Singly Linked Lists",
+            "6. Doubly Linked Lists",
+            "7. Queues"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+        },
+        {
+          "id": "dsa-h",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 26–27: Hashing",
+          "problems": [
+            "26. Hash Usage",
+            "27. Hash Implementation"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+        },
         {
           "id": "b-arr",
           "type": "problems",
@@ -106,7 +152,8 @@
             "Encode and Decode Strings",
             "Product of Array Except Self",
             "Longest Consecutive Sequence"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "b-two",
@@ -118,7 +165,8 @@
             "Valid Palindrome",
             "3Sum",
             "Container With Most Water"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "b-win",
@@ -131,14 +179,16 @@
             "Longest Substring Without Repeating Characters",
             "Longest Repeating Character Replacement",
             "Minimum Window Substring"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "r-2",
           "type": "redo",
           "src": "Self",
           "title": "Redo every miss from an empty file",
-          "note": "No notes. If you miss it twice, rewatch the video."
+          "note": "No notes. If you miss it twice, rewatch the video.",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
       "diff": 1,
@@ -157,7 +207,47 @@
           "type": "lesson",
           "src": "NeetCode · Lesson",
           "title": "Sorting Algorithms Cheat Sheet",
-          "link": "https://neetcode.io/courses"
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+        },
+        {
+          "id": "dsa-b",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 8–9: Recursion",
+          "problems": [
+            "8. Factorial",
+            "9. Fibonacci Sequence"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+        },
+        {
+          "id": "dsa-s",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 10–13: Sorting",
+          "problems": [
+            "10. Insertion Sort",
+            "11. Merge Sort",
+            "12. Quick Sort",
+            "13. Bucket Sort"
+          ],
+          "link": "https://neetcode.io/courses",
+          "optional": true,
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+        },
+        {
+          "id": "dsa-c",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 14–15: Binary Search",
+          "problems": [
+            "14. Search Array",
+            "15. Search Range"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
         },
         {
           "id": "b-stk",
@@ -169,7 +259,8 @@
             "Valid Parentheses",
             "Find Minimum in Rotated Sorted Array",
             "Search in Rotated Sorted Array"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "b-ll",
@@ -184,7 +275,24 @@
             "Reorder List",
             "Remove Nth Node From End of List",
             "Merge k Sorted Lists"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+        },
+        {
+          "id": "dsa-d",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 16–21: Trees",
+          "problems": [
+            "16. Binary Tree",
+            "17. Binary Search Tree",
+            "18. BST Insert and Remove",
+            "19. Depth-First Search",
+            "20. Breadth-First Search",
+            "21. BST Sets and Maps"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
         },
         {
           "id": "b-tr1",
@@ -198,13 +306,15 @@
             "Same Tree",
             "Subtree of Another Tree",
             "Lowest Common Ancestor of a Binary Search Tree"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "r-3",
           "type": "redo",
           "src": "Self",
-          "title": "Redo every miss from an empty file"
+          "title": "Redo every miss from an empty file",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
       "diff": 2,
@@ -231,7 +341,22 @@
             "Construct Binary Tree from Preorder and Inorder Traversal",
             "Binary Tree Maximum Path Sum",
             "Serialize and Deserialize Binary Tree"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+        },
+        {
+          "id": "dsa-e",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 22–25: Backtracking + Heap",
+          "problems": [
+            "22. Tree Maze",
+            "23. Heap Properties",
+            "24. Push and Pop",
+            "25. Heapify"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
         },
         {
           "id": "b-bt",
@@ -246,38 +371,44 @@
             "Design Add and Search Words Data Structure",
             "Word Search II",
             "Find Median from Data Stream"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "l-20",
           "type": "lesson",
           "src": "NeetCode · Lesson",
           "title": "20 Must-Know System Design Concepts",
-          "link": "https://neetcode.io/courses"
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
         },
         {
           "id": "xu-1",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 1 · Scale From Zero To Millions Of Users"
+          "title": "Ch 1 · Scale From Zero To Millions Of Users",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-2",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 2 · Back-of-the-envelope Estimation"
+          "title": "Ch 2 · Back-of-the-envelope Estimation",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-3",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 3 · A Framework For System Design Interviews"
+          "title": "Ch 3 · A Framework For System Design Interviews",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "r-4",
           "type": "redo",
           "src": "Self",
-          "title": "Redo every miss from an empty file"
+          "title": "Redo every miss from an empty file",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
       "diff": 2,
@@ -296,7 +427,22 @@
           "type": "lesson",
           "src": "NeetCode · Lesson",
           "title": "5 Graph Algorithms for Coding Interviews",
-          "link": "https://neetcode.io/courses"
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Lessons"
+        },
+        {
+          "id": "dsa-f",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 28–31: Graphs",
+          "problems": [
+            "28. Intro to Graphs",
+            "29. Matrix DFS",
+            "30. Matrix BFS",
+            "31. Adjacency List"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
         },
         {
           "id": "b-gr",
@@ -312,7 +458,8 @@
             "Number of Connected Components in an Undirected Graph",
             "Graph Valid Tree",
             "Alien Dictionary"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "b-int",
@@ -328,43 +475,50 @@
             "Non-overlapping Intervals",
             "Meeting Rooms",
             "Meeting Rooms II"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "xu-4",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 4 · Design A Rate Limiter"
+          "title": "Ch 4 · Design A Rate Limiter",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-5",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 5 · Design Consistent Hashing"
+          "title": "Ch 5 · Design Consistent Hashing",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-6",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 6 · Design A Key-value Store"
+          "title": "Ch 6 · Design A Key-value Store",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-7",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 7 · Design A Unique ID Generator In Distributed Systems"
+          "title": "Ch 7 · Design A Unique ID Generator In Distributed Systems",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-8",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 8 · Design A URL Shortener"
+          "title": "Ch 8 · Design A URL Shortener",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "r-5",
           "type": "redo",
           "src": "Self",
-          "title": "Redo every miss from an empty file"
+          "title": "Redo every miss from an empty file",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
       "diff": 3,
@@ -378,6 +532,18 @@
       "end": "2026-12-27",
       "goal": "12 problems + 5 chapters. Holiday week: light days are OK.",
       "steps": [
+        {
+          "id": "dsa-g",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lessons 32–33: Dynamic Programming",
+          "problems": [
+            "32. 1-Dimension DP",
+            "33. 2-Dimension DP"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
+        },
         {
           "id": "b-dp1",
           "type": "problems",
@@ -395,7 +561,8 @@
             "Maximum Product Subarray",
             "Word Break",
             "Longest Increasing Subsequence"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "b-dp2",
@@ -406,43 +573,50 @@
           "problems": [
             "Unique Paths",
             "Longest Common Subsequence"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "xu-9",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 9 · Design A Web Crawler"
+          "title": "Ch 9 · Design A Web Crawler",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-10",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 10 · Design A Notification System"
+          "title": "Ch 10 · Design A Notification System",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-11",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 11 · Design A News Feed System"
+          "title": "Ch 11 · Design A News Feed System",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-12",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 12 · Design A Chat System"
+          "title": "Ch 12 · Design A Chat System",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-13",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 13 · Design A Search Autocomplete System"
+          "title": "Ch 13 · Design A Search Autocomplete System",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "r-6",
           "type": "redo",
           "src": "Self",
-          "title": "Redo every miss from an empty file"
+          "title": "Redo every miss from an empty file",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
       "diff": 4,
@@ -466,7 +640,19 @@
             "Rotate Image",
             "Spiral Matrix",
             "Set Matrix Zeroes"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+        },
+        {
+          "id": "dsa-i",
+          "type": "course",
+          "src": "NeetCode · Beginner DSA course",
+          "title": "Lesson 34: Bit Operations",
+          "problems": [
+            "34. Bit Operations"
+          ],
+          "link": "https://neetcode.io/courses",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20DSA/Algorithms%20and%20Data%20Structures%20for%20Beginners"
         },
         {
           "id": "b-bit",
@@ -480,25 +666,37 @@
             "Reverse Bits",
             "Missing Number",
             "Sum of Two Integers"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "xu-14",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 14 · Design YouTube"
+          "title": "Ch 14 · Design YouTube",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "xu-15",
           "type": "book",
           "src": "Alex Xu · Vol 1",
-          "title": "Ch 15 · Design Google Drive"
+          "title": "Ch 15 · Design Google Drive",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "r-7",
           "type": "redo",
           "src": "Self",
-          "title": "Timed redo: 10 Blind 75 problems you missed, 25 min each"
+          "title": "Timed redo: 10 Blind 75 problems you missed, 25 min each",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
+        },
+        {
+          "id": "pat",
+          "type": "do",
+          "src": "lc-stuff · STUDY_PLAN.md",
+          "title": "Name the pattern in 60 seconds",
+          "note": "Sliding window · two pointers · fast/slow pointers · merge intervals · BFS · top-K heap · DP. Say the pattern before you code.",
+          "link": "https://github.com/onemokang/lc-stuff/blob/main/STUDY_PLAN.md#pattern-recognition-cheat-sheet"
         },
         {
           "id": "gate-2",
@@ -511,7 +709,8 @@
             "Daily Temperatures",
             "Koko Eating Bananas",
             "Binary Tree Right Side View"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
       "diff": 4,
@@ -531,56 +730,64 @@
           "type": "ai",
           "src": "NeetCode · AI Coding Interviews",
           "title": "Triplet Draw (Easy)",
-          "link": "https://neetcode.io/practice/ai-coding"
+          "link": "https://neetcode.io/practice/ai-coding",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
         },
         {
           "id": "ai-2",
           "type": "ai",
           "src": "NeetCode · AI Coding Interviews",
           "title": "Delivery Grid (Medium)",
-          "link": "https://neetcode.io/practice/ai-coding"
+          "link": "https://neetcode.io/practice/ai-coding",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
         },
         {
           "id": "ai-3",
           "type": "ai",
           "src": "NeetCode · AI Coding Interviews",
           "title": "Word Reveal (Medium)",
-          "link": "https://neetcode.io/practice/ai-coding"
+          "link": "https://neetcode.io/practice/ai-coding",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
         },
         {
           "id": "ai-4",
           "type": "do",
           "src": "Own IDE + your AI tool",
           "title": "60-min build: a rover-on-a-grid simulator",
-          "note": "Narrate. Write tests. Read every AI diff before accepting."
+          "note": "Narrate. Write tests. Read every AI diff before accepting.",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
         },
         {
           "id": "ood-0",
           "type": "course",
           "src": "NeetCode · OOD Interviews",
           "title": "Design Connect Four (free demo lesson)",
-          "link": "https://neetcode.io/courses/ood-interview/0"
+          "link": "https://neetcode.io/courses/ood-interview/0",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews"
         },
         {
           "id": "ood-1",
           "type": "course",
           "src": "NeetCode · OOD Interviews",
           "title": "Design a Parking Lot",
-          "link": "https://neetcode.io/courses/ood-interview/0"
+          "link": "https://neetcode.io/courses/ood-interview/0",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews"
         },
         {
           "id": "ood-2",
           "type": "course",
           "src": "NeetCode · OOD Interviews",
           "title": "Design a Bank",
-          "link": "https://neetcode.io/courses/ood-interview/0"
+          "link": "https://neetcode.io/courses/ood-interview/0",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews"
         },
         {
           "id": "ood-3",
           "type": "course",
           "src": "NeetCode · OOD Interviews",
           "title": "Design an Elevator System",
-          "link": "https://neetcode.io/courses/ood-interview/0"
+          "link": "https://neetcode.io/courses/ood-interview/0",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/NeetCode%20Course%20-%20OOD/Object%20Oriented%20Design%20Interviews"
         },
         {
           "id": "star",
@@ -597,7 +804,8 @@
             "Unclear requirements",
             "Said no to a request",
             "Used AI to ship faster"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Behavioral"
         }
       ],
       "diff": 4,
@@ -626,7 +834,8 @@
             "Car Fleet",
             "Search a 2D Matrix",
             "Time Based Key-Value Store"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "n-2",
@@ -641,14 +850,16 @@
             "Kth Largest Element In An Array",
             "K Closest Points to Origin",
             "Task Scheduler"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "ai-4b",
           "type": "ai",
           "src": "NeetCode · AI Coding Interviews",
           "title": "Streaming Analytics (Hard)",
-          "link": "https://neetcode.io/practice/ai-coding"
+          "link": "https://neetcode.io/practice/ai-coding",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
         },
         {
           "id": "mock-1",
@@ -660,7 +871,8 @@
           "id": "r-9",
           "type": "redo",
           "src": "Self",
-          "title": "Redo every miss from an empty file"
+          "title": "Redo every miss from an empty file",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ]
     },
@@ -687,7 +899,8 @@
             "Rotting Oranges",
             "Redundant Connection",
             "Network Delay Time"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "n-4",
@@ -702,14 +915,16 @@
             "Interleaving String",
             "Edit Distance",
             "Best Time to Buy and Sell Stock with Cooldown"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "ai-5",
           "type": "ai",
           "src": "NeetCode · AI Coding Interviews",
           "title": "Build System (Hard)",
-          "link": "https://neetcode.io/practice/ai-coding"
+          "link": "https://neetcode.io/practice/ai-coding",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/AI%20Coding%20Interviews"
         },
         {
           "id": "mock-2",
@@ -721,7 +936,8 @@
           "id": "mock-sd1",
           "type": "mock",
           "src": "Alex Xu · Vol 1",
-          "title": "System design mock: Ch 8 URL Shortener, 35 min, recorded"
+          "title": "System design mock: Ch 8 URL Shortener, 35 min, recorded",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "ddia",
@@ -729,13 +945,15 @@
           "src": "DDIA",
           "title": "Replication · Sharding · Transactions",
           "optional": true,
-          "note": "2nd ed: Ch 6, 7, 8. 1st ed: Ch 5, 6, 7. Optional."
+          "note": "2nd ed: Ch 6, 7, 8. 1st ed: Ch 5, 6, 7. Optional.",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/DDIA"
         },
         {
           "id": "r-10",
           "type": "redo",
           "src": "Self",
-          "title": "Redo every miss from an empty file"
+          "title": "Redo every miss from an empty file",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ]
     },
@@ -754,7 +972,8 @@
           "id": "mock-sd2",
           "type": "mock",
           "src": "Alex Xu · Vol 1",
-          "title": "System design mock: Ch 11 News Feed, 35 min, recorded"
+          "title": "System design mock: Ch 11 News Feed, 35 min, recorded",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         },
         {
           "id": "mock-3",
@@ -781,7 +1000,8 @@
             "Gas Station",
             "Palindrome Partitioning",
             "Word Bag Maximizer (Hard), AI mode"
-          ]
+          ],
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         },
         {
           "id": "go",
@@ -834,7 +1054,8 @@
           "id": "mock-4",
           "type": "mock",
           "src": "Alex Xu · Vol 1",
-          "title": "Mock 4: system design, 35 min"
+          "title": "Mock 4: system design, 35 min",
+          "notes": "https://github.com/onemokang/lc-stuff/tree/main/System%20Design/Alex%20Xu%20Vol%201"
         }
       ]
     },
@@ -895,5 +1116,11 @@
       ]
     }
   ],
-  "applyStart": "2027-02-01"
+  "applyStart": "2027-02-01",
+  "rules": [
+    "Stuck 30 min? Watch the solution, close it, rewrite it alone. Retry in 5–7 days.",
+    "Missed a day? Don't catch up. Resume where you left off.",
+    "Dread, no progress for 2 weeks, bad sleep? Take a full week off, then go back 2 topics."
+  ],
+  "notesRepo": "https://github.com/onemokang/lc-stuff"
 }

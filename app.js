@@ -497,6 +497,7 @@ function openSheet(id) {
       ${probs ? `<ul class="pl">${probs}</ul>` : ""}
       <div class="row">
         ${s.link ? `<a class="btn g" href="${esc(s.link)}" target="_blank" rel="noopener">Open ↗</a>` : ""}
+        ${s.notes ? `<a class="btn g" href="${esc(s.notes)}" target="_blank" rel="noopener">My notes ↗</a>` : ""}
         <button class="btn p" id="doneBtn">${done ? "Mark not done" : "Mark complete ✓"}</button>
       </div>
     </div>`;
@@ -517,6 +518,8 @@ function closeSheet() { $("#sheetRoot").innerHTML = ""; }
 function renderPrepStatic() {
   $("#verdict").innerHTML = `<h3>Apply from Feb 1: realistic?</h3><ul>${(ROAD.verdict || []).map((v) => `<li>${esc(v)}</li>`).join("")}</ul>
     <div class="when" style="margin-top:8px">Pace: ${esc(ROAD.pace)} · checked ${esc(fmt(ROAD.researchDate))}</div>`;
+  $("#rules").innerHTML = `<h3>3 rules</h3><ul>${(ROAD.rules || []).map((v) => `<li>${esc(v)}</li>`).join("")}</ul>
+    ${ROAD.notesRepo ? `<div class="when" style="margin-top:8px"><a href="${esc(ROAD.notesRepo)}" target="_blank" rel="noopener">My notes repo ↗</a> (private, sign in to GitHub)</div>` : ""}`;
   $("#skip").innerHTML = `<summary>Skip for now</summary><div class="more">${(ROAD.skip || []).map((v) => `<div>• ${esc(v)}</div>`).join("")}</div>`;
 }
 

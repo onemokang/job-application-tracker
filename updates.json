@@ -1,6 +1,25 @@
 {
   "entries": [
     {
+      "id": "2026-11-15T22:30Z",
+      "date": "2026-11-15",
+      "source": "site",
+      "bullets": [
+        {
+          "k": "site",
+          "text": "Prep map now has the 35 Beginner DSA lessons, by name."
+        },
+        {
+          "k": "site",
+          "text": "Each step links to your notes in lc-stuff (private repo)."
+        },
+        {
+          "k": "site",
+          "text": "Added 3 rules and the problem-solving framework from your old plan."
+        }
+      ]
+    },
+    {
       "id": "2026-11-15T21:10Z",
       "date": "2026-11-15",
       "source": "site",
@@ -19,7 +38,7 @@
         },
         {
           "k": "site",
-          "text": "Added 24 NeetCode 150 mediums and 4 mocks before applying."
+          "text": "Added 24 NeetCode 150 mediums and 5 mocks before applying."
         }
       ]
     },
