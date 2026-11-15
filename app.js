@@ -246,81 +246,6 @@ function toggleProb(id, i) {
 
 /* ---------- prep map ---------- */
 let mapBuilt = false;
-const PAL = {
-  meadow: { l: ["#d6f0b8", "#b9e48f"], d: ["#0d2b1c", "#123a25"], kind: "tree" },
-  hills:  { l: ["#c9ebb0", "#9fd685"], d: ["#0f3322", "#15442d"], kind: "hill" },
-  forest: { l: ["#a9d9a0", "#6fbb7a"], d: ["#0a2619", "#0d3322"], kind: "forest" },
-  lake:   { l: ["#bfe3f5", "#8ccbe8"], d: ["#0a2036", "#0e3050"], kind: "lake" },
-  desert: { l: ["#f6e3b0", "#eec978"], d: ["#2b2112", "#3b2c16"], kind: "desert" },
-  ice:    { l: ["#e3f1fb", "#bddcf3"], d: ["#10243a", "#17345a"], kind: "ice" },
-  castle: { l: ["#cdc7dd", "#aaa2c6"], d: ["#1a1530", "#261c44"], kind: "castle" },
-  night:  { l: ["#a9c2ec", "#7f9fdc"], d: ["#080c24", "#101a44"], kind: "sky" },
-  lava:   { l: ["#f7c9a8", "#ef9a70"], d: ["#2a0f0a", "#431811"], kind: "lava" },
-  dawn:   { l: ["#ffe3b8", "#ffc58a"], d: ["#2a1530", "#411f3e"], kind: "sky" },
-  finish: { l: ["#fff1b8", "#ffd966"], d: ["#2e2410", "#483616"], kind: "flag" },
-};
-
-function rng(seed) { let s = seed; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
-
-// One decoration. d = dark mode. Returns SVG markup.
-function deco(kind, x, y, sc, d, r) {
-  const T = (inner) => `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${sc.toFixed(2)})">${inner}</g>`;
-  const st = d ? ` stroke="rgba(255,255,255,.28)" stroke-width="1"` : "";
-  switch (kind) {
-    case "tree":
-    case "forest": {
-      const a = d ? "#1f6b45" : "#3fa35c", b = d ? "#2b8a5a" : "#5cc377", tr = d ? "#4a3626" : "#8a6240";
-      return T(`<rect x="-2" y="8" width="4" height="9" fill="${tr}"/><path d="M0,-18 L12,9 L-12,9Z" fill="${a}"${st}/><path d="M0,-27 L9,-5 L-9,-5Z" fill="${b}"${st}/>`);
-    }
-    case "hill": {
-      const a = d ? "#1f7048" : "#6fc05a", b = d ? "#2c8f5d" : "#8fd672";
-      return T(`<path d="M-34,14 Q-8,-26 20,14Z" fill="${a}"${st}/><path d="M-6,14 Q18,-14 38,14Z" fill="${b}"${st}/>`);
-    }
-    case "lake": {
-      const w = d ? "#2f7fc0" : "#6db8e6";
-      return T(`<ellipse rx="26" ry="8" fill="${w}" fill-opacity="${d ? 0.55 : 0.7}"${st}/><ellipse rx="14" ry="4" fill="none" stroke="${d ? "#9fd3ff" : "#fff"}" stroke-opacity=".55"/>`);
-    }
-    case "desert": {
-      const g = d ? "#2f8a58" : "#4e9a4e";
-      return r() > 0.4
-        ? T(`<rect x="-3" y="-16" width="6" height="30" rx="3" fill="${g}"${st}/><rect x="-12" y="-6" width="5" height="12" rx="2.5" fill="${g}"${st}/><rect x="7" y="-10" width="5" height="12" rx="2.5" fill="${g}"${st}/>`)
-        : T(`<path d="M-30,12 Q-6,-14 30,12Z" fill="${d ? "#5a4423" : "#e0b862"}"${st}/>`);
-    }
-    case "ice": {
-      const a = d ? "#2c5a8c" : "#cfe3f2";
-      return T(`<path d="M-24,14 L0,-22 L24,14Z" fill="${a}"${st}/><path d="M0,-22 L8,-8 L1,-11 L-6,-6Z" fill="${d ? "#e6f3ff" : "#fff"}"/>`);
-    }
-    case "castle": {
-      const a = d ? "#33295c" : "#8f88aa", win = d ? "#ffd36b" : "#5c5575";
-      return T(`<rect x="-10" y="-18" width="20" height="32" fill="${a}"${st}/><path d="M-10,-18 h4 v-5 h4 v5 h4 v-5 h4 v5" fill="${a}"${st}/><rect x="-2" y="-8" width="4" height="7" rx="2" fill="${win}"/>${d ? `<circle cx="0" cy="-5" r="9" fill="url(#glowY)" class="fk"/>` : ""}`);
-    }
-    case "lava": {
-      const rock = d ? "#3b1a14" : "#8a4a3a";
-      return r() > 0.45
-        ? T(`<ellipse rx="22" ry="7" fill="#ff5a1f"${d ? "" : ' fill-opacity=".85"'}/><ellipse rx="12" ry="3.5" fill="#ffc15c"/>${d ? `<circle r="26" fill="url(#glowO)" class="fk"/>` : ""}`)
-        : T(`<path d="M-16,12 L-6,-14 L6,-6 L16,12Z" fill="${rock}"${st}/>`);
-    }
-    case "sky": {
-      const c = d ? "#25356e" : "#fff";
-      return T(`<ellipse rx="26" ry="8" fill="${c}" fill-opacity="${d ? 0.8 : 0.85}"/><ellipse cx="-10" cy="-5" rx="12" ry="8" fill="${c}" fill-opacity="${d ? 0.8 : 0.85}"/><ellipse cx="8" cy="-6" rx="10" ry="7" fill="${c}" fill-opacity="${d ? 0.8 : 0.85}"/>`);
-    }
-    default: // flag
-      return T(`<rect x="-1" y="-20" width="2" height="34" fill="${d ? "#8e98b0" : "#7a6a3a"}"/><path d="M1,-20 L18,-13 L1,-6Z" fill="#ffb300"/>`);
-  }
-}
-
-// Extra lights that only show in dark mode.
-function lights(kind, x, y, r, W) {
-  const delay = (r() * 4).toFixed(1) + "s";
-  if (["sky", "ice", "castle", "lake", "desert", "flag"].includes(kind))
-    return `<circle class="tw" cx="${x}" cy="${y}" r="${(0.8 + r() * 1.4).toFixed(1)}" fill="#fff" style="animation-delay:${delay}"/>`;
-  if (["tree", "forest", "hill"].includes(kind))
-    return `<g class="ff" style="animation-delay:${delay}"><circle cx="${x}" cy="${y}" r="9" fill="url(#glowG)"/><circle cx="${x}" cy="${y}" r="1.8" fill="#eaff9a"/></g>`;
-  if (kind === "lava")
-    return `<circle class="tw" cx="${x}" cy="${y}" r="1.6" fill="#ff9a4d" style="animation-delay:${delay}"/>`;
-  return "";
-}
-
 function buildMap() {
   const root = $("#map");
   const W = root.clientWidth || root.parentElement.clientWidth || 340;
@@ -338,7 +263,7 @@ function buildMap() {
     const top = y;
     const pips = [1, 2, 3, 4, 5].map((n) => `<i class="${n <= (z.diff || 1) ? "on" : ""}"></i>`).join("");
     html.push(`<div class="zone ${z.boss ? "boss" : ""} lv${z.diff || 1}" data-z="${z.id}" style="top:${y}px;height:${ZH - 12}px">
-      <div class="zt"><span class="wd">WORLD ${zi + 1}${z.boss ? " · BOSS" : ""}</span><span class="pips" title="${esc(z.diffLabel || "")}">${pips}<em>${esc(z.diffLabel || "")}</em></span></div>
+      <div class="zt"><span class="wd">WORLD ${zi + 1}${z.boss ? " · BOSS" : ""}</span><span class="pips" aria-label="Difficulty ${z.diff || 1} of 5">${pips}</span></div>
       <div class="zn"><h4>${esc(z.name)}</h4><span class="zd">${esc(fmt(z.start))} – ${esc(fmt(z.end))}</span></div>
       <div class="zg">${esc(z.goal)}</div><div class="zp"><i></i></div></div>`);
     pts.push({ x: cx, y: y + (ZH - 12) / 2 });
@@ -380,29 +305,26 @@ function buildMap() {
   let defs = `<radialGradient id="glowY"><stop offset="0" stop-color="#ffd36b" stop-opacity=".85"/><stop offset="1" stop-color="#ffd36b" stop-opacity="0"/></radialGradient>
     <radialGradient id="glowO"><stop offset="0" stop-color="#ff7a2b" stop-opacity=".7"/><stop offset="1" stop-color="#ff7a2b" stop-opacity="0"/></radialGradient>
     <radialGradient id="glowG"><stop offset="0" stop-color="#d4ff6a" stop-opacity=".8"/><stop offset="1" stop-color="#d4ff6a" stop-opacity="0"/></radialGradient>`;
-  let ground = "", scene = "";
+  let ground = "", scene = "", amb = "";
   zoneBox.forEach(({ z, top, bottom, zi }) => {
-    const pal = PAL[z.theme] || PAL.meadow;
-    const next = zoneBox[zi + 1] && (PAL[zoneBox[zi + 1].z.theme] || PAL.meadow);
+    const pal = WORLDS[z.theme] || WORLDS.camp;
+    const next = zoneBox[zi + 1] && (WORLDS[zoneBox[zi + 1].z.theme] || WORLDS.camp);
     const y0 = zi === 0 ? 0 : top - 3, y1 = zi === zoneBox.length - 1 ? H : bottom + 3;
     defs += `<linearGradient id="g${zi}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${pal[mode][0]}"/><stop offset=".6" stop-color="${pal[mode][1]}"/><stop offset="1" stop-color="${(next || pal)[mode][0]}"/></linearGradient>`;
     ground += `<rect x="0" y="${y0}" width="${W}" height="${y1 - y0}" fill="url(#g${zi})"/>`;
-    const r = rng(zi * 97 + 13);
+    const c = { top, bottom, W, d: dark, r: rng(zi * 97 + 13) };
     const n = Math.round((bottom - top) / 34);
     for (let i = 0; i < n; i++) {
-      const px = 8 + r() * (W - 16), py = top + 100 + r() * Math.max(10, bottom - top - 110), sc = 0.75 + r() * 0.7;
-      scene += deco(pal.kind, px, py, sc, dark, r);
+      const px = 8 + c.r() * (W - 16), py = top + 100 + c.r() * Math.max(10, bottom - top - 110), sc = 0.75 + c.r() * 0.7;
+      scene += pal.deco(px, py, sc, c);
     }
-    if (dark) {
-      const m = Math.round((bottom - top) / 22);
-      for (let i = 0; i < m; i++) scene += lights(pal.kind, (r() * W).toFixed(0), (top + 100 + r() * Math.max(10, bottom - top - 110)).toFixed(0), r, W);
-    }
+    amb += pal.amb(c);
   });
   if (dark) lanterns.forEach((l) => {
     scene += `<g class="fk"><circle cx="${l.x}" cy="${l.y}" r="22" fill="url(#glowY)"/><rect x="${l.x - 1}" y="${l.y}" width="2" height="12" fill="#6b5a3a"/><circle cx="${l.x}" cy="${l.y - 1}" r="3.4" fill="#ffe08a"/></g>`;
   });
 
-  const svg = `<svg class="bg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><defs>${defs}</defs>${ground}${scene}
+  const svg = `<svg class="bg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><defs>${defs}</defs>${ground}${scene}${amb}
     <path id="pBase" d="${dFull}" fill="none" stroke="${dark ? "#6f7a93" : "#fff"}" stroke-opacity="${dark ? 0.55 : 0.9}" stroke-width="5" stroke-dasharray="2 11" stroke-linecap="round"/>
     <path id="pDone" d="${dFull}" fill="none" stroke="var(--primary)" stroke-width="6" stroke-linecap="round"/></svg>`;
   root.innerHTML = svg + html.join("");
@@ -636,3 +558,22 @@ else {
   $("#gateBtn").onclick = tryUnlock;
   $("#gatePw").onkeydown = (e) => { if (e.key === "Enter") tryUnlock(); };
 }
+
+/* ---------- installable app ---------- */
+(function () {
+  if ("serviceWorker" in navigator && location.protocol !== "file:") navigator.serviceWorker.register("sw.js").catch(() => {});
+  const btn = () => document.getElementById("installBtn");
+  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (standalone) return;
+  let evt = null;
+  window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); evt = e; btn().classList.remove("hide"); });
+  window.addEventListener("appinstalled", () => btn().classList.add("hide"));
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  window.addEventListener("DOMContentLoaded", () => {
+    if (ios) btn().classList.remove("hide");
+    btn().onclick = async () => {
+      if (evt) { evt.prompt(); await evt.userChoice; evt = null; btn().classList.add("hide"); }
+      else alert("To install: tap the Share button, then \"Add to Home Screen\".");
+    };
+  });
+})();

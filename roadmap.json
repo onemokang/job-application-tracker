@@ -20,7 +20,7 @@
     {
       "id": "z1",
       "name": "Python Camp",
-      "theme": "meadow",
+      "theme": "camp",
       "start": "2026-11-16",
       "end": "2026-11-22",
       "goal": "Write code from a blank file",
@@ -88,8 +88,7 @@
           "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
-      "diff": 1,
-      "diffLabel": "Warm-up"
+      "diff": 1
     },
     {
       "id": "z2",
@@ -191,8 +190,7 @@
           "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
-      "diff": 1,
-      "diffLabel": "Easy"
+      "diff": 1
     },
     {
       "id": "z3",
@@ -317,8 +315,7 @@
           "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
-      "diff": 2,
-      "diffLabel": "Medium"
+      "diff": 2
     },
     {
       "id": "z4",
@@ -411,8 +408,7 @@
           "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
-      "diff": 2,
-      "diffLabel": "Medium"
+      "diff": 2
     },
     {
       "id": "z5",
@@ -521,13 +517,12 @@
           "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
-      "diff": 3,
-      "diffLabel": "Hard"
+      "diff": 3
     },
     {
       "id": "z6",
       "name": "DP Glacier",
-      "theme": "ice",
+      "theme": "glacier",
       "start": "2026-12-21",
       "end": "2026-12-27",
       "goal": "12 problems + 5 chapters. Holiday week: light days are OK.",
@@ -619,13 +614,12 @@
           "notes": "https://github.com/onemokang/lc-stuff/tree/main/Practice/Blind%2075%20and%20NeetCode%20150"
         }
       ],
-      "diff": 4,
-      "diffLabel": "Hard"
+      "diff": 4
     },
     {
       "id": "z7",
       "name": "Boss: Checkpoint",
-      "theme": "castle",
+      "theme": "gate",
       "start": "2026-12-28",
       "end": "2027-01-03",
       "goal": "Finish Blind 75. Prove it with a test.",
@@ -714,13 +708,12 @@
         }
       ],
       "diff": 4,
-      "diffLabel": "Boss",
       "boss": true
     },
     {
       "id": "z8",
       "name": "AI Rounds",
-      "theme": "night",
+      "theme": "circuit",
       "start": "2027-01-04",
       "end": "2027-01-10",
       "goal": "Practice interviews where AI is allowed",
@@ -808,15 +801,13 @@
           "notes": "https://github.com/onemokang/lc-stuff/tree/main/Behavioral"
         }
       ],
-      "diff": 4,
-      "diffLabel": "Hard"
+      "diff": 4
     },
     {
       "id": "z9",
       "name": "Mediums I",
-      "theme": "lava",
+      "theme": "volcano",
       "diff": 4,
-      "diffLabel": "Hard",
       "start": "2027-01-11",
       "end": "2027-01-17",
       "goal": "12 extra mediums from NeetCode 150. Timed, 25 min each.",
@@ -879,9 +870,8 @@
     {
       "id": "z10",
       "name": "Mediums II",
-      "theme": "lava",
+      "theme": "storm",
       "diff": 5,
-      "diffLabel": "Very hard",
       "start": "2027-01-18",
       "end": "2027-01-24",
       "goal": "12 more mediums. Two mocks. Optional deep dive.",
@@ -960,9 +950,8 @@
     {
       "id": "z11",
       "name": "Boss: Final Checkpoint",
-      "theme": "castle",
+      "theme": "spire",
       "diff": 5,
-      "diffLabel": "Boss",
       "boss": true,
       "start": "2027-01-25",
       "end": "2027-01-31",
@@ -1021,9 +1010,8 @@
     {
       "id": "z12",
       "name": "Wave 1 · AI-friendly",
-      "theme": "dawn",
+      "theme": "coast",
       "diff": 5,
-      "diffLabel": "Real",
       "start": "2027-02-01",
       "end": "2027-02-07",
       "goal": "Apply. Keep 1 mock a week.",
@@ -1062,9 +1050,8 @@
     {
       "id": "z13",
       "name": "Wave 2 · Mixed loops",
-      "theme": "dawn",
+      "theme": "city",
       "diff": 5,
-      "diffLabel": "Real",
       "start": "2027-02-08",
       "end": "2027-02-14",
       "goal": "Apply to mixed-style companies.",
@@ -1094,9 +1081,8 @@
     {
       "id": "z14",
       "name": "Wave 3 · Big names",
-      "theme": "finish",
+      "theme": "summit",
       "diff": 5,
-      "diffLabel": "Final",
       "start": "2027-02-15",
       "end": "2027-02-28",
       "goal": "Google, Meta, Apple after you have real loops behind you.",

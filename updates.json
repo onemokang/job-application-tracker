@@ -1,6 +1,29 @@
 {
   "entries": [
     {
+      "id": "2026-11-15T23:30Z",
+      "date": "2026-11-15",
+      "source": "site",
+      "bullets": [
+        {
+          "k": "site",
+          "text": "Install it as an app: Share → Add to Home Screen (iPhone) or Install app (Chrome). Same sync."
+        },
+        {
+          "k": "site",
+          "text": "Each of the 14 worlds now has its own scenery, light and dark."
+        },
+        {
+          "k": "site",
+          "text": "Light map now moves: clouds, birds, rain, snow, cars, fireworks and more."
+        },
+        {
+          "k": "site",
+          "text": "Removed the difficulty words. Dots show difficulty."
+        }
+      ]
+    },
+    {
       "id": "2026-11-15T22:30Z",
       "date": "2026-11-15",
       "source": "site",
