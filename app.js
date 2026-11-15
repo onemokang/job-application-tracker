@@ -246,40 +246,116 @@ function toggleProb(id, i) {
 
 /* ---------- prep map ---------- */
 let mapBuilt = false;
-const THEMES = { meadow: ["#8bc34a", "tree"], hills: ["#c0ca33", "mtn"], ridge: ["#a1887f", "mtn"], forest: ["#43a047", "tree"], peaks: ["#90a4ae", "mtn"], lake: ["#4fc3f7", "water"], summit: ["#b39ddb", "mtn"], grove: ["#26a69a", "tree"], dawn: ["#ffb74d", "sun"], peak: ["#f06292", "mtn"], finish: ["#ffd54f", "flag"] };
+const PAL = {
+  meadow: { l: ["#d6f0b8", "#b9e48f"], d: ["#0d2b1c", "#123a25"], kind: "tree" },
+  hills:  { l: ["#c9ebb0", "#9fd685"], d: ["#0f3322", "#15442d"], kind: "hill" },
+  forest: { l: ["#a9d9a0", "#6fbb7a"], d: ["#0a2619", "#0d3322"], kind: "forest" },
+  lake:   { l: ["#bfe3f5", "#8ccbe8"], d: ["#0a2036", "#0e3050"], kind: "lake" },
+  desert: { l: ["#f6e3b0", "#eec978"], d: ["#2b2112", "#3b2c16"], kind: "desert" },
+  ice:    { l: ["#e3f1fb", "#bddcf3"], d: ["#10243a", "#17345a"], kind: "ice" },
+  castle: { l: ["#cdc7dd", "#aaa2c6"], d: ["#1a1530", "#261c44"], kind: "castle" },
+  night:  { l: ["#a9c2ec", "#7f9fdc"], d: ["#080c24", "#101a44"], kind: "sky" },
+  lava:   { l: ["#f7c9a8", "#ef9a70"], d: ["#2a0f0a", "#431811"], kind: "lava" },
+  dawn:   { l: ["#ffe3b8", "#ffc58a"], d: ["#2a1530", "#411f3e"], kind: "sky" },
+  finish: { l: ["#fff1b8", "#ffd966"], d: ["#2e2410", "#483616"], kind: "flag" },
+};
 
 function rng(seed) { let s = seed; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+
+// One decoration. d = dark mode. Returns SVG markup.
+function deco(kind, x, y, sc, d, r) {
+  const T = (inner) => `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${sc.toFixed(2)})">${inner}</g>`;
+  const st = d ? ` stroke="rgba(255,255,255,.28)" stroke-width="1"` : "";
+  switch (kind) {
+    case "tree":
+    case "forest": {
+      const a = d ? "#1f6b45" : "#3fa35c", b = d ? "#2b8a5a" : "#5cc377", tr = d ? "#4a3626" : "#8a6240";
+      return T(`<rect x="-2" y="8" width="4" height="9" fill="${tr}"/><path d="M0,-18 L12,9 L-12,9Z" fill="${a}"${st}/><path d="M0,-27 L9,-5 L-9,-5Z" fill="${b}"${st}/>`);
+    }
+    case "hill": {
+      const a = d ? "#1f7048" : "#6fc05a", b = d ? "#2c8f5d" : "#8fd672";
+      return T(`<path d="M-34,14 Q-8,-26 20,14Z" fill="${a}"${st}/><path d="M-6,14 Q18,-14 38,14Z" fill="${b}"${st}/>`);
+    }
+    case "lake": {
+      const w = d ? "#2f7fc0" : "#6db8e6";
+      return T(`<ellipse rx="26" ry="8" fill="${w}" fill-opacity="${d ? 0.55 : 0.7}"${st}/><ellipse rx="14" ry="4" fill="none" stroke="${d ? "#9fd3ff" : "#fff"}" stroke-opacity=".55"/>`);
+    }
+    case "desert": {
+      const g = d ? "#2f8a58" : "#4e9a4e";
+      return r() > 0.4
+        ? T(`<rect x="-3" y="-16" width="6" height="30" rx="3" fill="${g}"${st}/><rect x="-12" y="-6" width="5" height="12" rx="2.5" fill="${g}"${st}/><rect x="7" y="-10" width="5" height="12" rx="2.5" fill="${g}"${st}/>`)
+        : T(`<path d="M-30,12 Q-6,-14 30,12Z" fill="${d ? "#5a4423" : "#e0b862"}"${st}/>`);
+    }
+    case "ice": {
+      const a = d ? "#2c5a8c" : "#cfe3f2";
+      return T(`<path d="M-24,14 L0,-22 L24,14Z" fill="${a}"${st}/><path d="M0,-22 L8,-8 L1,-11 L-6,-6Z" fill="${d ? "#e6f3ff" : "#fff"}"/>`);
+    }
+    case "castle": {
+      const a = d ? "#33295c" : "#8f88aa", win = d ? "#ffd36b" : "#5c5575";
+      return T(`<rect x="-10" y="-18" width="20" height="32" fill="${a}"${st}/><path d="M-10,-18 h4 v-5 h4 v5 h4 v-5 h4 v5" fill="${a}"${st}/><rect x="-2" y="-8" width="4" height="7" rx="2" fill="${win}"/>${d ? `<circle cx="0" cy="-5" r="9" fill="url(#glowY)" class="fk"/>` : ""}`);
+    }
+    case "lava": {
+      const rock = d ? "#3b1a14" : "#8a4a3a";
+      return r() > 0.45
+        ? T(`<ellipse rx="22" ry="7" fill="#ff5a1f"${d ? "" : ' fill-opacity=".85"'}/><ellipse rx="12" ry="3.5" fill="#ffc15c"/>${d ? `<circle r="26" fill="url(#glowO)" class="fk"/>` : ""}`)
+        : T(`<path d="M-16,12 L-6,-14 L6,-6 L16,12Z" fill="${rock}"${st}/>`);
+    }
+    case "sky": {
+      const c = d ? "#25356e" : "#fff";
+      return T(`<ellipse rx="26" ry="8" fill="${c}" fill-opacity="${d ? 0.8 : 0.85}"/><ellipse cx="-10" cy="-5" rx="12" ry="8" fill="${c}" fill-opacity="${d ? 0.8 : 0.85}"/><ellipse cx="8" cy="-6" rx="10" ry="7" fill="${c}" fill-opacity="${d ? 0.8 : 0.85}"/>`);
+    }
+    default: // flag
+      return T(`<rect x="-1" y="-20" width="2" height="34" fill="${d ? "#8e98b0" : "#7a6a3a"}"/><path d="M1,-20 L18,-13 L1,-6Z" fill="#ffb300"/>`);
+  }
+}
+
+// Extra lights that only show in dark mode.
+function lights(kind, x, y, r, W) {
+  const delay = (r() * 4).toFixed(1) + "s";
+  if (["sky", "ice", "castle", "lake", "desert", "flag"].includes(kind))
+    return `<circle class="tw" cx="${x}" cy="${y}" r="${(0.8 + r() * 1.4).toFixed(1)}" fill="#fff" style="animation-delay:${delay}"/>`;
+  if (["tree", "forest", "hill"].includes(kind))
+    return `<g class="ff" style="animation-delay:${delay}"><circle cx="${x}" cy="${y}" r="9" fill="url(#glowG)"/><circle cx="${x}" cy="${y}" r="1.8" fill="#eaff9a"/></g>`;
+  if (kind === "lava")
+    return `<circle class="tw" cx="${x}" cy="${y}" r="1.6" fill="#ff9a4d" style="animation-delay:${delay}"/>`;
+  return "";
+}
 
 function buildMap() {
   const root = $("#map");
   const W = root.clientWidth || root.parentElement.clientWidth || 340;
   if (!W) return;
+  const dark = document.documentElement.dataset.theme === "dark";
   root.innerHTML = "";
   mapBuilt = true;
   const cx = W / 2, amp = Math.min(W * 0.27, 120);
-  const ZH = 84, SH = 76, PAD = 14;
+  const ZH = 104, SH = 76, PAD = 12;
   let y = PAD, k = 0;
   const pts = [{ x: cx, y: 0 }];
-  const stepPt = {}, zoneBox = [], html = [];
+  const stepPt = {}, zoneBox = [], html = [], lanterns = [];
 
   ROAD.zones.forEach((z, zi) => {
     const top = y;
-    html.push(`<div class="zone" data-z="${z.id}" style="top:${y}px;height:${ZH - 10}px">
-      <div class="zt"><h4>${esc(z.name)}</h4><span class="zd">${esc(fmt(z.start))} – ${esc(fmt(z.end))}</span></div>
+    const pips = [1, 2, 3, 4, 5].map((n) => `<i class="${n <= (z.diff || 1) ? "on" : ""}"></i>`).join("");
+    html.push(`<div class="zone ${z.boss ? "boss" : ""} lv${z.diff || 1}" data-z="${z.id}" style="top:${y}px;height:${ZH - 12}px">
+      <div class="zt"><span class="wd">WORLD ${zi + 1}${z.boss ? " · BOSS" : ""}</span><span class="pips" title="${esc(z.diffLabel || "")}">${pips}<em>${esc(z.diffLabel || "")}</em></span></div>
+      <div class="zn"><h4>${esc(z.name)}</h4><span class="zd">${esc(fmt(z.start))} – ${esc(fmt(z.end))}</span></div>
       <div class="zg">${esc(z.goal)}</div><div class="zp"><i></i></div></div>`);
-    pts.push({ x: cx, y: y + ZH / 2 - 5 });
+    pts.push({ x: cx, y: y + (ZH - 12) / 2 });
     y += ZH;
-    z.steps.forEach((s) => {
+    z.steps.forEach((s, j) => {
       const yc = y + SH / 2;
       const x = cx + amp * Math.sin(k * 1.15 + 0.5);
       k++;
       pts.push({ x, y: yc });
       stepPt[s.id] = pts.length - 1;
-      const leftSpace = x - 28 - 10, rightSpace = W - 10 - (x + 28);
+      const size = s.type === "gate" ? 46 : 38, half = size / 2;
+      const leftSpace = x - half - 10 - 10, rightSpace = W - 10 - (x + half + 10);
       const side = rightSpace >= leftSpace ? "r" : "l";
       const lw = Math.max(110, Math.min(250, side === "r" ? rightSpace : leftSpace));
-      const lx = side === "r" ? x + 28 : x - 28 - lw;
-      html.push(`<button class="node ${s.optional ? "opt" : ""}" data-id="${s.id}" style="left:${x - 19}px;top:${yc - 19}px" aria-label="${esc(s.title)}"></button>
+      const lx = side === "r" ? x + half + 10 : x - half - 10 - lw;
+      if (k % 3 === 0) lanterns.push({ x: side === "r" ? x - half - 14 : x + half + 14, y: yc });
+      html.push(`<button class="node ${s.type === "gate" ? "boss" : ""} ${s.optional ? "opt" : ""}" data-id="${s.id}" data-n="${zi + 1}-${j + 1}" style="left:${x - half}px;top:${yc - half}px;width:${size}px;height:${size}px" aria-label="${esc(s.title)}"></button>
         <div class="lbl" data-lbl="${s.id}" style="left:${lx}px;top:${yc - 31}px;width:${lw}px;height:62px">
           <div class="s"></div><div class="t">${esc(s.title)}</div></div>`);
       y += SH;
@@ -292,7 +368,6 @@ function buildMap() {
   const H = y;
   root.style.height = H + "px";
 
-  // path (Catmull-Rom -> Bezier)
   const segs = [];
   for (let i = 0; i < pts.length - 1; i++) {
     const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
@@ -300,24 +375,35 @@ function buildMap() {
   }
   const dFull = `M${pts[0].x},${pts[0].y}` + segs.join(" ");
 
-  // scenery
-  let scene = "";
+  // ground: one smooth vertical gradient per world, blending into the next
+  const mode = dark ? "d" : "l";
+  let defs = `<radialGradient id="glowY"><stop offset="0" stop-color="#ffd36b" stop-opacity=".85"/><stop offset="1" stop-color="#ffd36b" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowO"><stop offset="0" stop-color="#ff7a2b" stop-opacity=".7"/><stop offset="1" stop-color="#ff7a2b" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowG"><stop offset="0" stop-color="#d4ff6a" stop-opacity=".8"/><stop offset="1" stop-color="#d4ff6a" stop-opacity="0"/></radialGradient>`;
+  let ground = "", scene = "";
   zoneBox.forEach(({ z, top, bottom, zi }) => {
-    const [col, kind] = THEMES[z.theme] || THEMES.meadow;
-    scene += `<rect x="0" y="${top - 6}" width="${W}" height="${bottom - top + 12}" fill="${col}" fill-opacity="${document.documentElement.dataset.theme === "dark" ? 0.1 : 0.16}"/>`;
+    const pal = PAL[z.theme] || PAL.meadow;
+    const next = zoneBox[zi + 1] && (PAL[zoneBox[zi + 1].z.theme] || PAL.meadow);
+    const y0 = zi === 0 ? 0 : top - 3, y1 = zi === zoneBox.length - 1 ? H : bottom + 3;
+    defs += `<linearGradient id="g${zi}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${pal[mode][0]}"/><stop offset=".6" stop-color="${pal[mode][1]}"/><stop offset="1" stop-color="${(next || pal)[mode][0]}"/></linearGradient>`;
+    ground += `<rect x="0" y="${y0}" width="${W}" height="${y1 - y0}" fill="url(#g${zi})"/>`;
     const r = rng(zi * 97 + 13);
-    const n = Math.round((bottom - top) / 38);
+    const n = Math.round((bottom - top) / 34);
     for (let i = 0; i < n; i++) {
-      const px = r() * W, py = top + 90 + r() * (bottom - top - 100), sc = 0.7 + r() * 0.7;
-      if (kind === "tree") scene += `<g transform="translate(${px},${py}) scale(${sc})"><rect x="-2" y="8" width="4" height="8" fill="var(--rock)"/><path d="M0,-16 L11,8 L-11,8Z" fill="var(--tree)"/><path d="M0,-24 L8,-4 L-8,-4Z" fill="var(--tree2)"/></g>`;
-      else if (kind === "mtn") scene += `<g transform="translate(${px},${py}) scale(${sc})"><path d="M-22,14 L0,-18 L22,14Z" fill="var(--rock)"/><path d="M0,-18 L7,-6 L0,-9 L-6,-5Z" fill="var(--surface)" fill-opacity=".8"/></g>`;
-      else if (kind === "water") scene += `<ellipse cx="${px}" cy="${py}" rx="${22 * sc}" ry="${8 * sc}" fill="var(--water)"/>`;
-      else if (kind === "sun") scene += i % 2 ? `<ellipse cx="${px}" cy="${py}" rx="${24 * sc}" ry="${7 * sc}" fill="var(--surface)" fill-opacity=".6"/>` : `<circle cx="${px}" cy="${py}" r="${9 * sc}" fill="#ffb74d" fill-opacity=".7"/>`;
-      else scene += `<g transform="translate(${px},${py}) scale(${sc})"><rect x="-1" y="-18" width="2" height="30" fill="var(--rock)"/><path d="M1,-18 L16,-12 L1,-6Z" fill="#ffb300"/></g>`;
+      const px = 8 + r() * (W - 16), py = top + 100 + r() * Math.max(10, bottom - top - 110), sc = 0.75 + r() * 0.7;
+      scene += deco(pal.kind, px, py, sc, dark, r);
+    }
+    if (dark) {
+      const m = Math.round((bottom - top) / 22);
+      for (let i = 0; i < m; i++) scene += lights(pal.kind, (r() * W).toFixed(0), (top + 100 + r() * Math.max(10, bottom - top - 110)).toFixed(0), r, W);
     }
   });
-  const svg = `<svg class="bg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${scene}
-    <path id="pBase" d="${dFull}" fill="none" stroke="var(--path)" stroke-width="5" stroke-dasharray="2 11" stroke-linecap="round"/>
+  if (dark) lanterns.forEach((l) => {
+    scene += `<g class="fk"><circle cx="${l.x}" cy="${l.y}" r="22" fill="url(#glowY)"/><rect x="${l.x - 1}" y="${l.y}" width="2" height="12" fill="#6b5a3a"/><circle cx="${l.x}" cy="${l.y - 1}" r="3.4" fill="#ffe08a"/></g>`;
+  });
+
+  const svg = `<svg class="bg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><defs>${defs}</defs>${ground}${scene}
+    <path id="pBase" d="${dFull}" fill="none" stroke="${dark ? "#6f7a93" : "#fff"}" stroke-opacity="${dark ? 0.55 : 0.9}" stroke-width="5" stroke-dasharray="2 11" stroke-linecap="round"/>
     <path id="pDone" d="${dFull}" fill="none" stroke="var(--primary)" stroke-width="6" stroke-linecap="round"/></svg>`;
   root.innerHTML = svg + html.join("");
   root._segs = segs; root._pts = pts; root._stepPt = stepPt;
@@ -340,8 +426,8 @@ function refreshMap() {
     const node = $(`.node[data-id="${s.id}"]`, root), lbl = $(`[data-lbl="${s.id}"]`, root);
     if (!node) return;
     const done = isDone(s.id);
-    node.className = `node ${s.optional ? "opt" : ""} ${done ? "done" : ""} ${nextStep && nextStep.id === s.id ? "next" : ""}`;
-    node.textContent = done ? "✓" : String(i + 1);
+    node.className = `node ${s.type === "gate" ? "boss" : ""} ${s.optional ? "opt" : ""} ${done ? "done" : ""} ${nextStep && nextStep.id === s.id ? "next" : ""}`;
+    node.textContent = done ? "✓" : node.dataset.n;
     lbl.classList.toggle("done", done);
     const cnt = s.problems && s.type !== "apply" ? `${probCount(s)}/${s.problems.length}` : "";
     $(".s", lbl).innerHTML = `<span>${esc(s.src)}${s.optional ? " · optional" : ""}</span>${cnt ? `<b>${cnt}</b>` : ""}`;
@@ -384,7 +470,7 @@ function updateStats() {
   $("#prepStats").innerHTML = `
     <div class="pstats"><span class="chip">${d}/${steps.length} steps</span>${state}
     ${cur ? `<span class="chip">Now: ${esc(cur.name)}</span>` : ""}
-    <span class="chip go">Interviews ${esc(fmt(ROAD.interviewStart))} · ${daysTo(ROAD.interviewStart)}d</span></div>
+    <span class="chip go">Apply ${esc(fmt(ROAD.applyStart))} · ${daysTo(ROAD.applyStart)}d</span></div>
     <div class="pbar"><i style="width:${pct}%"></i></div>`;
 }
 
@@ -429,7 +515,7 @@ function openSheet(id) {
 function closeSheet() { $("#sheetRoot").innerHTML = ""; }
 
 function renderPrepStatic() {
-  $("#verdict").innerHTML = `<h3>Is Feb 1 enough?</h3><ul>${(ROAD.verdict || []).map((v) => `<li>${esc(v)}</li>`).join("")}</ul>
+  $("#verdict").innerHTML = `<h3>Apply from Feb 1: realistic?</h3><ul>${(ROAD.verdict || []).map((v) => `<li>${esc(v)}</li>`).join("")}</ul>
     <div class="when" style="margin-top:8px">Pace: ${esc(ROAD.pace)} · checked ${esc(fmt(ROAD.researchDate))}</div>`;
   $("#skip").innerHTML = `<summary>Skip for now</summary><div class="more">${(ROAD.skip || []).map((v) => `<div>• ${esc(v)}</div>`).join("")}</div>`;
 }
@@ -512,7 +598,7 @@ async function init() {
   const chk = DATA.checkedAt ? new Date(DATA.checkedAt).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "";
   $("#checked").textContent = chk ? `Jobs checked ${chk} · robot runs twice a day · comp = total, from levels.fyi + postings` : "";
   $("#goal").innerHTML = `Target <b>≥ $${DATA.floorK || 200}K</b> total comp`;
-  $("#countdown").textContent = `Feb 1 · ${daysTo(ROAD.interviewStart)}d`;
+  $("#countdown").textContent = `Apply Feb 1 · ${daysTo(ROAD.applyStart)}d`;
 
   wire();
   renderBanner();

@@ -1,13 +1,13 @@
 {
   "researchDate": "2026-11-15",
   "start": "2026-11-16",
-  "interviewStart": "2027-02-01",
-  "pace": "≈ 3 h/day until Jan 3 · ≈ 1.5 h/day after",
+  "pace": "≈ 3 h/day to Jan 3 · ≈ 2 h/day Jan 4–31 · lighter in Feb",
   "verdict": [
-    "Feb 1 works for AI-first companies (Coinbase, DoorDash, Datadog, Anthropic, Ramp, Shopify, Stripe).",
-    "It is tight for Google, Meta, Apple, Amazon. They still run classic LeetCode loops. Apply there last.",
-    "Feb 1 = first real screens. Offers land Mar–Apr. Do not quit before a signed offer.",
-    "Slipping 2 weeks is fine. Skipping the Jan 3 checkpoint is not."
+    "Applying from Feb 1 is realistic, even for Google, Meta, Apple, Amazon.",
+    "11 weeks = Blind 75 + 24 more mediums + 6 AI problems + 4 mocks.",
+    "Apply to AI-friendly companies first. Use them as live practice.",
+    "Offers likely Mar–May. Rejections are normal. Don't quit before a signed offer.",
+    "Two tests (Jan 3, Jan 31) decide go or delay."
   ],
   "skip": [
     "NeetCode: Python for Beginners (stop at 21/82)",
@@ -79,7 +79,9 @@
             "Two Sum"
           ]
         }
-      ]
+      ],
+      "diff": 1,
+      "diffLabel": "Warm-up"
     },
     {
       "id": "z2",
@@ -138,12 +140,14 @@
           "title": "Redo every miss from an empty file",
           "note": "No notes. If you miss it twice, rewatch the video."
         }
-      ]
+      ],
+      "diff": 1,
+      "diffLabel": "Easy"
     },
     {
       "id": "z3",
-      "name": "Blind 75 · Ridge",
-      "theme": "ridge",
+      "name": "Blind 75 · Pine Forest",
+      "theme": "forest",
       "start": "2026-11-30",
       "end": "2026-12-06",
       "goal": "14 problems. Pointers and recursion start here.",
@@ -202,12 +206,14 @@
           "src": "Self",
           "title": "Redo every miss from an empty file"
         }
-      ]
+      ],
+      "diff": 2,
+      "diffLabel": "Medium"
     },
     {
       "id": "z4",
       "name": "Trees, Tries + System Design",
-      "theme": "forest",
+      "theme": "lake",
       "start": "2026-12-07",
       "end": "2026-12-13",
       "goal": "6 + 6 problems, then start the system design book",
@@ -273,12 +279,14 @@
           "src": "Self",
           "title": "Redo every miss from an empty file"
         }
-      ]
+      ],
+      "diff": 2,
+      "diffLabel": "Medium"
     },
     {
       "id": "z5",
       "name": "Graphs + Intervals",
-      "theme": "peaks",
+      "theme": "desert",
       "start": "2026-12-14",
       "end": "2026-12-20",
       "goal": "14 problems + 5 chapters. Say each design out loud.",
@@ -358,12 +366,14 @@
           "src": "Self",
           "title": "Redo every miss from an empty file"
         }
-      ]
+      ],
+      "diff": 3,
+      "diffLabel": "Hard"
     },
     {
       "id": "z6",
-      "name": "DP Valley",
-      "theme": "lake",
+      "name": "DP Glacier",
+      "theme": "ice",
       "start": "2026-12-21",
       "end": "2026-12-27",
       "goal": "12 problems + 5 chapters. Holiday week: light days are OK.",
@@ -434,12 +444,14 @@
           "src": "Self",
           "title": "Redo every miss from an empty file"
         }
-      ]
+      ],
+      "diff": 4,
+      "diffLabel": "Hard"
     },
     {
       "id": "z7",
-      "name": "Checkpoint",
-      "theme": "summit",
+      "name": "Boss: Checkpoint",
+      "theme": "castle",
       "start": "2026-12-28",
       "end": "2027-01-03",
       "goal": "Finish Blind 75. Prove it with a test.",
@@ -501,12 +513,15 @@
             "Binary Tree Right Side View"
           ]
         }
-      ]
+      ],
+      "diff": 4,
+      "diffLabel": "Boss",
+      "boss": true
     },
     {
       "id": "z8",
-      "name": "AI Round Forest",
-      "theme": "grove",
+      "name": "AI Rounds",
+      "theme": "night",
       "start": "2027-01-04",
       "end": "2027-01-10",
       "goal": "Practice interviews where AI is allowed",
@@ -584,22 +599,221 @@
             "Used AI to ship faster"
           ]
         }
-      ]
+      ],
+      "diff": 4,
+      "diffLabel": "Hard"
     },
     {
       "id": "z9",
-      "name": "Mock Camp · Apply Wave 1",
-      "theme": "dawn",
+      "name": "Mediums I",
+      "theme": "lava",
+      "diff": 4,
+      "diffLabel": "Hard",
       "start": "2027-01-11",
       "end": "2027-01-17",
-      "goal": "Send the first applications. Start mocks.",
+      "goal": "12 extra mediums from NeetCode 150. Timed, 25 min each.",
+      "steps": [
+        {
+          "id": "n-1",
+          "type": "problems",
+          "src": "NeetCode · NeetCode 150",
+          "title": "Arrays, Stack, Binary Search",
+          "link": "https://neetcode.io/practice",
+          "problems": [
+            "Valid Sudoku",
+            "Min Stack",
+            "Generate Parentheses",
+            "Car Fleet",
+            "Search a 2D Matrix",
+            "Time Based Key-Value Store"
+          ]
+        },
+        {
+          "id": "n-2",
+          "type": "problems",
+          "src": "NeetCode · NeetCode 150",
+          "title": "Linked List, Heap",
+          "link": "https://neetcode.io/practice",
+          "problems": [
+            "Add Two Numbers",
+            "Copy List With Random Pointer",
+            "LRU Cache",
+            "Kth Largest Element In An Array",
+            "K Closest Points to Origin",
+            "Task Scheduler"
+          ]
+        },
+        {
+          "id": "ai-4b",
+          "type": "ai",
+          "src": "NeetCode · AI Coding Interviews",
+          "title": "Streaming Analytics (Hard)",
+          "link": "https://neetcode.io/practice/ai-coding"
+        },
+        {
+          "id": "mock-1",
+          "type": "mock",
+          "src": "Friend or Pramp",
+          "title": "Mock 1: 2 mediums in 45 min, out loud"
+        },
+        {
+          "id": "r-9",
+          "type": "redo",
+          "src": "Self",
+          "title": "Redo every miss from an empty file"
+        }
+      ]
+    },
+    {
+      "id": "z10",
+      "name": "Mediums II",
+      "theme": "lava",
+      "diff": 5,
+      "diffLabel": "Very hard",
+      "start": "2027-01-18",
+      "end": "2027-01-24",
+      "goal": "12 more mediums. Two mocks. Optional deep dive.",
+      "steps": [
+        {
+          "id": "n-3",
+          "type": "problems",
+          "src": "NeetCode · NeetCode 150",
+          "title": "Backtracking, Graphs",
+          "link": "https://neetcode.io/practice",
+          "problems": [
+            "Subsets",
+            "Permutations",
+            "Combination Sum II",
+            "Rotting Oranges",
+            "Redundant Connection",
+            "Network Delay Time"
+          ]
+        },
+        {
+          "id": "n-4",
+          "type": "problems",
+          "src": "NeetCode · NeetCode 150",
+          "title": "Dynamic Programming",
+          "link": "https://neetcode.io/practice",
+          "problems": [
+            "Partition Equal Subset Sum",
+            "Target Sum",
+            "Coin Change II",
+            "Interleaving String",
+            "Edit Distance",
+            "Best Time to Buy and Sell Stock with Cooldown"
+          ]
+        },
+        {
+          "id": "ai-5",
+          "type": "ai",
+          "src": "NeetCode · AI Coding Interviews",
+          "title": "Build System (Hard)",
+          "link": "https://neetcode.io/practice/ai-coding"
+        },
+        {
+          "id": "mock-2",
+          "type": "mock",
+          "src": "Friend or Pramp",
+          "title": "Mock 2: coding, 45 min, out loud"
+        },
+        {
+          "id": "mock-sd1",
+          "type": "mock",
+          "src": "Alex Xu · Vol 1",
+          "title": "System design mock: Ch 8 URL Shortener, 35 min, recorded"
+        },
+        {
+          "id": "ddia",
+          "type": "book",
+          "src": "DDIA",
+          "title": "Replication · Sharding · Transactions",
+          "optional": true,
+          "note": "2nd ed: Ch 6, 7, 8. 1st ed: Ch 5, 6, 7. Optional."
+        },
+        {
+          "id": "r-10",
+          "type": "redo",
+          "src": "Self",
+          "title": "Redo every miss from an empty file"
+        }
+      ]
+    },
+    {
+      "id": "z11",
+      "name": "Boss: Final Checkpoint",
+      "theme": "castle",
+      "diff": 5,
+      "diffLabel": "Boss",
+      "boss": true,
+      "start": "2027-01-25",
+      "end": "2027-01-31",
+      "goal": "Prove you are ready. Then apply Feb 1.",
+      "steps": [
+        {
+          "id": "mock-sd2",
+          "type": "mock",
+          "src": "Alex Xu · Vol 1",
+          "title": "System design mock: Ch 11 News Feed, 35 min, recorded"
+        },
+        {
+          "id": "mock-3",
+          "type": "mock",
+          "src": "Friend or Pramp",
+          "title": "Mock 3: coding + AI round, 60 min"
+        },
+        {
+          "id": "resume",
+          "type": "do",
+          "src": "Your Achievement Log",
+          "title": "Update resume top bullets for SWE roles",
+          "note": "Lead with scale, impact and AI-tool use."
+        },
+        {
+          "id": "gate-3",
+          "type": "gate",
+          "src": "NeetCode 150 + AI Coding",
+          "title": "Final test: 3 unseen mediums + 1 AI problem, 45 min each",
+          "note": "Pass = 3 of 4. Fail = apply 2 weeks later.",
+          "link": "https://neetcode.io/practice",
+          "problems": [
+            "Evaluate Reverse Polish Notation",
+            "Gas Station",
+            "Palindrome Partitioning",
+            "Word Bag Maximizer (Hard), AI mode"
+          ]
+        },
+        {
+          "id": "go",
+          "type": "gate",
+          "src": "Self",
+          "title": "Go / No-Go review",
+          "note": "All four must be true to apply Feb 1.",
+          "problems": [
+            "Both tests passed",
+            "3+ mocks done",
+            "Resume updated",
+            "Target company list ready"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "z12",
+      "name": "Wave 1 · AI-friendly",
+      "theme": "dawn",
+      "diff": 5,
+      "diffLabel": "Real",
+      "start": "2027-02-01",
+      "end": "2027-02-07",
+      "goal": "Apply. Keep 1 mock a week.",
       "steps": [
         {
           "id": "ap-1",
           "type": "apply",
           "src": "Job tracker",
           "title": "Apply wave 1: AI-friendly companies",
-          "note": "Resume out to every AI-friendly company on the Jobs tab.",
+          "note": "Send to every company on the Jobs tab tagged AI.",
           "problems": [
             "Coinbase",
             "DoorDash",
@@ -610,70 +824,29 @@
           ]
         },
         {
-          "id": "mock-1",
-          "type": "mock",
-          "src": "Friend or Pramp",
-          "title": "Mock 1: 2 Blind 75 mediums in 45 min, out loud"
+          "id": "recr",
+          "type": "do",
+          "src": "Every recruiter",
+          "title": "Ask every recruiter: \"Is AI allowed in this round?\"",
+          "note": "Rules differ by team and change often."
         },
         {
-          "id": "mock-sd1",
+          "id": "mock-4",
           "type": "mock",
           "src": "Alex Xu · Vol 1",
-          "title": "System design mock: Ch 8 URL Shortener, 35 min, recorded"
-        },
-        {
-          "id": "ai-4b",
-          "type": "ai",
-          "src": "NeetCode · AI Coding Interviews",
-          "title": "Streaming Analytics (Hard)",
-          "link": "https://neetcode.io/practice/ai-coding"
+          "title": "Mock 4: system design, 35 min"
         }
       ]
     },
     {
-      "id": "z10",
-      "name": "Mock Camp · Round 2",
+      "id": "z13",
+      "name": "Wave 2 · Mixed loops",
       "theme": "dawn",
-      "start": "2027-01-18",
-      "end": "2027-01-24",
-      "goal": "Two more mocks. Optional deep dive.",
-      "steps": [
-        {
-          "id": "mock-2",
-          "type": "mock",
-          "src": "Friend or Pramp",
-          "title": "Mock 2: coding, 45 min, out loud"
-        },
-        {
-          "id": "mock-sd2",
-          "type": "mock",
-          "src": "Alex Xu · Vol 1",
-          "title": "System design mock: Ch 11 News Feed, 35 min, recorded"
-        },
-        {
-          "id": "ai-5",
-          "type": "ai",
-          "src": "NeetCode · AI Coding Interviews",
-          "title": "Build System (Hard)",
-          "link": "https://neetcode.io/practice/ai-coding"
-        },
-        {
-          "id": "ddia",
-          "type": "book",
-          "optional": true,
-          "src": "DDIA",
-          "title": "Replication · Sharding · Transactions",
-          "note": "2nd ed: Ch 6, 7, 8. 1st ed: Ch 5, 6, 7. Optional."
-        }
-      ]
-    },
-    {
-      "id": "z11",
-      "name": "Wave 2 · Go / No-Go",
-      "theme": "peak",
-      "start": "2027-01-25",
-      "end": "2027-01-31",
-      "goal": "Send wave 2. Check you are ready.",
+      "diff": 5,
+      "diffLabel": "Real",
+      "start": "2027-02-08",
+      "end": "2027-02-14",
+      "goal": "Apply to mixed-style companies.",
       "steps": [
         {
           "id": "ap-2",
@@ -690,40 +863,29 @@
           ]
         },
         {
-          "id": "recr",
-          "type": "do",
-          "src": "Every recruiter",
-          "title": "Ask: \"Is AI allowed in this round?\"",
-          "note": "Ask for every screen. Rules differ by team and change often."
-        },
-        {
-          "id": "go",
-          "type": "gate",
-          "src": "Self",
-          "title": "Go / No-Go review",
-          "note": "Need: checkpoint passed, 2 mocks done, 3+ screens booked. If not, shift Feb dates.",
-          "problems": [
-            "Checkpoint passed",
-            "2+ mocks done",
-            "3+ screens booked"
-          ]
+          "id": "mock-5",
+          "type": "mock",
+          "src": "Friend or Pramp",
+          "title": "Mock 5: coding, 45 min"
         }
       ]
     },
     {
-      "id": "z12",
-      "name": "Interviews Begin",
+      "id": "z14",
+      "name": "Wave 3 · Big names",
       "theme": "finish",
-      "start": "2027-02-01",
-      "end": "2027-02-07",
-      "goal": "First real screens",
+      "diff": 5,
+      "diffLabel": "Final",
+      "start": "2027-02-15",
+      "end": "2027-02-28",
+      "goal": "Google, Meta, Apple after you have real loops behind you.",
       "steps": [
         {
           "id": "ap-3",
           "type": "apply",
           "src": "Job tracker",
-          "title": "Wave 3 after 2 real loops: Google, Meta, Apple",
-          "note": "Apply only once you have done at least 2 real interviews.",
+          "title": "Apply wave 3: Google, Meta, Apple",
+          "note": "Do this after 2 real interviews, so a bad first loop doesn't burn them.",
           "problems": [
             "Google",
             "Meta",
@@ -732,5 +894,6 @@
         }
       ]
     }
-  ]
+  ],
+  "applyStart": "2027-02-01"
 }
