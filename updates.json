@@ -1,6 +1,25 @@
 {
   "entries": [
     {
+      "id": "2026-11-16T20:39Z",
+      "date": "2026-11-16",
+      "source": "robot",
+      "bullets": [
+        {
+          "k": "new",
+          "text": "Coinbase: +1 new role (e.g. Sr SWE, TRUST Network)"
+        },
+        {
+          "k": "new",
+          "text": "Anthropic: +1 new role (e.g. SWE, Education)"
+        },
+        {
+          "k": "new",
+          "text": "Snowflake: +1 new role (e.g. Sr SWE - Elastic Global Services)"
+        }
+      ]
+    },
+    {
       "id": "2026-11-16T02:00Z",
       "date": "2026-11-15",
       "source": "site",
