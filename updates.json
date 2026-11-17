@@ -1,6 +1,17 @@
 {
   "entries": [
     {
+      "id": "2026-11-17T04:46Z",
+      "date": "2026-11-16",
+      "source": "robot",
+      "bullets": [
+        {
+          "k": "new",
+          "text": "Anthropic: +1 new role (e.g. SWE, Datacenter Server Lifecycle)"
+        }
+      ]
+    },
+    {
       "id": "2026-11-16T20:39Z",
       "date": "2026-11-16",
       "source": "robot",
