@@ -1,6 +1,21 @@
 {
   "entries": [
     {
+      "id": "2026-11-17T19:19Z",
+      "date": "2026-11-17",
+      "source": "robot",
+      "bullets": [
+        {
+          "k": "new",
+          "text": "Coinbase: +1 new role (e.g. Sr SWE, Financial Integrity)"
+        },
+        {
+          "k": "new",
+          "text": "Ramp: +16 new roles (e.g. Sr Engineer, Backend, Vendor Management)"
+        }
+      ]
+    },
+    {
       "id": "2026-11-17T04:46Z",
       "date": "2026-11-16",
       "source": "robot",

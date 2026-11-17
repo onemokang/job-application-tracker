@@ -68,37 +68,7 @@
         "payMin": 186065,
         "payMax": 218900,
         "payLabel": "$186K–$219K",
-        "checked": "2026-11-16"
-      }
-    },
-    {
-      "rank": 1,
-      "style": "mixed",
-      "company": "Ramp",
-      "role": "Software Engineer, Backend, Accounts Receivable",
-      "location": "Remote (US)",
-      "workMode": "Remote",
-      "comp": "$204K–$280K",
-      "why": "Has 1 classic coding round (algo-based) PLUS 1 separate dedicated AI-coding round",
-      "link": "https://jobs.ashbyhq.com/ramp/47a75895-24af-49b7-9858-1be0ec0e7c71",
-      "notes": "Fast-growing, very well-paying fintech; strong name recognition in tech",
-      "styleNote": "Loop includes one classic/algorithmic coding round (e.g. a binary-search problem reported) PLUS a separate dedicated AI-coding round with a stipend for AI tools.",
-      "tc": {
-        "low": 204,
-        "high": 280,
-        "basis": "Senior base posted · Ashby, Nov 2026"
-      },
-      "floor": "ok",
-      "styleChecked": "2026-11-08",
-      "live": {
-        "id": "47a75895-24af-49b7-9858-1be0ec0e7c71",
-        "title": "Software Engineer, Backend, Accounts Receivable",
-        "url": "https://jobs.ashbyhq.com/ramp/47a75895-24af-49b7-9858-1be0ec0e7c71",
-        "ats": "ashby",
-        "payMin": 204000,
-        "payMax": 280000,
-        "payLabel": "$204K–$280K",
-        "checked": "2026-11-16"
+        "checked": "2026-11-17"
       }
     },
     {
@@ -148,7 +118,7 @@
         "payMin": null,
         "payMax": null,
         "payLabel": null,
-        "checked": "2026-11-16"
+        "checked": "2026-11-17"
       }
     },
     {
@@ -198,7 +168,7 @@
         "payMin": 320000,
         "payMax": 320000,
         "payLabel": "$320K",
-        "checked": "2026-11-16"
+        "checked": "2026-11-17"
       }
     },
     {
@@ -268,7 +238,7 @@
         "payMin": 192000,
         "payMax": 240000,
         "payLabel": "$192K–$240K",
-        "checked": "2026-11-16"
+        "checked": "2026-11-17"
       }
     },
     {
@@ -298,7 +268,7 @@
         "payMin": 159800,
         "payMax": 235000,
         "payLabel": "$160K–$235K",
-        "checked": "2026-11-16"
+        "checked": "2026-11-17"
       }
     },
     {
@@ -344,6 +314,36 @@
     {
       "rank": 3,
       "style": "mixed",
+      "company": "Ramp",
+      "role": "Software Engineer, Backend, Accounts Receivable",
+      "location": "New York",
+      "workMode": "Remote",
+      "comp": "$204K–$280K",
+      "why": "Has 1 classic coding round (algo-based) PLUS 1 separate dedicated AI-coding round",
+      "link": "https://jobs.ashbyhq.com/ramp/47a75895-24af-49b7-9858-1be0ec0e7c71",
+      "notes": "Fast-growing, very well-paying fintech; strong name recognition in tech",
+      "styleNote": "Loop includes one classic/algorithmic coding round (e.g. a binary-search problem reported) PLUS a separate dedicated AI-coding round with a stipend for AI tools.",
+      "tc": {
+        "low": 204,
+        "high": 280,
+        "basis": "Senior base posted · Ashby, Nov 2026"
+      },
+      "floor": "ok",
+      "styleChecked": "2026-11-08",
+      "live": {
+        "id": "47a75895-24af-49b7-9858-1be0ec0e7c71",
+        "title": "Software Engineer, Backend, Accounts Receivable",
+        "url": "https://jobs.ashbyhq.com/ramp/47a75895-24af-49b7-9858-1be0ec0e7c71",
+        "ats": "ashby",
+        "payMin": 204000,
+        "payMax": 280000,
+        "payLabel": "$204K–$280K",
+        "checked": "2026-11-17"
+      }
+    },
+    {
+      "rank": 3,
+      "style": "mixed",
       "company": "Snowflake",
       "role": "Senior Software Engineer - Billing Platform",
       "location": "Bellevue · Menlo Park",
@@ -368,7 +368,7 @@
         "payMin": 200000,
         "payMax": 287500,
         "payLabel": "$200K–$288K",
-        "checked": "2026-11-16"
+        "checked": "2026-11-17"
       }
     }
   ],
@@ -462,7 +462,8 @@
       "8335547",
       "8351163",
       "8357772",
-      "8368463"
+      "8368463",
+      "8395582"
     ],
     "Datadog": [
       "3851927",
@@ -493,9 +494,25 @@
       "5484171008"
     ],
     "Ramp": [
+      "09360e92-fc95-4ba6-9611-dfefd60b13ce",
+      "26855617-1697-4fd2-8c33-a5fb11fc4c77",
+      "3c43dea1-3cd7-45ab-96f1-4054cfa875ff",
+      "3cfbf693-58e3-423f-87a8-a93dbd0839b0",
+      "415997bf-a1c2-472d-ad54-04bd0d95259b",
+      "42527ca9-03b9-499e-a5c4-18e4245af138",
+      "428f41e2-48e8-409d-b5e3-8053f7fc7a27",
       "47a75895-24af-49b7-9858-1be0ec0e7c71",
+      "5598f7b8-4ae2-4105-a2b4-2d0f55c54c40",
+      "6a7e382f-240a-4952-b9e5-7fe2b3856bc9",
+      "6e717b06-6613-42ad-a1ee-f852a305fa37",
+      "7bfa613e-151c-469b-9973-c89ee3d14838",
+      "8101bdeb-69ff-4797-838b-7344842b85a4",
+      "8fa367de-71ba-409e-befd-175a163acb1b",
       "939892e5-5273-4bfc-8c41-a6c51cabb228",
-      "be496b52-cfbf-494e-b862-61fb4a188b24"
+      "b7514711-8a29-4bd2-a97a-967be14e336f",
+      "be496b52-cfbf-494e-b862-61fb4a188b24",
+      "c0a71032-1efb-40dc-b1e8-aa0f30cd5961",
+      "f5b60cf1-c0ec-42c1-89db-ece853e998ab"
     ],
     "Snowflake": [
       "07d2ac99-43b0-42c0-849f-9eab3f437b4d",
@@ -524,6 +541,6 @@
       "ed704306-6585-4a76-ba8c-d23565ae6b9c"
     ]
   },
-  "lastUpdated": "2026-11-17T04:46:57.829753+00:00",
-  "checkedAt": "2026-11-17T04:46:57.829753+00:00"
+  "lastUpdated": "2026-11-17T19:19:19.970458+00:00",
+  "checkedAt": "2026-11-17T19:19:19.970458+00:00"
 }
