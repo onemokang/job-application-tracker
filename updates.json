@@ -1,6 +1,17 @@
 {
   "entries": [
     {
+      "id": "2026-11-20T18:45Z",
+      "date": "2026-11-20",
+      "source": "robot",
+      "bullets": [
+        {
+          "k": "new",
+          "text": "DoorDash: +1 new role (e.g. Sr SWE, Motion Planning – DOT)"
+        }
+      ]
+    },
+    {
       "id": "2026-11-19T19:08Z",
       "date": "2026-11-19",
       "source": "robot",
